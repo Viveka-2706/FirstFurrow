@@ -58,7 +58,8 @@ export function LanguageProvider({ children }) {
               : {}),
             stageId: s.stageId ?? s.stage, // original English name — used for icons
             costItems: (s.costItems || []).map((ci, j) => ({
-              item: o?.costItems?.[j] ?? ci.item,
+              // the Tamil text is plain text in the app bundle, but { item, cost } in the database — accept both
+              item: (typeof o?.costItems?.[j] === 'string' ? o.costItems[j] : o?.costItems?.[j]?.item) ?? ci.item,
               cost: localizeCost(ci.cost),
             })),
           };

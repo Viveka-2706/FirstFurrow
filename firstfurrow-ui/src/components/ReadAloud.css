@@ -1,0 +1,42 @@
+.ra { position: relative; display: inline-flex; }
+.ra-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--field);
+  background: rgba(154, 203, 107, 0.2);
+  border: 1.5px solid rgba(111, 163, 71, 0.55);
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.ra-btn:hover { background: rgba(154, 203, 107, 0.4); border-color: var(--sprout-deep); }
+.ra-btn:active { transform: scale(0.96); }
+.ra-btn.is-speaking { background: var(--sprout); border-color: var(--sprout-deep); }
+
+.ra-icon .ra-btn { width: 42px; height: 42px; border-radius: 50%; padding: 0; }
+.ra-pill .ra-btn { padding: 9px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+
+.ra-bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 16px; }
+.ra-bars i { display: block; width: 3px; border-radius: 2px; background: var(--field); animation: ra-bars 0.9s ease-in-out infinite; }
+.ra-bars i:nth-child(2) { animation-delay: 0.15s; }
+.ra-bars i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes ra-bars { 0%, 100% { height: 4px; } 50% { height: 16px; } }
+
+.ra-note {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 20;
+  width: min(300px, 80vw);
+  padding: 12px 34px 12px 14px;
+  border-radius: var(--radius-s);
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(26, 20, 16, 0.1);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: rgba(26, 20, 16, 0.75);
+}
+.ra-note button { position: absolute; top: 8px; right: 10px; font-size: 0.8rem; color: rgba(26, 20, 16, 0.5); }
+@media print { .ra { display: none; } }
+@media (prefers-reduced-motion: reduce) { .ra-bars i { animation: none; height: 10px; } }

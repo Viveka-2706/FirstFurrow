@@ -1,0 +1,21 @@
+
+.toast {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: min(92vw, 460px);
+  padding: 12px 16px;
+  border-radius: var(--radius-m);
+  background: var(--ink);
+  color: var(--mist);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  box-shadow: 0 12px 32px -10px rgba(26, 20, 16, 0.55);
+}
+.toast button { color: rgba(246, 242, 231, 0.7); font-size: 0.9rem; }
+.toast button:hover { color: #fff; }

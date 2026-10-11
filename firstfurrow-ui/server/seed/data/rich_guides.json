@@ -1,0 +1,557 @@
+{
+  "okra": {
+    "en": {
+      "id": "okra",
+      "name": "Ladies Finger",
+      "localName": "Vendakkai",
+      "tagline": "The forgiving first crop",
+      "investment": 16000,
+      "durationDays": 55,
+      "returnMin": 50000,
+      "returnMax": 100000,
+      "risk": "Low",
+      "match": 96,
+      "color": "#9acb6b",
+      "suitableSoils": [
+        "red",
+        "alluvial",
+        "clay_loam"
+      ],
+      "blurb": "Fast-maturing and steady in demand — okra tolerates beginner mistakes better than most vegetables, making it the safest first planting on a small plot.",
+      "water": {
+        "totalSeasonWater": "350–400 mm across the full crop cycle",
+        "method": "Furrow irrigation, or drip if you have access to it — okra does not like waterlogging",
+        "frequency": "Every 6–7 days in cool weather; every 3–4 days once daytime temperature crosses 32°C",
+        "criticalStages": "Flowering (day 30–40) and pod formation — a dry spell here causes flower drop and stunted pods",
+        "warning": "Never let water stand around the base for more than a few hours — root rot sets in fast in okra"
+      },
+      "guide": [
+        {
+          "stage": "Land Preparation",
+          "dayRange": "Day 0–3",
+          "whatToDo": "Plough the plot 2 times to a depth of about 20–25 cm, breaking up large clods. Mix in well-rotted farmyard manure or compost — roughly 2–3 kg per square metre — and form raised beds or ridges about 45 cm apart so water drains away from the stem.",
+          "why": "Okra roots need loose, well-aerated soil to establish. Raised beds prevent the waterlogging that causes root rot, especially important on clay loam or black soil.",
+          "beginnerTip": "If your soil crumbles easily and drains fast (red or sandy soil), skip raised beds and plant on the flat instead — you will need the moisture closer to the surface.",
+          "warningSign": "If water still pools 4–5 hours after your test watering, add more organic matter or raise the beds higher before sowing.",
+          "costItems": [
+            {
+              "item": "Farmyard manure / compost",
+              "cost": "₹800–1,200"
+            },
+            {
+              "item": "Plough or tiller rental (if hired)",
+              "cost": "₹600–900"
+            }
+          ]
+        },
+        {
+          "stage": "Sowing",
+          "dayRange": "Day 3",
+          "whatToDo": "Soak seeds in plain water for 12–24 hours before sowing to speed up germination. Sow 2 seeds per hole, 2–3 cm deep, spaced 30 cm apart along the rows. Cover lightly with loose soil and water immediately.",
+          "why": "Pre-soaking softens the hard seed coat — unsoaked okra seeds can take 10+ days to germinate instead of 5–6.",
+          "beginnerTip": "Sow slightly more seeds than you need. Once seedlings are 10 cm tall, pull out the weaker of each pair — this is normal, not a mistake.",
+          "warningSign": "No germination by day 8–9 usually means the seed rotted from overwatering, not that the seed was bad — ease off watering on the next attempt.",
+          "costItems": [
+            {
+              "item": "Okra (vendakkai) seeds, for 0.1–0.2 acre",
+              "cost": "₹150–250"
+            }
+          ]
+        },
+        {
+          "stage": "First Irrigation & Establishment",
+          "dayRange": "Day 10",
+          "whatToDo": "Once seedlings show their first true leaves (not the small round first leaves, but the jagged okra-shaped ones), water gently at the base. Avoid wetting the leaves directly to reduce fungal risk.",
+          "why": "The first true leaves mean the seedling has a working root system and can handle a full watering without rotting.",
+          "beginnerTip": "Water early morning, not at midday — midday watering on hot soil can shock young roots.",
+          "warningSign": "Yellowing lower leaves at this stage usually means overwatering, not a nutrient problem — hold off on the next watering by a day or two.",
+          "costItems": [
+            {
+              "item": "Watering can or hose (one-time, if you don't have one)",
+              "cost": "₹150–400"
+            }
+          ]
+        },
+        {
+          "stage": "Fertilizing (Top Dressing)",
+          "dayRange": "Day 20",
+          "whatToDo": "Apply a nitrogen-rich fertilizer (like urea, roughly 15–20 g per plant) or a matching quantity of well-composted manure, worked lightly into the soil about 5 cm from the stem, then water it in.",
+          "why": "This is when the plant shifts from establishing roots to rapid leaf and branch growth — it needs a nitrogen boost to support the flowering that follows.",
+          "beginnerTip": "Never place fertilizer touching the stem directly — it can burn the plant. Keep a small gap.",
+          "warningSign": "Pale, small leaves at this stage are a sign of nitrogen deficiency — a light second dose a week later usually corrects it.",
+          "costItems": [
+            {
+              "item": "Urea / nitrogen fertilizer",
+              "cost": "₹200–350"
+            }
+          ]
+        },
+        {
+          "stage": "Pest & Disease Check",
+          "dayRange": "Day 30–45",
+          "whatToDo": "Check the underside of leaves and young pods every 3–4 days for shoot & fruit borer (small holes with sawdust-like waste near the entry point) and whitefly (tiny white insects that fly up when the leaf is disturbed). Remove and destroy any visibly infested shoot tips by hand.",
+          "why": "This is the highest-risk window for pest damage. Catching an infestation in its first week is far cheaper and easier than treating a spread infestation later.",
+          "beginnerTip": "A homemade neem-oil spray (5 ml neem oil + a few drops of soap in 1 litre water) sprayed weekly is enough for most beginner-scale infestations — you usually don't need chemical pesticide for a small plot.",
+          "warningSign": "Wilting shoot tips with a visible entry hole means borer has already tunnelled in — cut off and destroy that shoot below the hole immediately so it doesn't spread to nearby plants.",
+          "costItems": [
+            {
+              "item": "Neem oil (for homemade spray)",
+              "cost": "₹150–250"
+            },
+            {
+              "item": "Soap / spray additive",
+              "cost": "₹20–40"
+            }
+          ]
+        },
+        {
+          "stage": "Harvest",
+          "dayRange": "Day 55 onward",
+          "whatToDo": "Begin harvesting when pods are 7–10 cm long and snap easily with a light bend — this is usually 4–6 days after the flower opens. Harvest every 2–3 days; okra grows fast and overripe pods turn fibrous and unsellable within a day or two of the ideal size.",
+          "why": "Okra left on the plant too long doesn't just spoil — it also signals the plant to stop producing new flowers, cutting your total yield.",
+          "beginnerTip": "Wear gloves or long sleeves when harvesting — okra leaves and pods have fine spines that irritate skin.",
+          "warningSign": "If pods feel hard and don't snap cleanly, they are overripe — remove and discard them anyway so the plant keeps producing new ones.",
+          "costItems": [
+            {
+              "item": "Harvest baskets / bags",
+              "cost": "₹100–200"
+            },
+            {
+              "item": "Labor for picking (if hired)",
+              "cost": "₹300–500 per session"
+            }
+          ]
+        }
+      ]
+    },
+    "ta": {
+      "name": "Ladies Finger",
+      "localName": "வெண்டைக்காய்",
+      "tagline": "தவறுகளைப் பொறுக்கும் முதல் பயிர்",
+      "blurb": "விரைவாக முதிரும், சந்தையில் நிலையான தேவை — பெரும்பாலான காய்கறிகளை விட வெண்டை தொடக்கநிலைத் தவறுகளைத் தாங்கும்; சிறிய நிலத்தில் முதல் பயிராக மிகவும் பாதுகாப்பானது.",
+      "water": {
+        "totalSeasonWater": "முழு பயிர்க்காலத்தில் 350–400 மி.மீ",
+        "method": "வாய்க்கால் (சால்) பாசனம்; சொட்டுநீர் வசதி இருந்தால் அதுவும் நல்லது — வெண்டை நீர் தேங்குவதை விரும்பாது",
+        "frequency": "குளிர் காலத்தில் 6–7 நாளுக்கு ஒருமுறை; பகல் வெப்பம் 32°C-ஐத் தாண்டினால் 3–4 நாளுக்கு ஒருமுறை",
+        "criticalStages": "பூக்கும் பருவம் (நாள் 30–40) மற்றும் காய் பிடிக்கும் பருவம் — இந்நேரத்தில் நீர் பற்றாக்குறை பூ உதிர்வையும் குட்டையான காய்களையும் ஏற்படுத்தும்",
+        "warning": "செடியின் அடியில் சில மணி நேரத்துக்கு மேல் நீர் தேங்க விடாதீர்கள் — வெண்டையில் வேர் அழுகல் மிக வேகமாகப் பரவும்"
+      },
+      "guide": [
+        {
+          "stage": "நிலம் தயாரித்தல்",
+          "dayRange": "நாள் 0–3",
+          "whatToDo": "நிலத்தை 20–25 செ.மீ ஆழத்தில் 2 முறை உழுது பெரிய மண்கட்டிகளை உடையுங்கள். நன்கு மக்கிய தொழுவுரம் அல்லது கம்போஸ்ட்டை சதுர மீட்டருக்கு சுமார் 2–3 கிலோ கலந்து, தண்டிலிருந்து நீர் வடிந்து செல்லும்படி சுமார் 45 செ.மீ இடைவெளியில் மேட்டுப்பாத்திகள் அல்லது வரப்புகள் அமையுங்கள்.",
+          "why": "வெண்டை வேர்கள் நிலைபெற தளர்வான, காற்றோட்டமுள்ள மண் தேவை. மேட்டுப்பாத்தி நீர் தேங்கி வேர் அழுகுவதைத் தடுக்கும்; களிமண் கலந்த மண் அல்லது கரிசல் மண்ணில் இது மிக முக்கியம்.",
+          "beginnerTip": "உங்கள் மண் எளிதில் உதிர்ந்து வேகமாக நீர் வடிந்தால் (செம்மண் அல்லது மணல் மண்), மேட்டுப்பாத்தி வேண்டாம்; சமதளத்திலேயே நடுங்கள் — ஈரப்பதம் மேற்பரப்புக்கு அருகில் இருக்க வேண்டும்.",
+          "warningSign": "சோதனைக்கு நீர் பாய்ச்சி 4–5 மணி நேரம் ஆகியும் நீர் தேங்கி நின்றால், விதைப்பதற்கு முன் கூடுதல் இயற்கை உரம் சேர்க்கவும் அல்லது பாத்திகளை உயர்த்தவும்.",
+          "costItems": [
+            "தொழுவுரம் / கம்போஸ்ட்",
+            "ஏர் அல்லது டில்லர் வாடகை (வாடகைக்கு எடுத்தால்)"
+          ]
+        },
+        {
+          "stage": "விதைப்பு",
+          "dayRange": "நாள் 3",
+          "whatToDo": "முளைப்பை விரைவுபடுத்த விதைகளை விதைப்பதற்கு முன் 12–24 மணி நேரம் சாதாரண நீரில் ஊறவையுங்கள். வரிசைகளில் 30 செ.மீ இடைவெளியில், ஒவ்வொரு குழியிலும் 2 விதைகளை 2–3 செ.மீ ஆழத்தில் விதையுங்கள். தளர்வான மண்ணால் லேசாக மூடி உடனே நீர் பாய்ச்சுங்கள்.",
+          "why": "ஊறவைப்பது விதையின் கடினமான மேல்தோலை மென்மையாக்கும் — ஊறவைக்காத வெண்டை விதைகள் 5–6 நாளுக்குப் பதிலாக 10 நாளுக்கு மேல் எடுக்கலாம்.",
+          "beginnerTip": "தேவையை விட சற்று அதிகமாக விதையுங்கள். நாற்று 10 செ.மீ உயரம் வந்ததும் ஒவ்வொரு இணையிலும் பலவீனமானதைப் பிடுங்கிவிடுங்கள் — இது இயல்பான நடைமுறை, தவறு அல்ல.",
+          "warningSign": "8–9 நாளில் முளைக்கவில்லை என்றால் பெரும்பாலும் அதிக நீரால் விதை அழுகியதே காரணம், விதை மோசம் என்பதல்ல — அடுத்த முறை நீரைக் குறையுங்கள்.",
+          "costItems": [
+            "வெண்டை விதைகள், 0.1–0.2 ஏக்கருக்கு"
+          ]
+        },
+        {
+          "stage": "முதல் பாசனம் & நிலைபெறுதல்",
+          "dayRange": "நாள் 10",
+          "whatToDo": "நாற்றுகளில் முதல் உண்மை இலைகள் (சிறிய வட்ட முதல் இலைகள் அல்ல, வெண்டைக்கே உரிய பிளவுபட்ட இலைகள்) தோன்றியதும் அடிப்பகுதியில் மெதுவாக நீர் பாய்ச்சுங்கள். பூஞ்சை அபாயத்தைக் குறைக்க இலைகள் மீது நேரடியாக நீர் படுவதைத் தவிருங்கள்.",
+          "why": "முதல் உண்மை இலைகள் தோன்றினால் நாற்றின் வேர்த்தொகுதி செயல்படுகிறது என்று பொருள்; முழுப் பாசனத்தை அழுகாமல் தாங்கும்.",
+          "beginnerTip": "அதிகாலையில் நீர் பாய்ச்சுங்கள், நண்பகலில் அல்ல — சூடான மண்ணில் நண்பகல் நீர் இளம் வேர்களுக்கு அதிர்ச்சி தரும்.",
+          "warningSign": "இந்நிலையில் கீழ் இலைகள் மஞ்சளாவது பெரும்பாலும் அதிக நீரின் அறிகுறி, சத்துக்குறை அல்ல — அடுத்த பாசனத்தை ஒரு நாள் இரண்டு நாள் தள்ளிப்போடுங்கள்.",
+          "costItems": [
+            "நீர் ஊற்றும் குடம் அல்லது குழாய் (ஒருமுறை செலவு, இல்லையெனில்)"
+          ]
+        },
+        {
+          "stage": "உரமிடுதல் (மேலுரம்)",
+          "dayRange": "நாள் 20",
+          "whatToDo": "நைட்ரஜன் நிறைந்த உரத்தை (யூரியா, செடிக்கு சுமார் 15–20 கிராம்) அல்லது அதே அளவு மக்கிய தொழுவுரத்தை தண்டிலிருந்து சுமார் 5 செ.மீ தள்ளி மண்ணில் மெதுவாகக் கலந்து இட்டு, நீர் பாய்ச்சுங்கள்.",
+          "why": "செடி வேர் நிலைபெறும் நிலையிலிருந்து இலை, கிளை வேகமாக வளரும் நிலைக்கு மாறும் நேரம் இது; தொடர்ந்து வரும் பூப்பிற்கு நைட்ரஜன் தேவை.",
+          "beginnerTip": "உரம் தண்டைத் தொடும்படி இடாதீர்கள் — செடி கருகிவிடும். சிறிய இடைவெளி விடுங்கள்.",
+          "warningSign": "இந்நிலையில் இலைகள் வெளிறி சிறுத்திருந்தால் நைட்ரஜன் குறைபாடு; ஒரு வாரம் கழித்து சிறிதளவு இரண்டாம் தவணை இடுவது பொதுவாகச் சரிசெய்யும்.",
+          "costItems": [
+            "யூரியா / நைட்ரஜன் உரம்"
+          ]
+        },
+        {
+          "stage": "பூச்சி & நோய் கண்காணிப்பு",
+          "dayRange": "நாள் 30–45",
+          "whatToDo": "ஒவ்வொரு 3–4 நாளுக்கும் இலைகளின் அடிப்புறத்தையும் இளம் காய்களையும் பாருங்கள்: தண்டு & காய்த்துளைப்பான் (நுழைவுத் துளையருகே மரத்தூள் போன்ற கழிவு), வெள்ளை ஈ (இலையை அசைத்தால் பறக்கும் சிறு வெள்ளைப் பூச்சிகள்). பாதிக்கப்பட்ட நுனிக்கிளைகளைக் கையால் அகற்றி அழித்துவிடுங்கள்.",
+          "why": "பூச்சித் தாக்குதலுக்கு மிக அதிக அபாயமுள்ள காலம் இது. முதல் வாரத்திலேயே கண்டறிவது, பரவிய பின் சிகிச்சை செய்வதை விட மிகவும் மலிவு, எளிது.",
+          "beginnerTip": "வீட்டிலேயே தயாரிக்கும் வேப்பெண்ணெய்த் தெளிப்பு (1 லிட்டர் நீரில் 5 மி.லி வேப்பெண்ணெய் + சில துளி சோப்பு) வாரம் ஒருமுறை தெளித்தால் சிறிய அளவிலான பெரும்பாலான தாக்குதல்களுக்குப் போதும் — சிறு நிலத்துக்கு ரசாயனப் பூச்சிக்கொல்லி பொதுவாகத் தேவையில்லை.",
+          "warningSign": "நுனித்தண்டு வாடி, துளை தெரிந்தால் புழு உள்ளே துளைத்துவிட்டது என்று பொருள் — அது அருகிலுள்ள செடிகளுக்குப் பரவாமல் இருக்க, துளைக்குக் கீழே அந்தத் தண்டை உடனே வெட்டி அழித்துவிடுங்கள்.",
+          "costItems": [
+            "வேப்பெண்ணெய் (வீட்டுத் தெளிப்புக்கு)",
+            "சோப்பு / தெளிப்புச் சேர்க்கை"
+          ]
+        },
+        {
+          "stage": "அறுவடை",
+          "dayRange": "நாள் 55 முதல்",
+          "whatToDo": "காய்கள் 7–10 செ.மீ நீளம் வந்து, லேசாக வளைத்தால் எளிதில் ஒடிந்தால் அறுவடை தொடங்குங்கள் — பொதுவாக பூ மலர்ந்து 4–6 நாள் கழித்து. 2–3 நாளுக்கு ஒருமுறை அறுவடை செய்யுங்கள்; வெண்டை வேகமாக வளரும், முற்றிய காய்கள் ஒரு நாள் இரண்டு நாளில் நார் பிடித்து விற்க முடியாதவையாகிவிடும்.",
+          "why": "செடியில் அதிக நாள் விட்ட வெண்டை கெட்டுப்போவதோடு, புதிய பூக்கள் உருவாவதையும் நிறுத்தச் சொல்லும் சமிக்ஞையாகி, மொத்த மகசூலைக் குறைக்கும்.",
+          "beginnerTip": "அறுவடையின்போது கையுறை அல்லது முழுக்கை ஆடை அணியுங்கள் — வெண்டை இலை, காய்களில் உள்ள நுண்முட்கள் தோலில் அரிப்பு ஏற்படுத்தும்.",
+          "warningSign": "காய்கள் கடினமாக இருந்து சுத்தமாக ஒடியவில்லை என்றால் அவை முற்றியவை — புதிய காய்கள் தொடர்ந்து வர அவற்றையும் அகற்றி எறிந்துவிடுங்கள்.",
+          "costItems": [
+            "அறுவடைக் கூடைகள் / பைகள்",
+            "பறிப்புக்கு ஆள்கூலி (வாடகைக்கு எடுத்தால்)"
+          ]
+        }
+      ]
+    }
+  },
+  "spinach": {
+    "en": {
+      "id": "spinach",
+      "name": "Spinach",
+      "localName": "Pasalai Keerai",
+      "tagline": "Fastest cash-back crop",
+      "investment": 8000,
+      "durationDays": 30,
+      "returnMin": 25000,
+      "returnMax": 45000,
+      "risk": "Low",
+      "match": 89,
+      "color": "#6fa347",
+      "suitableSoils": [
+        "alluvial",
+        "clay_loam",
+        "red"
+      ],
+      "blurb": "Ready in a month. Ideal if you want to see your first harvest — and first income — before committing more capital to a longer crop.",
+      "water": {
+        "totalSeasonWater": "180–220 mm across the full crop cycle",
+        "method": "Light sprinkling by watering can or hose spray — spinach roots are shallow",
+        "frequency": "Every 2–3 days, lighter amounts each time rather than one heavy watering",
+        "criticalStages": "First 10 days after sowing — the shallow root system dries out fast if the top soil is allowed to crust over",
+        "warning": "Spinach bolts (flowers early and turns bitter) quickly in high heat with irregular watering — keep moisture consistent, not just frequent"
+      },
+      "guide": [
+        {
+          "stage": "Land Preparation",
+          "dayRange": "Day 0",
+          "whatToDo": "Rake the bed to a fine, crumbly tilth — spinach seeds are small and cannot push through large clods. Mix in a thin layer of well-rotted compost, about 1–1.5 kg per square metre.",
+          "why": "A fine seedbed is the single biggest factor in even germination for leafy greens — patchy tilth means patchy sprouting.",
+          "beginnerTip": "If your soil clumps a lot when you squeeze it, sieve out the larger clods from the top 3–4 cm by hand before sowing.",
+          "warningSign": "If the surface forms a hard crust after your prep watering, lightly scratch it open with a rake before sowing — seeds struggle to break through a crusted surface.",
+          "costItems": [
+            {
+              "item": "Well-rotted compost",
+              "cost": "₹400–600"
+            }
+          ]
+        },
+        {
+          "stage": "Sowing",
+          "dayRange": "Day 2",
+          "whatToDo": "Sow seeds thinly in shallow lines about 1–1.5 cm deep, rows 20 cm apart. Cover with a very light layer of soil and water gently with a fine spray so seeds aren't washed out of place.",
+          "why": "Spinach seeds are small and near the surface — a heavy watering stream will displace them before they anchor.",
+          "beginnerTip": "Mixing the tiny seeds with a handful of dry sand before sowing makes it much easier to spread them evenly by hand.",
+          "warningSign": "Seeds clumped together will sprout as a tangled cluster that competes for space — thin these out as soon as you notice them.",
+          "costItems": [
+            {
+              "item": "Spinach seeds",
+              "cost": "₹80–150"
+            }
+          ]
+        },
+        {
+          "stage": "Regular Light Irrigation",
+          "dayRange": "Day 6 onward",
+          "whatToDo": "Once seedlings emerge (usually by day 5–7), water lightly every 2–3 days, keeping the top soil consistently moist but never waterlogged.",
+          "why": "Spinach has a shallow root system with almost no reserve — it cannot survive even a short dry spell the way deeper-rooted crops can.",
+          "beginnerTip": "Water in the early morning or evening, never at midday — leaves scorch easily under direct hot-sun watering.",
+          "warningSign": "Leaves turning pale yellow at the edges is usually early water stress, not a nutrient issue — increase watering frequency slightly before adding any fertilizer.",
+          "costItems": [
+            {
+              "item": "Watering can or sprinkler head",
+              "cost": "₹100–250"
+            }
+          ]
+        },
+        {
+          "stage": "Light Fertilizing",
+          "dayRange": "Day 15",
+          "whatToDo": "Apply a light dose of nitrogen fertilizer (about 8–10 g urea per square metre) or diluted liquid compost, watered in immediately.",
+          "why": "Spinach is grown purely for leaf mass, so a mid-cycle nitrogen boost directly improves both yield and leaf colour.",
+          "beginnerTip": "Skip fertilizing entirely if your compost at planting was generous — over-fertilized spinach can develop bitter, overly fibrous leaves.",
+          "warningSign": "Dark green, floppy leaves after fertilizing usually mean you've overdone the nitrogen — hold off on any further doses.",
+          "costItems": [
+            {
+              "item": "Urea (light dose) or liquid compost",
+              "cost": "₹100–150"
+            }
+          ]
+        },
+        {
+          "stage": "Harvest",
+          "dayRange": "Day 28–30",
+          "whatToDo": "Harvest either by cutting the whole plant 2–3 cm above soil level, or by picking outer leaves only and letting the centre keep growing for a second cutting 10–12 days later.",
+          "why": "The outer-leaf method gives you two harvests from one sowing instead of one, nearly doubling your return from the same plot.",
+          "beginnerTip": "Harvest in the cool of early morning — leaves stay crisper and last longer before wilting than if picked in midday heat.",
+          "warningSign": "If plants start growing a tall central stalk with small flower buds, harvest immediately — this is bolting, and leaves turn bitter within a day or two after it starts.",
+          "costItems": [
+            {
+              "item": "Harvest bags",
+              "cost": "₹50–100"
+            }
+          ]
+        }
+      ]
+    },
+    "ta": {
+      "name": "Spinach",
+      "localName": "பசலைக்கீரை",
+      "tagline": "விரைவில் பணம் திரும்பும் பயிர்",
+      "blurb": "ஒரு மாதத்தில் தயார். முதல் அறுவடையையும் முதல் வருமானத்தையும் பார்த்த பின், நீண்ட பயிரில் அதிக முதலீடு செய்ய விரும்பினால் ஏற்றது.",
+      "water": {
+        "totalSeasonWater": "முழு பயிர்க்காலத்தில் 180–220 மி.மீ",
+        "method": "நீர்க்குடம் அல்லது குழாய் மூலம் இலேசான தெளிப்பு — பசலையின் வேர்கள் ஆழம் குறைவு",
+        "frequency": "2–3 நாளுக்கு ஒருமுறை; ஒரே பெரிய பாசனத்துக்குப் பதிலாக ஒவ்வொரு முறையும் குறைந்த அளவு",
+        "criticalStages": "விதைத்த முதல் 10 நாட்கள் — மேல்மண் இறுகி மேலோடு கட்டினால் ஆழமற்ற வேர்கள் வேகமாகக் காய்ந்துவிடும்",
+        "warning": "அதிக வெப்பத்தில் ஒழுங்கற்ற பாசனம் இருந்தால் பசலை விரைவாகப் பூத்துக் கசப்பாகிவிடும் — ஈரப்பதம் அடிக்கடி மட்டுமல்ல, சீராகவும் இருக்கட்டும்"
+      },
+      "guide": [
+        {
+          "stage": "நிலம் தயாரித்தல்",
+          "dayRange": "நாள் 0",
+          "whatToDo": "பாத்தியை நுண்ணிய, பொலபொலப்பான மண்பதத்துக்குக் கொத்தி சமப்படுத்துங்கள் — பசலை விதைகள் சிறியவை, பெரிய கட்டிகளைத் தள்ளி முளைக்க முடியாது. நன்கு மக்கிய கம்போஸ்ட்டை சதுர மீட்டருக்கு சுமார் 1–1.5 கிலோ மெல்லிய அடுக்காகக் கலந்துவிடுங்கள்.",
+          "why": "கீரை வகைகளில் சீரான முளைப்புக்கு நுண்ணிய விதைப்படுக்கையே மிக முக்கிய காரணி — சீரற்ற மண்பதம் என்றால் சீரற்ற முளைப்பு.",
+          "beginnerTip": "மண்ணைப் பிடித்தால் அதிகம் கட்டியாகிறது என்றால், விதைப்பதற்கு முன் மேல் 3–4 செ.மீ மண்ணிலிருந்து பெரிய கட்டிகளைக் கையால் பிரித்தெடுங்கள்.",
+          "warningSign": "நீர் பாய்ச்சிய பின் மேற்பரப்பு கடினமான மேலோடு கட்டினால், விதைப்பதற்கு முன் கொத்தியால் லேசாகக் கீறி உடையுங்கள் — மேலோட்டை உடைத்து முளைப்பது விதைகளுக்குக் கடினம்.",
+          "costItems": [
+            "நன்கு மக்கிய கம்போஸ்ட்"
+          ]
+        },
+        {
+          "stage": "விதைப்பு",
+          "dayRange": "நாள் 2",
+          "whatToDo": "விதைகளை 1–1.5 செ.மீ ஆழமுள்ள ஆழமற்ற வரிசைகளில், வரிசைகளுக்கு இடையே 20 செ.மீ இடைவெளியில் மெல்லிய அடர்த்தியில் விதையுங்கள். மிக லேசாக மண்ணால் மூடி, விதைகள் இடம் மாறி அடித்துச் செல்லப்படாமல் இருக்க நுண்ணிய தெளிப்பால் மெதுவாக நீர் பாய்ச்சுங்கள்.",
+          "why": "பசலை விதைகள் சிறியவை, மேற்பரப்புக்கு அருகில் இருப்பவை — அதிக நீர்ப்பாய்ச்சல் அவை வேர் பிடிப்பதற்குள் இடம் பெயர்த்துவிடும்.",
+          "beginnerTip": "சிறிய விதைகளை ஒரு கைப்பிடி உலர்ந்த மணலுடன் கலந்து விதைத்தால் கையால் சீராகத் தூவுவது மிக எளிது.",
+          "warningSign": "கொத்தாக ஒட்டிய விதைகள் சிக்கலான கொத்தாக முளைத்து இடத்துக்குப் போட்டியிடும் — கவனித்தவுடனேயே அவற்றைக் கலைத்துக் களைந்துவிடுங்கள்.",
+          "costItems": [
+            "பசலைக்கீரை விதைகள்"
+          ]
+        },
+        {
+          "stage": "சீரான இலேசான பாசனம்",
+          "dayRange": "நாள் 6 முதல்",
+          "whatToDo": "நாற்றுகள் முளைத்தவுடன் (பொதுவாக நாள் 5–7-க்குள்), 2–3 நாளுக்கு ஒருமுறை இலேசாக நீர் பாய்ச்சி, மேல்மண் எப்போதும் ஈரமாக இருக்கும்படியும், நீர் தேங்காதபடியும் பார்த்துக்கொள்ளுங்கள்.",
+          "why": "பசலையின் வேர்கள் ஆழமற்றவை, சேமிப்பு எதுவும் இல்லை — ஆழமான வேருள்ள பயிர்களைப் போல ஒரு சிறிய வறட்சியைக் கூடத் தாங்காது.",
+          "beginnerTip": "அதிகாலை அல்லது மாலையில் நீர் பாய்ச்சுங்கள், நண்பகலில் வேண்டாம் — நேரடி வெயிலில் நீர் பாய்ச்சினால் இலைகள் கருகும்.",
+          "warningSign": "இலை ஓரங்கள் வெளிர் மஞ்சளாவது பெரும்பாலும் ஆரம்ப நீர் அழுத்தமே, சத்துக்குறை அல்ல — உரம் இடுவதற்கு முன் பாசன இடைவெளியைச் சற்றுக் குறையுங்கள்.",
+          "costItems": [
+            "நீர்க்குடம் அல்லது தெளிப்புத் தலை"
+          ]
+        },
+        {
+          "stage": "இலேசான உரமிடுதல்",
+          "dayRange": "நாள் 15",
+          "whatToDo": "இலேசான அளவு நைட்ரஜன் உரம் (சதுர மீட்டருக்கு சுமார் 8–10 கிராம் யூரியா) அல்லது நீர்த்த திரவ கம்போஸ்ட்டை இட்டு உடனே நீர் பாய்ச்சுங்கள்.",
+          "why": "பசலை இலைத் திரளுக்காக மட்டுமே வளர்க்கப்படுவதால், பயிர்க்காலத்தின் நடுவில் நைட்ரஜன் தருவது மகசூல், இலை நிறம் இரண்டையும் நேரடியாக மேம்படுத்தும்.",
+          "beginnerTip": "நடவின்போது கம்போஸ்ட் தாராளமாக இட்டிருந்தால் உரமிடுவதையே தவிர்த்துவிடுங்கள் — அதிக உரமிட்ட பசலையில் கசப்பான, நார் நிறைந்த இலைகள் உருவாகலாம்.",
+          "warningSign": "உரமிட்ட பின் இலைகள் அடர்பச்சையாகி துவண்டு தொங்கினால் நைட்ரஜன் அதிகமாகிவிட்டது என்று பொருள் — மேலும் இடாதீர்கள்.",
+          "costItems": [
+            "யூரியா (இலேசான அளவு) அல்லது திரவ கம்போஸ்ட்"
+          ]
+        },
+        {
+          "stage": "அறுவடை",
+          "dayRange": "நாள் 28–30",
+          "whatToDo": "முழுச் செடியையும் மண்மட்டத்திலிருந்து 2–3 செ.மீ மேலே வெட்டி அறுவடை செய்யலாம்; அல்லது வெளி இலைகளை மட்டும் பறித்து நடுப்பகுதியை வளர விட்டு 10–12 நாள் கழித்து இரண்டாம் அறுவடை எடுக்கலாம்.",
+          "why": "வெளி இலை முறையில் ஒரு விதைப்பிலிருந்து ஒரு அறுவடைக்குப் பதிலாக இரண்டு அறுவடை கிடைக்கும் — அதே நிலத்தில் வருமானம் கிட்டத்தட்ட இரட்டிப்பாகும்.",
+          "beginnerTip": "அதிகாலைக் குளிர்ச்சியில் அறுவடை செய்யுங்கள் — நண்பகல் வெப்பத்தில் பறிப்பதை விட இலைகள் மொறுமொறுப்பாக இருந்து, வாடுவதற்கு முன் அதிக நேரம் நிலைக்கும்.",
+          "warningSign": "செடிகள் சிறு மொட்டுகளுடன் உயரமான நடுத்தண்டை வளர்க்கத் தொடங்கினால் உடனே அறுவடை செய்யுங்கள் — இது முன்கூட்டிய பூத்தல் (போல்டிங்); தொடங்கிய ஒரு நாள் இரண்டு நாளில் இலைகள் கசப்பாகிவிடும்.",
+          "costItems": [
+            "அறுவடைப் பைகள்"
+          ]
+        }
+      ]
+    }
+  },
+  "marigold": {
+    "en": {
+      "id": "marigold",
+      "name": "Marigold",
+      "localName": "Thagarai Poo",
+      "tagline": "Steady festival demand",
+      "investment": 13000,
+      "durationDays": 50,
+      "returnMin": 40000,
+      "returnMax": 80000,
+      "risk": "Low",
+      "match": 84,
+      "color": "#e7a93e",
+      "suitableSoils": [
+        "red",
+        "black",
+        "alluvial"
+      ],
+      "blurb": "Temple and festival demand keeps prices dependable year-round, and the plant forgives irregular watering better than vegetables do.",
+      "water": {
+        "totalSeasonWater": "300–350 mm across the full crop cycle",
+        "method": "Furrow irrigation between rows works well; avoid wetting flower heads directly once buds form",
+        "frequency": "Every 5–6 days in cool weather; every 3 days during hot, dry spells",
+        "criticalStages": "Transplanting week and early bud formation (around day 35) — stress in either window reduces flower size and count",
+        "warning": "Overwatering close to harvest causes flower heads to rot before they can be picked — ease off watering slightly as flowering peaks"
+      },
+      "guide": [
+        {
+          "stage": "Nursery Preparation",
+          "dayRange": "Day 0",
+          "whatToDo": "Prepare a small nursery bed with fine, well-drained soil mixed with compost. Sow seeds thinly in rows 5 cm apart, cover lightly, and water with a fine spray.",
+          "why": "Raising marigold in a nursery first, rather than sowing directly in the field, gives much higher survival rates and lets you select only the strongest seedlings to transplant.",
+          "beginnerTip": "A shaded corner of your plot, or even large trays, works fine as a nursery for a small first crop — you don't need a separate structure.",
+          "warningSign": "Thin, leggy, pale seedlings usually mean too little sunlight in the nursery spot — move it to a brighter location for the next batch.",
+          "costItems": [
+            {
+              "item": "Marigold seeds",
+              "cost": "₹150–250"
+            },
+            {
+              "item": "Nursery trays (optional)",
+              "cost": "₹200–350"
+            }
+          ]
+        },
+        {
+          "stage": "Transplanting",
+          "dayRange": "Day 20",
+          "whatToDo": "When seedlings are about 10–12 cm tall with 4–5 true leaves, transplant them into the main field, spaced 30 cm apart in rows 40 cm apart. Water immediately after transplanting.",
+          "why": "This spacing gives each plant enough room to branch out fully, which directly increases the number of flowers per plant.",
+          "beginnerTip": "Transplant in the evening, not midday — seedlings recover from root disturbance far better without the added stress of hot sun.",
+          "warningSign": "Wilting that doesn't recover within 2 days of transplanting usually means root damage during the move — water gently and provide light shade for a few days.",
+          "costItems": [
+            {
+              "item": "Labor for transplanting (if hired)",
+              "cost": "₹300–500"
+            }
+          ]
+        },
+        {
+          "stage": "Establishment Irrigation",
+          "dayRange": "Day 25",
+          "whatToDo": "Water every 5–6 days, keeping soil moist but not soaked, as the transplanted seedlings establish new roots in the field.",
+          "why": "This is the most vulnerable period after transplanting — the plant is rebuilding root hairs that were damaged in the move.",
+          "beginnerTip": "A thin layer of dry mulch (straw or dried leaves) around the base helps retain moisture and reduces how often you need to water.",
+          "warningSign": "Drooping during the hottest part of the day that recovers by evening is normal heat response, not a watering problem — only worry if it hasn't recovered by the next morning.",
+          "costItems": [
+            {
+              "item": "Mulch material (straw or dried leaves)",
+              "cost": "₹100–200"
+            }
+          ]
+        },
+        {
+          "stage": "Fertilizing (Top Dressing)",
+          "dayRange": "Day 35",
+          "whatToDo": "Apply a balanced fertilizer (roughly 10 g each of nitrogen and potassium-rich fertilizer per plant) just before bud formation begins, worked into the soil around the base and watered in.",
+          "why": "Potassium at this stage specifically improves flower size and colour, not just plant growth — this is the single most impactful fertilizing window for marigold.",
+          "beginnerTip": "Pinch off the very first flower bud that forms on each plant — it feels wasteful, but it forces the plant to branch out and produce many more flowers later.",
+          "warningSign": "All-leaf, no-flower growth by day 40 usually means too much nitrogen and not enough potassium — correct the ratio in your next dose.",
+          "costItems": [
+            {
+              "item": "Balanced NPK fertilizer",
+              "cost": "₹250–400"
+            }
+          ]
+        },
+        {
+          "stage": "Harvest",
+          "dayRange": "Day 50 onward",
+          "whatToDo": "Pick fully open flowers in the early morning, snapping or cutting the stem just below the flower head. Harvest every 3–4 days as new buds continue opening through the season.",
+          "why": "Morning-picked flowers stay fresh longer and fetch better prices at market than flowers picked and wilted by midday heat.",
+          "beginnerTip": "Regular picking actually encourages the plant to produce more flowers — an unpicked plant slows down flowering much faster than a regularly harvested one.",
+          "warningSign": "Flower heads that feel damp or show early browning at the base are starting to rot from excess moisture — pick these immediately even if not fully open, and ease off watering.",
+          "costItems": [
+            {
+              "item": "Collection baskets",
+              "cost": "₹100–150"
+            }
+          ]
+        }
+      ]
+    },
+    "ta": {
+      "name": "Marigold",
+      "localName": "செண்டுமல்லி",
+      "tagline": "நிலையான திருவிழாத் தேவை",
+      "blurb": "கோயில், திருவிழாத் தேவையால் ஆண்டு முழுவதும் விலை நம்பகமாக இருக்கும்; மேலும் காய்கறிகளை விட ஒழுங்கற்ற நீர்ப்பாசனத்தையும் இச்செடி நன்கு தாங்கும்.",
+      "water": {
+        "totalSeasonWater": "முழு பயிர்க்காலத்தில் 300–350 மி.மீ",
+        "method": "வரிசைகளுக்கு இடையே வாய்க்கால் பாசனம் நன்று; மொட்டு உருவானதும் பூத்தலைகள் மீது நேரடியாக நீர் படுவதைத் தவிருங்கள்",
+        "frequency": "குளிர் காலத்தில் 5–6 நாளுக்கு ஒருமுறை; சூடான, வறண்ட காலங்களில் 3 நாளுக்கு ஒருமுறை",
+        "criticalStages": "நடவு வாரம் மற்றும் மொட்டு உருவாகும் தொடக்கம் (சுமார் நாள் 35) — இரண்டில் எதிலும் நீர் அழுத்தம் ஏற்பட்டால் பூவின் அளவும் எண்ணிக்கையும் குறையும்",
+        "warning": "அறுவடைக்கு அருகில் அதிக நீர் பாய்ச்சினால் பறிக்குமுன்பே பூத்தலைகள் அழுகிவிடும் — பூப்பு உச்சத்தில் இருக்கும்போது நீரை சற்றுக் குறையுங்கள்"
+      },
+      "guide": [
+        {
+          "stage": "நாற்றங்கால் தயாரிப்பு",
+          "dayRange": "நாள் 0",
+          "whatToDo": "நன்கு நீர் வடியும் நுண்ணிய மண்ணில் கம்போஸ்ட் கலந்து சிறிய நாற்றங்கால் பாத்தி அமையுங்கள். விதைகளை 5 செ.மீ இடைவெளி வரிசைகளில் மெல்லியதாக விதைத்து, லேசாக மூடி, நுண்ணிய தெளிப்பால் நீர் பாய்ச்சுங்கள்.",
+          "why": "வயலில் நேரடியாக விதைப்பதை விட முதலில் நாற்றங்காலில் வளர்ப்பது உயிர்ப்பிழைப்பு விகிதத்தை மிகவும் உயர்த்தும்; வலுவான நாற்றுகளை மட்டும் தேர்ந்து நடவும் முடியும்.",
+          "beginnerTip": "சிறிய முதல் பயிருக்கு உங்கள் நிலத்தின் நிழல் மூலை அல்லது பெரிய தட்டுகளே நாற்றங்காலாகப் போதும் — தனிக் கட்டமைப்பு தேவையில்லை.",
+          "warningSign": "மெலிந்த, நீண்டு வளர்ந்த, வெளிறிய நாற்றுகள் பெரும்பாலும் நாற்றங்காலில் சூரிய ஒளி குறைவு என்பதைக் காட்டும் — அடுத்த தொகுப்புக்குப் பிரகாசமான இடத்துக்கு மாற்றுங்கள்.",
+          "costItems": [
+            "செண்டுமல்லி விதைகள்",
+            "நாற்றங்கால் தட்டுகள் (விருப்பம்)"
+          ]
+        },
+        {
+          "stage": "நடவு",
+          "dayRange": "நாள் 20",
+          "whatToDo": "நாற்றுகள் சுமார் 10–12 செ.மீ உயரமும் 4–5 உண்மை இலைகளும் வந்ததும், முக்கிய வயலில் செடிகளுக்கு இடையே 30 செ.மீ, வரிசைகளுக்கு இடையே 40 செ.மீ இடைவெளியில் நடுங்கள். நட்டவுடன் நீர் பாய்ச்சுங்கள்.",
+          "why": "இந்த இடைவெளி ஒவ்வொரு செடியும் முழுமையாகக் கிளைவிட இடம் தரும்; இது செடிக்கு பூக்களின் எண்ணிக்கையை நேரடியாக உயர்த்தும்.",
+          "beginnerTip": "மாலை நேரத்தில் நடுங்கள், நண்பகலில் அல்ல — கடும் வெயிலின் கூடுதல் அழுத்தம் இல்லாமல் நாற்றுகள் வேர் இடையூறிலிருந்து நன்கு மீளும்.",
+          "warningSign": "நட்ட 2 நாளுக்குள் வாடல் மீளவில்லை என்றால் மாற்றும்போது வேர் சேதமடைந்திருக்கலாம் — மெதுவாக நீர் பாய்ச்சி, சில நாள் இலேசான நிழல் தாருங்கள்.",
+          "costItems": [
+            "நடவுக்கு ஆள்கூலி (வாடகைக்கு எடுத்தால்)"
+          ]
+        },
+        {
+          "stage": "நிலைபெறும் பாசனம்",
+          "dayRange": "நாள் 25",
+          "whatToDo": "நடப்பட்ட நாற்றுகள் வயலில் புதிய வேர்களை உருவாக்கும் காலத்தில், மண் ஈரமாக இருக்கட்டும் ஆனால் ஊறிப்போகக்கூடாது; 5–6 நாளுக்கு ஒருமுறை நீர் பாய்ச்சுங்கள்.",
+          "why": "நடவுக்குப் பின் இதுவே மிகவும் பலவீனமான காலம் — இடமாற்றத்தில் சேதமடைந்த வேர்முடிகளை செடி மீண்டும் உருவாக்குகிறது.",
+          "beginnerTip": "அடிப்பகுதியில் மெல்லிய உலர்ந்த மூடாக்கு (வைக்கோல் அல்லது காய்ந்த இலைகள்) இட்டால் ஈரம் தங்கி, நீர் பாய்ச்சும் எண்ணிக்கை குறையும்.",
+          "warningSign": "நாளின் மிகச் சூடான நேரத்தில் தளர்ந்து மாலைக்குள் மீளுவது வெப்பத்துக்கான இயல்பான எதிர்வினை, நீர்ப் பிரச்சினை அல்ல — மறுநாள் காலையிலும் மீளவில்லை என்றால் மட்டும் கவலைப்படுங்கள்.",
+          "costItems": [
+            "மூடாக்குப் பொருள் (வைக்கோல் அல்லது காய்ந்த இலை)"
+          ]
+        },
+        {
+          "stage": "உரமிடுதல் (மேலுரம்)",
+          "dayRange": "நாள் 35",
+          "whatToDo": "மொட்டு உருவாகத் தொடங்குவதற்குச் சற்று முன், சமச்சீர் உரத்தை (செடிக்கு நைட்ரஜன், பொட்டாஷ் நிறைந்த உரம் தலா சுமார் 10 கிராம்) அடிப்பகுதியைச் சுற்றி மண்ணில் கலந்து இட்டு நீர் பாய்ச்சுங்கள்.",
+          "why": "இந்நிலையில் பொட்டாசியம் செடி வளர்ச்சியை மட்டுமல்ல, பூவின் அளவு, நிறத்தையும் மேம்படுத்தும் — செண்டுமல்லிக்கு இதுவே மிகவும் பயனுள்ள உரமிடும் தருணம்.",
+          "beginnerTip": "ஒவ்வொரு செடியிலும் உருவாகும் முதல் மொட்டைக் கிள்ளிவிடுங்கள் — வீணாகத் தோன்றினாலும், இது செடியைக் கிளைவிடச் செய்து பின்னர் பல மடங்கு பூக்களைத் தரும்.",
+          "warningSign": "நாள் 40-க்குள் இலைகள் மட்டுமே வளர்ந்து பூக்கள் இல்லையென்றால் நைட்ரஜன் அதிகம், பொட்டாசியம் குறைவு — அடுத்த தவணையில் விகிதத்தைச் சரிசெய்யுங்கள்.",
+          "costItems": [
+            "சமச்சீர் NPK உரம்"
+          ]
+        },
+        {
+          "stage": "அறுவடை",
+          "dayRange": "நாள் 50 முதல்",
+          "whatToDo": "முழுவதும் மலர்ந்த பூக்களை அதிகாலையில் பறியுங்கள்; பூத்தலைக்குச் சற்றுக் கீழே காம்பை ஒடித்து அல்லது வெட்டி எடுங்கள். பருவம் முழுவதும் புதிய மொட்டுகள் மலர்வதால் 3–4 நாளுக்கு ஒருமுறை அறுவடை செய்யுங்கள்.",
+          "why": "காலையில் பறித்த பூக்கள் நீண்ட நேரம் புத்துணர்வுடன் இருக்கும்; நண்பகல் வெப்பத்தில் வாடிய பூக்களை விட சந்தையில் நல்ல விலை கிடைக்கும்.",
+          "beginnerTip": "தொடர்ந்து பறிப்பது செடியை அதிக பூக்கள் தரத் தூண்டும் — பறிக்காத செடி, தொடர்ந்து அறுவடை செய்த செடியை விட மிக விரைவாகப் பூப்பதைக் குறைக்கும்.",
+          "warningSign": "பூத்தலைகள் ஈரமாகவோ அடியில் ஆரம்ப பழுப்பு நிறத்துடனோ இருந்தால் அதிக ஈரத்தால் அழுகத் தொடங்கியுள்ளன — முழுவதும் மலராவிட்டாலும் உடனே பறித்து, நீரைக் குறையுங்கள்.",
+          "costItems": [
+            "சேகரிப்புக் கூடைகள்"
+          ]
+        }
+      ]
+    }
+  }
+}

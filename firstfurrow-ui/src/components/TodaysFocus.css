@@ -1,0 +1,42 @@
+.focus-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-l);
+  padding: 22px 24px;
+  margin-bottom: 32px;
+}
+
+.focus-eyebrow { color: var(--sprout-deep); margin-bottom: 14px; display: block; }
+
+.focus-list { display: flex; flex-direction: column; gap: 8px; }
+
+.focus-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: var(--radius-m);
+  background: #fff;
+  box-shadow: var(--shadow-card);
+}
+
+.focus-item-crop {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.focus-item-body { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.focus-item-title { font-weight: 700; font-size: 0.92rem; }
+.focus-item-stage { font-size: 0.8rem; color: rgba(26,20,16,0.55); }
+
+.focus-item-arrow { font-weight: 700; color: rgba(26,20,16,0.35); }

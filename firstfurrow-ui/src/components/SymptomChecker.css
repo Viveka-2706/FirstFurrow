@@ -1,0 +1,105 @@
+/* Matches the tracker's existing white-card look */
+.symptom {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  background: #fff;
+  border-radius: var(--radius-l);
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  box-shadow: var(--shadow-card);
+  padding: 30px 32px;
+}
+.symptom-intro h3 { font-size: 1.4rem; margin-bottom: 6px; }
+.symptom-intro p { font-size: 0.9rem; line-height: 1.6; color: rgba(26, 20, 16, 0.7); max-width: 62ch; }
+
+.symptom-groups { display: flex; flex-direction: column; gap: 20px; }
+.symptom-group-title {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: rgba(26, 20, 16, 0.45);
+  margin-bottom: 10px;
+}
+.symptom-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.symptom-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 10px;
+  border-radius: 999px;
+  background: var(--mist);
+  border: 1.5px solid transparent;
+  font-size: 0.86rem;
+  line-height: 1.35;
+  text-align: left;
+  color: var(--ink);
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+.symptom-chip:hover { border-color: rgba(111, 163, 71, 0.6); }
+.symptom-chip.is-on { background: rgba(154, 203, 107, 0.3); border-color: var(--sprout-deep); font-weight: 600; }
+.symptom-chip-mark { width: 24px; height: 24px; display: grid; place-items: center; flex: none; border-radius: 50%; font-size: 0.9rem; background: #fff; }
+.symptom-chip.is-on .symptom-chip-mark { background: var(--sprout-deep); color: #fff; font-size: 0.75rem; font-weight: 700; }
+
+.symptom-bar {
+  position: sticky;
+  bottom: 12px;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px 12px 18px;
+  border-radius: var(--radius-m);
+  background: var(--mist);
+  box-shadow: 0 8px 24px -12px rgba(26, 20, 16, 0.35);
+}
+.symptom-count { font-size: 0.86rem; font-weight: 600; color: rgba(26, 20, 16, 0.65); }
+.symptom-bar-actions { display: flex; gap: 10px; }
+.symptom-bar .btn { padding: 10px 20px; font-size: 0.9rem; }
+.symptom-bar .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.symptom-results { display: flex; flex-direction: column; gap: 14px; }
+.symptom-results-title { font-size: 1.1rem; }
+.symptom-nomatch { padding: 16px; border-radius: var(--radius-s); background: rgba(231, 169, 62, 0.15); font-size: 0.9rem; line-height: 1.6; }
+
+.symptom-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 22px;
+  border-radius: var(--radius-m);
+  border: 1px solid rgba(26, 20, 16, 0.1);
+}
+.symptom-card-head { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; }
+.symptom-card-icon { font-size: 1.8rem; }
+.symptom-card-head h5 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin: 0 0 6px; }
+.symptom-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.symptom-badge { padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; }
+.symptom-badge.conf-high { background: rgba(193, 68, 44, 0.14); color: #8f2a15; }
+.symptom-badge.conf-mid { background: rgba(231, 169, 62, 0.26); color: #7a5410; }
+.symptom-badge.conf-low { background: rgba(111, 163, 71, 0.22); color: #3d6321; }
+.symptom-badge.sev-high { background: var(--chili); color: #fff; }
+.symptom-badge.sev-medium { background: var(--ink); color: #fff; }
+.symptom-badge.sev-low { background: rgba(26, 20, 16, 0.08); }
+
+.symptom-block { display: flex; flex-direction: column; gap: 6px; }
+.symptom-block p, .symptom-block ol { margin: 0; font-size: 0.9rem; line-height: 1.6; color: rgba(26, 20, 16, 0.78); }
+.symptom-block ol { padding-left: 20px; display: flex; flex-direction: column; gap: 5px; }
+.symptom-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; color: rgba(26, 20, 16, 0.45); }
+.symptom-tip { background: rgba(154, 203, 107, 0.1); padding: 13px 15px; border-radius: var(--radius-s); }
+.symptom-tip .symptom-label { color: var(--sprout-deep); }
+.symptom-save { align-self: flex-start; padding: 9px 18px; font-size: 0.86rem; }
+
+.symptom-disclaimer { font-size: 0.78rem; line-height: 1.6; color: rgba(26, 20, 16, 0.55); }
+
+@media (max-width: 640px) {
+  .symptom { padding: 22px 18px; }
+  .symptom-bar-actions { width: 100%; }
+  .symptom-bar-actions .btn { flex: 1; }
+}
+
+.symptom-status { font-size: 0.88rem; color: rgba(26, 20, 16, 0.6); }
+.symptom-status.is-error { color: var(--chili); font-weight: 600; }

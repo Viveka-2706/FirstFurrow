@@ -1,0 +1,408 @@
+{
+  "_comment": "Seed dataset for FirstFurrow — Crop Planning Assistant for New & Small-Land Farmers. Values are realistic approximations for the Indian small-farm context (Tamil Nadu-relevant but broadly applicable), compiled from agri-extension cost-of-cultivation references. Use as-is for a demo/prototype; treat as indicative, not survey-grade data.",
+
+  "crops": [
+    {
+      "id": "crop_001",
+      "name": "Tomato",
+      "category": "Vegetable",
+      "investmentTier": "medium",
+      "investmentPerAcreINR": { "min": 25000, "max": 40000 },
+      "durationDays": 90,
+      "waterNeed": "medium",
+      "suitableLandAcres": { "min": 0.1, "max": 2 },
+      "suitableSeasons": ["Kharif", "Rabi"],
+      "expectedReturnPerAcreINR": { "min": 80000, "max": 150000 },
+      "riskLevel": "medium",
+      "notes": "Fast-growing, high demand, but price-volatile at glut times.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Plough and prepare raised beds" },
+        { "taskType": "Sowing/Transplanting", "dayOffset": 7, "description": "Transplant nursery-raised seedlings" },
+        { "taskType": "Fertilizing", "dayOffset": 20, "description": "Apply basal fertilizer dose" },
+        { "taskType": "Irrigation", "dayOffset": 25, "description": "Begin regular irrigation cycle (every 5-7 days)" },
+        { "taskType": "Fertilizing", "dayOffset": 45, "description": "Top dressing at flowering stage" },
+        { "taskType": "Pest Check", "dayOffset": 55, "description": "Monitor for fruit borer / whitefly" },
+        { "taskType": "Harvest", "dayOffset": 90, "description": "Begin first harvest, continue picking every 4-5 days" }
+      ]
+    },
+    {
+      "id": "crop_002",
+      "name": "Okra (Lady's Finger)",
+      "category": "Vegetable",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 12000, "max": 20000 },
+      "durationDays": 55,
+      "waterNeed": "medium",
+      "suitableLandAcres": { "min": 0.05, "max": 1.5 },
+      "suitableSeasons": ["Kharif", "Zaid"],
+      "expectedReturnPerAcreINR": { "min": 50000, "max": 100000 },
+      "riskLevel": "low",
+      "notes": "Popular, low-input, quick-maturing — good starter crop.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Plough and level field" },
+        { "taskType": "Sowing", "dayOffset": 3, "description": "Direct seed sowing" },
+        { "taskType": "Irrigation", "dayOffset": 10, "description": "First irrigation post-germination" },
+        { "taskType": "Fertilizing", "dayOffset": 20, "description": "Apply nitrogen top dressing" },
+        { "taskType": "Pest Check", "dayOffset": 35, "description": "Check for shoot and fruit borer" },
+        { "taskType": "Harvest", "dayOffset": 55, "description": "Begin harvesting every 2-3 days" }
+      ]
+    },
+    {
+      "id": "crop_003",
+      "name": "Green Chilli",
+      "category": "Vegetable",
+      "investmentTier": "medium",
+      "investmentPerAcreINR": { "min": 20000, "max": 35000 },
+      "durationDays": 100,
+      "waterNeed": "medium",
+      "suitableLandAcres": { "min": 0.1, "max": 2 },
+      "suitableSeasons": ["Kharif", "Rabi"],
+      "expectedReturnPerAcreINR": { "min": 70000, "max": 130000 },
+      "riskLevel": "medium",
+      "notes": "Strong domestic demand, moderate labor for picking.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Prepare beds, apply farmyard manure" },
+        { "taskType": "Sowing/Transplanting", "dayOffset": 10, "description": "Transplant seedlings from nursery" },
+        { "taskType": "Fertilizing", "dayOffset": 25, "description": "Basal fertilizer application" },
+        { "taskType": "Irrigation", "dayOffset": 30, "description": "Regular irrigation cycle begins" },
+        { "taskType": "Fertilizing", "dayOffset": 55, "description": "Top dressing at flowering" },
+        { "taskType": "Harvest", "dayOffset": 100, "description": "First picking, continue every 10-15 days" }
+      ]
+    },
+    {
+      "id": "crop_004",
+      "name": "Brinjal (Eggplant)",
+      "category": "Vegetable",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 15000, "max": 25000 },
+      "durationDays": 80,
+      "waterNeed": "medium",
+      "suitableLandAcres": { "min": 0.05, "max": 1.5 },
+      "suitableSeasons": ["Kharif", "Rabi"],
+      "expectedReturnPerAcreINR": { "min": 60000, "max": 110000 },
+      "riskLevel": "low",
+      "notes": "Hardy, forgiving crop, steady local market demand.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Prepare raised beds" },
+        { "taskType": "Sowing/Transplanting", "dayOffset": 7, "description": "Transplant seedlings" },
+        { "taskType": "Fertilizing", "dayOffset": 20, "description": "Basal dose application" },
+        { "taskType": "Irrigation", "dayOffset": 25, "description": "Begin regular irrigation" },
+        { "taskType": "Pest Check", "dayOffset": 45, "description": "Monitor for shoot/fruit borer" },
+        { "taskType": "Harvest", "dayOffset": 80, "description": "Begin harvest, pick every 5-7 days" }
+      ]
+    },
+    {
+      "id": "crop_005",
+      "name": "Spinach (Palak)",
+      "category": "Leafy Green",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 6000, "max": 10000 },
+      "durationDays": 30,
+      "waterNeed": "low",
+      "suitableLandAcres": { "min": 0.02, "max": 1 },
+      "suitableSeasons": ["Rabi", "Zaid"],
+      "expectedReturnPerAcreINR": { "min": 25000, "max": 45000 },
+      "riskLevel": "low",
+      "notes": "Very fast turnaround, ideal first-time crop on tiny plots.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Prepare fine tilth beds" },
+        { "taskType": "Sowing", "dayOffset": 2, "description": "Broadcast or line sowing" },
+        { "taskType": "Irrigation", "dayOffset": 6, "description": "Light irrigation every 3-4 days" },
+        { "taskType": "Fertilizing", "dayOffset": 15, "description": "Light nitrogen dose" },
+        { "taskType": "Harvest", "dayOffset": 30, "description": "First cutting, 2-3 cuttings possible" }
+      ]
+    },
+    {
+      "id": "crop_006",
+      "name": "Coriander (Leaf)",
+      "category": "Herb",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 5000, "max": 9000 },
+      "durationDays": 40,
+      "waterNeed": "low",
+      "suitableLandAcres": { "min": 0.02, "max": 1 },
+      "suitableSeasons": ["Rabi", "Zaid"],
+      "expectedReturnPerAcreINR": { "min": 20000, "max": 40000 },
+      "riskLevel": "low",
+      "notes": "Very low investment, consistent demand, good for micro-plots.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Fine tilth preparation" },
+        { "taskType": "Sowing", "dayOffset": 2, "description": "Broadcast seed sowing" },
+        { "taskType": "Irrigation", "dayOffset": 7, "description": "Light frequent irrigation" },
+        { "taskType": "Harvest", "dayOffset": 40, "description": "Cut and bundle for market" }
+      ]
+    },
+    {
+      "id": "crop_007",
+      "name": "Cucumber",
+      "category": "Vegetable",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 12000, "max": 20000 },
+      "durationDays": 55,
+      "waterNeed": "medium",
+      "suitableLandAcres": { "min": 0.05, "max": 1.5 },
+      "suitableSeasons": ["Zaid", "Kharif"],
+      "expectedReturnPerAcreINR": { "min": 45000, "max": 90000 },
+      "riskLevel": "low",
+      "notes": "Fast growth, good summer demand.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Prepare raised beds/mounds" },
+        { "taskType": "Sowing", "dayOffset": 3, "description": "Direct seed sowing" },
+        { "taskType": "Irrigation", "dayOffset": 8, "description": "Begin irrigation cycle" },
+        { "taskType": "Fertilizing", "dayOffset": 20, "description": "Top dressing" },
+        { "taskType": "Harvest", "dayOffset": 55, "description": "Begin picking every 2-3 days" }
+      ]
+    },
+    {
+      "id": "crop_008",
+      "name": "Bitter Gourd",
+      "category": "Vegetable",
+      "investmentTier": "medium",
+      "investmentPerAcreINR": { "min": 20000, "max": 32000 },
+      "durationDays": 65,
+      "waterNeed": "medium",
+      "suitableLandAcres": { "min": 0.05, "max": 1.5 },
+      "suitableSeasons": ["Kharif", "Zaid"],
+      "expectedReturnPerAcreINR": { "min": 55000, "max": 100000 },
+      "riskLevel": "medium",
+      "notes": "Needs trellising, slightly higher labor, steady urban demand.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Prepare beds and set up trellis" },
+        { "taskType": "Sowing", "dayOffset": 3, "description": "Direct seed sowing" },
+        { "taskType": "Irrigation", "dayOffset": 10, "description": "Begin irrigation" },
+        { "taskType": "Fertilizing", "dayOffset": 25, "description": "Top dressing" },
+        { "taskType": "Harvest", "dayOffset": 65, "description": "Begin harvest every 3-4 days" }
+      ]
+    },
+    {
+      "id": "crop_009",
+      "name": "Radish",
+      "category": "Root Vegetable",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 7000, "max": 12000 },
+      "durationDays": 35,
+      "waterNeed": "low",
+      "suitableLandAcres": { "min": 0.02, "max": 1 },
+      "suitableSeasons": ["Rabi"],
+      "expectedReturnPerAcreINR": { "min": 25000, "max": 50000 },
+      "riskLevel": "low",
+      "notes": "Quick cycle, minimal care needed.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Deep tilth for root development" },
+        { "taskType": "Sowing", "dayOffset": 2, "description": "Line sowing" },
+        { "taskType": "Irrigation", "dayOffset": 8, "description": "Light irrigation" },
+        { "taskType": "Harvest", "dayOffset": 35, "description": "Pull and bundle roots" }
+      ]
+    },
+    {
+      "id": "crop_010",
+      "name": "Cluster Beans (Guar)",
+      "category": "Vegetable",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 8000, "max": 14000 },
+      "durationDays": 60,
+      "waterNeed": "low",
+      "suitableLandAcres": { "min": 0.05, "max": 1.5 },
+      "suitableSeasons": ["Kharif"],
+      "expectedReturnPerAcreINR": { "min": 35000, "max": 65000 },
+      "riskLevel": "low",
+      "notes": "Drought-tolerant, low water requirement, good for dry regions.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Plough field" },
+        { "taskType": "Sowing", "dayOffset": 3, "description": "Direct seed sowing" },
+        { "taskType": "Irrigation", "dayOffset": 15, "description": "First irrigation if no rain" },
+        { "taskType": "Harvest", "dayOffset": 60, "description": "Begin pod harvest" }
+      ]
+    },
+    {
+      "id": "crop_011",
+      "name": "Onion",
+      "category": "Vegetable",
+      "investmentTier": "medium",
+      "investmentPerAcreINR": { "min": 30000, "max": 45000 },
+      "durationDays": 110,
+      "waterNeed": "medium",
+      "suitableLandAcres": { "min": 0.1, "max": 2 },
+      "suitableSeasons": ["Rabi"],
+      "expectedReturnPerAcreINR": { "min": 100000, "max": 150000 },
+      "riskLevel": "medium",
+      "notes": "Reliable staple demand, price fluctuates with national supply.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Prepare raised nursery beds" },
+        { "taskType": "Sowing/Transplanting", "dayOffset": 30, "description": "Transplant seedlings to main field" },
+        { "taskType": "Fertilizing", "dayOffset": 45, "description": "Basal fertilizer dose" },
+        { "taskType": "Irrigation", "dayOffset": 50, "description": "Regular irrigation cycle" },
+        { "taskType": "Fertilizing", "dayOffset": 75, "description": "Bulb development top dressing" },
+        { "taskType": "Harvest", "dayOffset": 110, "description": "Uproot and cure bulbs" }
+      ]
+    },
+    {
+      "id": "crop_012",
+      "name": "Garlic",
+      "category": "Vegetable",
+      "investmentTier": "medium",
+      "investmentPerAcreINR": { "min": 35000, "max": 50000 },
+      "durationDays": 130,
+      "waterNeed": "low",
+      "suitableLandAcres": { "min": 0.1, "max": 2 },
+      "suitableSeasons": ["Rabi"],
+      "expectedReturnPerAcreINR": { "min": 120000, "max": 200000 },
+      "riskLevel": "medium",
+      "notes": "High-value crop, low water need once established, long duration.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Deep ploughing, well-drained beds" },
+        { "taskType": "Sowing", "dayOffset": 5, "description": "Plant cloves" },
+        { "taskType": "Irrigation", "dayOffset": 15, "description": "Light irrigation cycle" },
+        { "taskType": "Fertilizing", "dayOffset": 40, "description": "Top dressing" },
+        { "taskType": "Fertilizing", "dayOffset": 80, "description": "Bulb development dose" },
+        { "taskType": "Harvest", "dayOffset": 130, "description": "Uproot and cure bulbs" }
+      ]
+    },
+    {
+      "id": "crop_013",
+      "name": "Groundnut",
+      "category": "Oilseed",
+      "investmentTier": "medium",
+      "investmentPerAcreINR": { "min": 18000, "max": 28000 },
+      "durationDays": 100,
+      "waterNeed": "low",
+      "suitableLandAcres": { "min": 0.2, "max": 3 },
+      "suitableSeasons": ["Kharif"],
+      "expectedReturnPerAcreINR": { "min": 40000, "max": 70000 },
+      "riskLevel": "low",
+      "notes": "Drought-tolerant, stable but modest returns, improves soil nitrogen.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Plough and prepare field" },
+        { "taskType": "Sowing", "dayOffset": 5, "description": "Direct seed sowing" },
+        { "taskType": "Irrigation", "dayOffset": 20, "description": "First irrigation if dry spell" },
+        { "taskType": "Fertilizing", "dayOffset": 30, "description": "Gypsum application at flowering" },
+        { "taskType": "Harvest", "dayOffset": 100, "description": "Uproot and dry pods" }
+      ]
+    },
+    {
+      "id": "crop_014",
+      "name": "Maize (Sweet Corn)",
+      "category": "Cereal",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 12000, "max": 20000 },
+      "durationDays": 90,
+      "waterNeed": "medium",
+      "suitableLandAcres": { "min": 0.2, "max": 3 },
+      "suitableSeasons": ["Kharif", "Rabi"],
+      "expectedReturnPerAcreINR": { "min": 35000, "max": 65000 },
+      "riskLevel": "low",
+      "notes": "Low-risk staple, sweet corn variant has better urban market price.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Plough field" },
+        { "taskType": "Sowing", "dayOffset": 3, "description": "Direct seed sowing" },
+        { "taskType": "Fertilizing", "dayOffset": 20, "description": "First top dressing" },
+        { "taskType": "Irrigation", "dayOffset": 25, "description": "Regular irrigation begins" },
+        { "taskType": "Fertilizing", "dayOffset": 45, "description": "Second top dressing" },
+        { "taskType": "Harvest", "dayOffset": 90, "description": "Harvest cobs" }
+      ]
+    },
+    {
+      "id": "crop_015",
+      "name": "Oyster Mushroom",
+      "category": "Specialty",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 25000, "max": 35000 },
+      "durationDays": 45,
+      "waterNeed": "low",
+      "suitableLandAcres": { "min": 0.01, "max": 0.25 },
+      "suitableSeasons": ["Year-round (indoor)"],
+      "expectedReturnPerAcreINR": { "min": 250000, "max": 350000 },
+      "riskLevel": "medium",
+      "notes": "Indoor/controlled setup, land-size field is nominal (per-unit not per-acre), excellent for near-zero land access.",
+      "taskTemplate": [
+        { "taskType": "Setup", "dayOffset": 0, "description": "Prepare growing shed and substrate bags" },
+        { "taskType": "Spawning", "dayOffset": 3, "description": "Inoculate spawn into substrate" },
+        { "taskType": "Incubation", "dayOffset": 15, "description": "Maintain dark, humid incubation conditions" },
+        { "taskType": "Fruiting Care", "dayOffset": 25, "description": "Move to light, maintain humidity for pinning" },
+        { "taskType": "Harvest", "dayOffset": 45, "description": "First flush harvest, 2-3 flushes possible" }
+      ]
+    },
+    {
+      "id": "crop_016",
+      "name": "Muskmelon",
+      "category": "Fruit",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 15000, "max": 25000 },
+      "durationDays": 85,
+      "waterNeed": "low",
+      "suitableLandAcres": { "min": 0.1, "max": 2 },
+      "suitableSeasons": ["Zaid"],
+      "expectedReturnPerAcreINR": { "min": 50000, "max": 90000 },
+      "riskLevel": "medium",
+      "notes": "Summer fruit, sells fast in city markets, low water need after establishment.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Prepare raised mounds" },
+        { "taskType": "Sowing", "dayOffset": 3, "description": "Direct seed sowing" },
+        { "taskType": "Irrigation", "dayOffset": 10, "description": "Begin drip/furrow irrigation" },
+        { "taskType": "Fertilizing", "dayOffset": 25, "description": "Top dressing at vine stage" },
+        { "taskType": "Harvest", "dayOffset": 85, "description": "Harvest ripe fruits" }
+      ]
+    },
+    {
+      "id": "crop_017",
+      "name": "Moringa (Drumstick)",
+      "category": "Tree Crop",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 15000, "max": 25000 },
+      "durationDays": 180,
+      "waterNeed": "low",
+      "suitableLandAcres": { "min": 0.1, "max": 3 },
+      "suitableSeasons": ["Year-round"],
+      "expectedReturnPerAcreINR": { "min": 60000, "max": 120000 },
+      "riskLevel": "low",
+      "notes": "Perennial after first harvest, low water need, good intercrop option. First cycle takes longer; later harvests are much faster.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Pit preparation and planting" },
+        { "taskType": "Sowing", "dayOffset": 5, "description": "Plant seeds/saplings" },
+        { "taskType": "Irrigation", "dayOffset": 20, "description": "Establish regular light irrigation" },
+        { "taskType": "Fertilizing", "dayOffset": 60, "description": "Growth-stage fertilizing" },
+        { "taskType": "Pruning", "dayOffset": 120, "description": "Prune for branching and pod yield" },
+        { "taskType": "Harvest", "dayOffset": 180, "description": "First pod harvest; subsequent harvests every 45-60 days" }
+      ]
+    },
+    {
+      "id": "crop_018",
+      "name": "Marigold",
+      "category": "Flower",
+      "investmentTier": "low",
+      "investmentPerAcreINR": { "min": 10000, "max": 18000 },
+      "durationDays": 50,
+      "waterNeed": "medium",
+      "suitableLandAcres": { "min": 0.02, "max": 1 },
+      "suitableSeasons": ["Kharif", "Rabi"],
+      "expectedReturnPerAcreINR": { "min": 40000, "max": 80000 },
+      "riskLevel": "low",
+      "notes": "Steady festival/religious market demand, quick and forgiving crop.",
+      "taskTemplate": [
+        { "taskType": "Land Preparation", "dayOffset": 0, "description": "Prepare nursery beds" },
+        { "taskType": "Sowing/Transplanting", "dayOffset": 20, "description": "Transplant seedlings to field" },
+        { "taskType": "Irrigation", "dayOffset": 25, "description": "Begin regular irrigation" },
+        { "taskType": "Fertilizing", "dayOffset": 35, "description": "Top dressing before flowering" },
+        { "taskType": "Harvest", "dayOffset": 50, "description": "Begin flower picking, continue every 3-4 days" }
+      ]
+    }
+  ],
+
+  "referenceScales": {
+    "investmentTier": {
+      "low": "Under ₹20,000/acre — accessible on tight or borrowed capital",
+      "medium": "₹20,000-₹45,000/acre — needs moderate savings or a small loan",
+      "high": "Above ₹45,000/acre — generally not recommended for first-time farmers in this app's scoring"
+    },
+    "waterNeed": {
+      "low": "Can rely mostly on rainfall + occasional irrigation",
+      "medium": "Needs consistent irrigation access (well/borewell/canal)",
+      "high": "Needs reliable, frequent irrigation infrastructure"
+    },
+    "riskLevel": {
+      "low": "Stable demand, forgiving of beginner mistakes",
+      "medium": "Price-sensitive or pest-sensitive, needs more attention",
+      "high": "Not included in this beginner-focused dataset"
+    }
+  }
+}

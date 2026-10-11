@@ -1,0 +1,216 @@
+[
+  {
+    "_id": "yellow_lower",
+    "order": 0,
+    "icon": "🍂",
+    "en": "Lower or older leaves turning yellow",
+    "ta": "கீழ்/பழைய இலைகள் மஞ்சளாகின்றன",
+    "crops": []
+  },
+  {
+    "_id": "pale_all",
+    "order": 1,
+    "icon": "🟡",
+    "en": "Whole plant looks pale or light green",
+    "ta": "செடி முழுவதும் வெளிறிய அல்லது இளம்பச்சையாகத் தெரிகிறது",
+    "crops": []
+  },
+  {
+    "_id": "wilt_day",
+    "order": 2,
+    "icon": "🥀",
+    "en": "Wilts in midday heat but recovers by evening",
+    "ta": "நண்பகல் வெயிலில் வாடி, மாலைக்குள் மீளுகிறது",
+    "crops": []
+  },
+  {
+    "_id": "wilt_wet",
+    "order": 3,
+    "icon": "💧",
+    "en": "Wilting even though the soil is wet",
+    "ta": "மண் ஈரமாக இருந்தும் செடி வாடுகிறது",
+    "crops": []
+  },
+  {
+    "_id": "waterlogged",
+    "order": 4,
+    "icon": "🌊",
+    "en": "Water is standing around plants / heavy rain lately",
+    "ta": "செடிகளைச் சுற்றி நீர் தேங்கியுள்ளது / சமீபத்தில் கனமழை",
+    "crops": []
+  },
+  {
+    "_id": "holes_leaves",
+    "order": 5,
+    "icon": "🕳️",
+    "en": "Holes or chewed edges on leaves",
+    "ta": "இலைகளில் துளைகள் அல்லது கடிக்கப்பட்ட ஓரங்கள்",
+    "crops": []
+  },
+  {
+    "_id": "caterpillars",
+    "order": 6,
+    "icon": "🪱",
+    "en": "I can see caterpillars or worms on the plant",
+    "ta": "செடியில் புழுக்கள் அல்லது கம்பளிப்பூச்சிகள் தெரிகின்றன",
+    "crops": []
+  },
+  {
+    "_id": "borer",
+    "order": 7,
+    "icon": "🐛",
+    "en": "Shoot tip wilting, or a hole in shoot/pod with sawdust-like waste",
+    "ta": "நுனித்தண்டு வாடுகிறது, அல்லது தண்டு/காயில் துளையும் மரத்தூள் போன்ற கழிவும் உள்ளன",
+    "crops": [
+      "okra"
+    ]
+  },
+  {
+    "_id": "white_insects",
+    "order": 8,
+    "icon": "🦟",
+    "en": "Tiny white insects fly up when I shake a leaf",
+    "ta": "இலையை அசைத்தால் சிறு வெள்ளைப் பூச்சிகள் பறக்கின்றன",
+    "crops": []
+  },
+  {
+    "_id": "insect_clusters",
+    "order": 9,
+    "icon": "🐜",
+    "en": "Clusters of tiny green or black insects on shoot tips",
+    "ta": "நுனிகளில் சிறு பச்சை அல்லது கருப்புப் பூச்சிக் கூட்டம்",
+    "crops": []
+  },
+  {
+    "_id": "sticky",
+    "order": 10,
+    "icon": "🍯",
+    "en": "Leaves feel sticky, or have a black sooty film",
+    "ta": "இலைகள் ஒட்டும் தன்மையுடன் உள்ளன, அல்லது கருப்புப் படலம் உள்ளது",
+    "crops": []
+  },
+  {
+    "_id": "curled",
+    "order": 11,
+    "icon": "🌀",
+    "en": "Leaves curling or crinkling",
+    "ta": "இலைகள் சுருள்கின்றன அல்லது சுருங்குகின்றன",
+    "crops": []
+  },
+  {
+    "_id": "white_powder",
+    "order": 12,
+    "icon": "❄️",
+    "en": "White powdery coating on leaves",
+    "ta": "இலைகளில் வெள்ளைத் தூள் போன்ற படலம்",
+    "crops": []
+  },
+  {
+    "_id": "brown_spots",
+    "order": 13,
+    "icon": "🟤",
+    "en": "Brown or black spots on leaves",
+    "ta": "இலைகளில் பழுப்பு அல்லது கருப்புப் புள்ளிகள்",
+    "crops": []
+  },
+  {
+    "_id": "yellow_veins",
+    "order": 14,
+    "icon": "🕸️",
+    "en": "Leaf veins turn yellow in a net-like pattern; pods small and distorted",
+    "ta": "இலை நரம்புகள் வலை போல மஞ்சளாகின்றன; காய்கள் சிறுத்து உருமாறுகின்றன",
+    "crops": [
+      "okra"
+    ]
+  },
+  {
+    "_id": "stunted",
+    "order": 15,
+    "icon": "📉",
+    "en": "Plants are small and growing slowly",
+    "ta": "செடிகள் சிறுத்து மெதுவாக வளர்கின்றன",
+    "crops": []
+  },
+  {
+    "_id": "no_flowers",
+    "order": 16,
+    "icon": "🌿",
+    "en": "Lots of dark green leaves but few flowers",
+    "ta": "அடர்பச்சை இலைகள் அதிகம், பூக்கள் குறைவு",
+    "crops": [
+      "okra",
+      "marigold"
+    ]
+  },
+  {
+    "_id": "flower_drop",
+    "order": 17,
+    "icon": "🌸",
+    "en": "Flowers or buds are dropping off",
+    "ta": "பூக்கள் அல்லது மொட்டுகள் உதிர்கின்றன",
+    "crops": [
+      "okra",
+      "marigold"
+    ]
+  },
+  {
+    "_id": "flower_rot",
+    "order": 18,
+    "icon": "🌼",
+    "en": "Flower heads turning brown or rotting at the base",
+    "ta": "பூத்தலைகள் அடியில் பழுப்பாகி அழுகுகின்றன",
+    "crops": [
+      "marigold"
+    ]
+  },
+  {
+    "_id": "base_rot",
+    "order": 19,
+    "icon": "⚫",
+    "en": "Stem base is soft, dark or rotting",
+    "ta": "தண்டின் அடிப்பகுதி மெதுவாகி, கருத்து, அழுகுகிறது",
+    "crops": []
+  },
+  {
+    "_id": "seedlings_fall",
+    "order": 20,
+    "icon": "🌱",
+    "en": "Seedlings collapse at soil level",
+    "ta": "நாற்றுகள் மண் மட்டத்தில் சாய்ந்து விழுகின்றன",
+    "crops": []
+  },
+  {
+    "_id": "no_germ",
+    "order": 21,
+    "icon": "🚫",
+    "en": "Few or no seeds have sprouted",
+    "ta": "விதைகள் முளைக்கவில்லை அல்லது மிகக் குறைவாக முளைத்துள்ளன",
+    "crops": []
+  },
+  {
+    "_id": "brown_edges",
+    "order": 22,
+    "icon": "🔥",
+    "en": "Leaf edges are dry, brown or scorched",
+    "ta": "இலை ஓரங்கள் காய்ந்து, பழுப்பாக அல்லது கருகியுள்ளன",
+    "crops": []
+  },
+  {
+    "_id": "fert_recent",
+    "order": 23,
+    "icon": "🧪",
+    "en": "I applied fertilizer in the last few days",
+    "ta": "சில நாட்களுக்கு முன் உரம் இட்டேன்",
+    "crops": []
+  },
+  {
+    "_id": "tall_stalk",
+    "order": 24,
+    "icon": "🌾",
+    "en": "A tall central stalk with small flower buds is shooting up",
+    "ta": "நடுவில் உயரமான தண்டு சிறு மொட்டுகளுடன் மேலே வளர்கிறது",
+    "crops": [
+      "spinach"
+    ]
+  }
+]

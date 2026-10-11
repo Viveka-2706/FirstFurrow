@@ -1,0 +1,98 @@
+[
+  {
+    "_id": "red",
+    "order": 0,
+    "name": "Red Soil",
+    "where": "Common around Coimbatore, Madurai, Salem",
+    "feel": "Reddish, gritty, drains fast — dries out within a day or two after watering",
+    "regions": [
+      "Coimbatore",
+      "Madurai",
+      "Salem"
+    ],
+    "ta": {
+      "name": "செம்மண்",
+      "where": "கோயம்புத்தூர், மதுரை, சேலம் பகுதிகளில் பொதுவானது",
+      "feel": "சிவப்பு நிறம், சொரசொரப்பு, வேகமாக நீர் வடியும் — நீர் பாய்ச்சிய ஓரிரு நாளில் காய்ந்துவிடும்"
+    }
+  },
+  {
+    "_id": "black",
+    "order": 1,
+    "name": "Black Soil (Regur)",
+    "where": "Parts of Coimbatore, Tirunelveli belt",
+    "feel": "Dark, sticky when wet, cracks into deep fissures when dry — holds water well",
+    "regions": [
+      "Coimbatore",
+      "Tirunelveli"
+    ],
+    "ta": {
+      "name": "கரிசல் மண் (ரேகுர்)",
+      "where": "கோயம்புத்தூர், திருநெல்வேலி பகுதிகளின் சில இடங்கள்",
+      "feel": "கருமை நிறம், ஈரமானால் ஒட்டும், காய்ந்தால் ஆழமாக வெடிக்கும் — நீரை நன்கு பிடித்து வைக்கும்"
+    }
+  },
+  {
+    "_id": "alluvial",
+    "order": 2,
+    "name": "Alluvial Soil",
+    "where": "Cauvery Delta — Thanjavur, Trichy",
+    "feel": "Fine, soft, dark brown — the most fertile, holds moisture without waterlogging easily",
+    "regions": [
+      "Thanjavur",
+      "Trichy"
+    ],
+    "ta": {
+      "name": "வண்டல் மண்",
+      "where": "காவிரி டெல்டா — தஞ்சாவூர், திருச்சி",
+      "feel": "நுண்ணிய, மென்மையான, அடர் பழுப்பு — மிகவும் வளமானது, எளிதில் நீர் தேங்காமல் ஈரத்தைத் தக்கவைக்கும்"
+    }
+  },
+  {
+    "_id": "laterite",
+    "order": 3,
+    "name": "Laterite Soil",
+    "where": "Nilgiris and the Western Ghats belt",
+    "feel": "Reddish-brown, porous, slightly acidic — needs compost to grow most vegetables well",
+    "regions": [
+      "Nilgiris"
+    ],
+    "ta": {
+      "name": "செம்புரை மண்",
+      "where": "நீலகிரி மற்றும் மேற்குத் தொடர்ச்சி மலைப் பகுதி",
+      "feel": "சிவப்பு கலந்த பழுப்பு, துளைகள் நிறைந்த, சற்று அமிலத்தன்மை — பெரும்பாலான காய்கறிகள் நன்கு வளர கம்போஸ்ட் தேவை"
+    }
+  },
+  {
+    "_id": "sandy_coastal",
+    "order": 4,
+    "name": "Sandy Coastal Soil",
+    "where": "Nagapattinam, Ramanathapuram, coastal belt",
+    "feel": "Loose, pale, gritty — water and nutrients drain through it very quickly",
+    "regions": [
+      "Nagapattinam",
+      "Ramanathapuram"
+    ],
+    "ta": {
+      "name": "கடலோர மணல் மண்",
+      "where": "நாகப்பட்டினம், ராமநாதபுரம், கடலோரப் பகுதி",
+      "feel": "தளர்வான, வெளிர், சொரசொரப்பான — நீரும் சத்துக்களும் மிக வேகமாக வடிந்துவிடும்"
+    }
+  },
+  {
+    "_id": "clay_loam",
+    "order": 5,
+    "name": "Clay Loam",
+    "where": "Delta and canal-irrigated tracts",
+    "feel": "Smooth, holds a ball shape when squeezed damp — retains water and nutrients well",
+    "regions": [
+      "Thanjavur",
+      "Trichy"
+    ],
+    "ta": {
+      "name": "களிமண் கலந்த வளமண்",
+      "where": "டெல்டா மற்றும் கால்வாய்ப் பாசனப் பகுதிகள்",
+      "feel": "மென்மையானது, ஈரமாக இருக்கும்போது பிழிந்தால் உருண்டை வடிவம் நிற்கும் — நீரையும் சத்தையும் நன்கு தக்கவைக்கும்"
+    }
+  }
+]

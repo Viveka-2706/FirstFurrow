@@ -1,0 +1,28 @@
+.profit-chart-card {
+  background: #fff;
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-card);
+  padding: 24px 26px 10px;
+  margin-bottom: 28px;
+}
+
+.profit-chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.profit-chart-title { font-size: 1.15rem; margin-top: 4px; }
+
+.profit-chart-totals {
+  display: flex;
+  gap: 18px;
+  font-size: 0.82rem;
+  color: rgba(26,20,16,0.6);
+}
+.profit-chart-totals strong { color: var(--ink); font-size: 0.9rem; }
+
+.profit-chart-body { margin-top: 8px; }

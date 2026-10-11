@@ -1,0 +1,34 @@
+{
+  "name": "firstfurrow-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "FirstFurrow API — crop knowledge base + recommendations (Express + MongoDB)",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "seed": "node seed/seed.js",
+    "seed:dry": "node seed/seed.js --dry-run",
+    "test": "node --test \"test/*.test.js\"",
+    "dev:memory": "USE_MEMORY_DB=true node --watch src/index.js",
+    "test:db": "node --test test/repo.mongo.test.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^8.7.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.5.0",
+    "nodemailer": "^10.0.15"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "mailparser": "^3.9.36",
+    "smtp-server": "^3.19.17"
+  }
+}

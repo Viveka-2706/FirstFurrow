@@ -1,0 +1,67 @@
+[
+  {
+    "_id": "leaves",
+    "order": 0,
+    "en": "Leaves & colour",
+    "ta": "இலைகள் & நிறம்",
+    "symptomIds": [
+      "yellow_lower",
+      "pale_all",
+      "brown_spots",
+      "white_powder",
+      "curled",
+      "brown_edges",
+      "yellow_veins",
+      "holes_leaves"
+    ]
+  },
+  {
+    "_id": "pests",
+    "order": 1,
+    "en": "Insects & worms",
+    "ta": "பூச்சிகள் & புழுக்கள்",
+    "symptomIds": [
+      "caterpillars",
+      "borer",
+      "white_insects",
+      "insect_clusters",
+      "sticky"
+    ]
+  },
+  {
+    "_id": "water",
+    "order": 2,
+    "en": "Water & soil",
+    "ta": "நீர் & மண்",
+    "symptomIds": [
+      "wilt_day",
+      "wilt_wet",
+      "waterlogged",
+      "fert_recent"
+    ]
+  },
+  {
+    "_id": "growth",
+    "order": 3,
+    "en": "Growth, flowers & pods",
+    "ta": "வளர்ச்சி, பூக்கள் & காய்கள்",
+    "symptomIds": [
+      "stunted",
+      "no_flowers",
+      "flower_drop",
+      "flower_rot",
+      "tall_stalk"
+    ]
+  },
+  {
+    "_id": "roots",
+    "order": 4,
+    "en": "Stem base & seedlings",
+    "ta": "தண்டடி & நாற்றுகள்",
+    "symptomIds": [
+      "base_rot",
+      "seedlings_fall",
+      "no_germ"
+    ]
+  }
+]

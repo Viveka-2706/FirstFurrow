@@ -1,0 +1,26 @@
+.water-card {
+  background: var(--field);
+  color: var(--mist);
+  border-radius: var(--radius-m);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.water-card-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 2px; }
+
+.water-card-row { display: flex; flex-direction: column; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid rgba(246,242,231,0.12); }
+.water-card-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+.water-card-label { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(246,242,231,0.5); }
+.water-card-value { font-size: 0.78rem; line-height: 1.4; color: var(--mist); }
+.water-card-value.is-accent { color: var(--turmeric); font-weight: 600; }
+
+.water-card-warning {
+  background: rgba(193, 68, 44, 0.18);
+  border-left: 3px solid var(--chili);
+  padding: 8px 10px;
+  border-radius: var(--radius-s);
+  font-size: 0.74rem;
+  line-height: 1.4;
+  margin: 0;
+}

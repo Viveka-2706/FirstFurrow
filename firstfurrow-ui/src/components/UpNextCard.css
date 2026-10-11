@@ -1,0 +1,30 @@
+.upnext-card {
+  background: var(--soil);
+  color: var(--mist);
+  border-radius: var(--radius-l);
+  padding: 22px 26px;
+  margin-top: 20px;
+}
+.upnext-head .eyebrow { color: var(--turmeric); }
+.upnext-title { font-size: 1.05rem; margin-top: 6px; color: var(--mist); }
+.upnext-hint { font-size: 0.82rem; color: rgba(246,242,231,0.65); margin: 10px 0 16px; line-height: 1.5; }
+
+.upnext-items { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.upnext-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(246,242,231,0.15);
+}
+.upnext-item-cost { color: rgba(246,242,231,0.8); }
+
+.upnext-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(246,242,231,0.2);
+  font-weight: 700;
+}
+.upnext-total-value { color: var(--turmeric); font-size: 1.05rem; }

@@ -1,0 +1,50 @@
+.cost-card {
+  background: #fff;
+  border-radius: var(--radius-m);
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  box-shadow: var(--shadow-card);
+  padding: 18px;
+}
+
+.cost-title { font-size: 0.95rem; margin-bottom: 2px; }
+.cost-sub { color: rgba(26,20,16,0.5); font-size: 0.74rem; margin-bottom: 16px; display: block; }
+
+.cost-bars { display: flex; flex-direction: column; gap: 14px; }
+
+.cost-row { display: flex; flex-direction: column; gap: 6px; }
+
+.cost-row-top { display: flex; justify-content: space-between; align-items: baseline; }
+.cost-row-label { font-size: 0.76rem; font-weight: 600; color: rgba(26,20,16,0.65); }
+.cost-row-value { font-weight: 700; font-size: 0.8rem; }
+
+.cost-track {
+  position: relative;
+  height: 10px;
+  background: var(--mist);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.cost-fill { position: absolute; top: 0; left: 0; bottom: 0; border-radius: 999px; }
+.cost-fill-invest { background: var(--chili); opacity: 0.85; }
+.cost-fill-return { background: var(--sprout); }
+.cost-fill-return-max { background: var(--sprout-deep); opacity: 0.55; }
+
+.cost-multiple {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(26,20,16,0.15);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cost-multiple-number {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--field);
+}
+
+.cost-multiple-label { font-size: 0.72rem; color: rgba(26,20,16,0.55); }

@@ -1,0 +1,92 @@
+[
+  {
+    "_id": "Coimbatore",
+    "order": 0,
+    "name": "Coimbatore",
+    "lat": 11.0168,
+    "lon": 76.9558,
+    "ta": {
+      "name": "கோயம்புத்தூர்"
+    }
+  },
+  {
+    "_id": "Thanjavur",
+    "order": 1,
+    "name": "Thanjavur",
+    "lat": 10.787,
+    "lon": 79.1378,
+    "ta": {
+      "name": "தஞ்சாவூர்"
+    }
+  },
+  {
+    "_id": "Trichy",
+    "order": 2,
+    "name": "Trichy",
+    "lat": 10.7905,
+    "lon": 78.7047,
+    "ta": {
+      "name": "திருச்சி"
+    }
+  },
+  {
+    "_id": "Madurai",
+    "order": 3,
+    "name": "Madurai",
+    "lat": 9.9252,
+    "lon": 78.1198,
+    "ta": {
+      "name": "மதுரை"
+    }
+  },
+  {
+    "_id": "Salem",
+    "order": 4,
+    "name": "Salem",
+    "lat": 11.6643,
+    "lon": 78.146,
+    "ta": {
+      "name": "சேலம்"
+    }
+  },
+  {
+    "_id": "Tirunelveli",
+    "order": 5,
+    "name": "Tirunelveli",
+    "lat": 8.7139,
+    "lon": 77.7567,
+    "ta": {
+      "name": "திருநெல்வேலி"
+    }
+  },
+  {
+    "_id": "Nagapattinam",
+    "order": 6,
+    "name": "Nagapattinam",
+    "lat": 10.7661,
+    "lon": 79.842,
+    "ta": {
+      "name": "நாகப்பட்டினம்"
+    }
+  },
+  {
+    "_id": "Ramanathapuram",
+    "order": 7,
+    "name": "Ramanathapuram",
+    "lat": 9.3639,
+    "lon": 78.8395,
+    "ta": {
+      "name": "ராமநாதபுரம்"
+    }
+  },
+  {
+    "_id": "Nilgiris",
+    "order": 8,
+    "name": "Nilgiris",
+    "lat": 11.4064,
+    "lon": 76.6932,
+    "ta": {
+      "name": "நீலகிரி"
+    }
+  }
+]

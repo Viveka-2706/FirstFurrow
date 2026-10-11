@@ -1,0 +1,498 @@
+[
+  {
+    "_id": "overwatering",
+    "icon": "💦",
+    "severity": "high",
+    "crops": [],
+    "weights": {
+      "wilt_wet": 3,
+      "base_rot": 3,
+      "waterlogged": 3,
+      "yellow_lower": 2,
+      "stunted": 1
+    },
+    "en": {
+      "name": "Overwatering / root rot",
+      "cause": "Roots are sitting in water and cannot breathe, so they start to rot. The plant then wilts and yellows even though the soil is wet.",
+      "fix": [
+        "Stop watering until the top 3–4 cm of soil feels dry.",
+        "Dig a small drain channel so standing water can leave the plot.",
+        "Loosen the soil gently around the plants with a hand fork.",
+        "Pull out plants whose stem base is fully black and mushy so the rot does not spread."
+      ],
+      "prevent": "Water early morning, less often but deeper, and use raised beds on heavy clay or black soil."
+    },
+    "ta": {
+      "name": "அதிக நீர் / வேர் அழுகல்",
+      "cause": "வேர்கள் நீரில் மூழ்கி மூச்சு விட முடியாமல் அழுகத் தொடங்குகின்றன. அதனால் மண் ஈரமாக இருந்தாலும் செடி வாடி மஞ்சளாகிறது.",
+      "fix": [
+        "மேல் 3–4 செ.மீ மண் காயும் வரை நீர் பாய்ச்சுவதை நிறுத்துங்கள்.",
+        "தேங்கிய நீர் வெளியேற சிறிய வடிகால் வாய்க்கால் வெட்டுங்கள்.",
+        "கைக்கொத்தியால் செடிகளைச் சுற்றி மண்ணை மெதுவாகத் தளர்த்துங்கள்.",
+        "தண்டின் அடிப்பகுதி முழுவதும் கருத்து குழைந்த செடிகளைப் பிடுங்கி அகற்றுங்கள்; அழுகல் பரவாது."
+      ],
+      "prevent": "அதிகாலையில் நீர் பாய்ச்சுங்கள்; குறைவான முறை, ஆழமாக. கரிசல் அல்லது களிமண் மண்ணில் மேட்டுப்பாத்தி அமையுங்கள்."
+    }
+  },
+  {
+    "_id": "n_deficiency",
+    "icon": "🥬",
+    "severity": "medium",
+    "crops": [],
+    "weights": {
+      "pale_all": 3,
+      "yellow_lower": 3,
+      "stunted": 2
+    },
+    "en": {
+      "name": "Nitrogen deficiency (hungry plants)",
+      "cause": "The plant has used up the nitrogen in the soil. It pulls nitrogen from old leaves to feed new growth, so older leaves turn pale yellow first and growth slows.",
+      "fix": [
+        "Apply a light dose of nitrogen fertilizer or well-rotted compost, 5 cm away from the stem.",
+        "Water it in straight away — never let fertilizer touch the stem.",
+        "If there is no improvement in a week, give a second, smaller dose."
+      ],
+      "prevent": "Mix compost in at land preparation and top-dress at the stage the guide recommends."
+    },
+    "ta": {
+      "name": "நைட்ரஜன் குறைபாடு (செடிக்குப் பசி)",
+      "cause": "மண்ணிலுள்ள நைட்ரஜனைச் செடி பயன்படுத்தி முடித்துவிட்டது. புதிய வளர்ச்சிக்காகப் பழைய இலைகளிலிருந்து நைட்ரஜனை எடுப்பதால் பழைய இலைகள் முதலில் வெளிர் மஞ்சளாகி வளர்ச்சி மெதுவாகிறது.",
+      "fix": [
+        "தண்டிலிருந்து 5 செ.மீ தள்ளி இலேசான அளவு நைட்ரஜன் உரம் அல்லது மக்கிய கம்போஸ்ட் இடுங்கள்.",
+        "உடனே நீர் பாய்ச்சுங்கள் — உரம் தண்டைத் தொடக்கூடாது.",
+        "ஒரு வாரத்தில் முன்னேற்றம் இல்லையென்றால் சிறிய இரண்டாம் தவணை இடுங்கள்."
+      ],
+      "prevent": "நிலம் தயாரிக்கும்போது கம்போஸ்ட் கலந்து, வழிகாட்டி கூறும் கட்டத்தில் மேலுரம் இடுங்கள்."
+    }
+  },
+  {
+    "_id": "underwatering",
+    "icon": "🏜️",
+    "severity": "medium",
+    "crops": [],
+    "weights": {
+      "wilt_day": 3,
+      "brown_edges": 2,
+      "flower_drop": 2,
+      "stunted": 1
+    },
+    "en": {
+      "name": "Water stress (too dry)",
+      "cause": "The soil is drying out faster than the roots can drink, especially in hot weather or on sandy / red soil.",
+      "fix": [
+        "Check the soil 5 cm down — if it is dry, water slowly and deeply at the base.",
+        "Spread straw or dry leaves around the plants as mulch to hold moisture.",
+        "Water early morning or evening, not at midday."
+      ],
+      "prevent": "Follow the irrigation frequency in your plan and shorten the gap during hot spells. Mulch early."
+    },
+    "ta": {
+      "name": "நீர் அழுத்தம் (மிகவும் வறண்டது)",
+      "cause": "வேர்கள் உறிஞ்சுவதை விட மண் வேகமாகக் காய்கிறது — குறிப்பாக வெப்பமான வானிலையிலும் மணல் / செம்மண்ணிலும்.",
+      "fix": [
+        "5 செ.மீ ஆழத்தில் மண்ணைப் பாருங்கள் — காய்ந்திருந்தால் அடிப்பகுதியில் மெதுவாக, ஆழமாக நீர் பாய்ச்சுங்கள்.",
+        "ஈரம் தங்க செடிகளைச் சுற்றி வைக்கோல் அல்லது காய்ந்த இலைகளை மூடாக்காகப் பரப்புங்கள்.",
+        "அதிகாலை அல்லது மாலையில் நீர் பாய்ச்சுங்கள், நண்பகலில் வேண்டாம்."
+      ],
+      "prevent": "உங்கள் திட்டத்தில் உள்ள பாசன இடைவெளியைப் பின்பற்றி, வெப்பமான நாட்களில் இடைவெளியைக் குறையுங்கள். சீக்கிரமே மூடாக்கு இடுங்கள்."
+    }
+  },
+  {
+    "_id": "borer",
+    "icon": "🐛",
+    "severity": "high",
+    "crops": [
+      "okra"
+    ],
+    "weights": {
+      "borer": 3,
+      "holes_leaves": 1,
+      "flower_drop": 1
+    },
+    "en": {
+      "name": "Shoot & fruit borer",
+      "cause": "A small caterpillar tunnels into the growing shoot tip and later into the pods, feeding inside where sprays cannot easily reach.",
+      "fix": [
+        "Cut off wilted shoot tips a few cm below the hole and destroy them — do not just drop them on the ground.",
+        "Pick and destroy pods with entry holes.",
+        "Spray neem oil (5 ml + a few drops of soap in 1 litre of water) once a week.",
+        "Check every 3–4 days; if it keeps spreading, ask your agriculture office for a recommendation."
+      ],
+      "prevent": "Inspect shoot tips from day 30. Removing the first infested shoots early stops most of the spread."
+    },
+    "ta": {
+      "name": "தண்டு & காய்த்துளைப்பான்",
+      "cause": "சிறு புழு வளரும் நுனித்தண்டிலும் பின்னர் காய்களிலும் துளைத்து உள்ளிருந்தே உண்பதால், தெளிப்பு எளிதில் அதை அடையாது.",
+      "fix": [
+        "வாடிய நுனித்தண்டுகளைத் துளைக்குச் சில செ.மீ கீழே வெட்டி அழியுங்கள் — நிலத்தில் போட்டுவிடாதீர்கள்.",
+        "நுழைவுத் துளை உள்ள காய்களைப் பறித்து அழியுங்கள்.",
+        "வாரம் ஒருமுறை வேப்பெண்ணெய்த் தெளிப்பு (1 லிட்டர் நீரில் 5 மி.லி + சில துளி சோப்பு) தெளியுங்கள்.",
+        "3–4 நாளுக்கு ஒருமுறை பாருங்கள்; தொடர்ந்து பரவினால் வேளாண் அலுவலகத்தில் பரிந்துரை கேளுங்கள்."
+      ],
+      "prevent": "நாள் 30 முதல் நுனித்தண்டுகளைப் பாருங்கள். பாதித்த முதல் தண்டுகளை உடனே அகற்றினால் பெரும்பாலான பரவல் நின்றுவிடும்."
+    }
+  },
+  {
+    "_id": "whitefly",
+    "icon": "🦟",
+    "severity": "medium",
+    "crops": [],
+    "weights": {
+      "white_insects": 3,
+      "sticky": 2,
+      "pale_all": 1,
+      "curled": 1,
+      "yellow_veins": 1
+    },
+    "en": {
+      "name": "Whitefly",
+      "cause": "Tiny sap-sucking insects live under the leaves. They weaken the plant, leave a sticky honeydew that turns black, and can carry virus diseases from plant to plant.",
+      "fix": [
+        "Spray neem oil solution on the underside of leaves in the early morning, weekly.",
+        "Hang yellow sticky boards (a yellow plastic sheet smeared with grease or castor oil) at plant height.",
+        "Remove and destroy badly infested leaves.",
+        "Wash off sooty film with a gentle water spray."
+      ],
+      "prevent": "Check leaf undersides every 3–4 days and remove weeds around the plot that shelter the insects."
+    },
+    "ta": {
+      "name": "வெள்ளை ஈ",
+      "cause": "இலைகளின் அடியில் வாழும் சிறு சாறு உறிஞ்சும் பூச்சிகள். அவை செடியை வலுவிழக்கச் செய்து, பின்னர் கருப்பாகும் ஒட்டும் திரவத்தை விட்டுச்செல்கின்றன; வைரஸ் நோய்களையும் செடியிலிருந்து செடிக்குப் பரப்பக்கூடும்.",
+      "fix": [
+        "வாரம் ஒருமுறை அதிகாலையில் இலைகளின் அடிப்புறத்தில் வேப்பெண்ணெய்க் கரைசலைத் தெளியுங்கள்.",
+        "செடி உயரத்தில் மஞ்சள் ஒட்டுப்பொறிகளைத் தொங்கவிடுங்கள் (மஞ்சள் பிளாஸ்டிக் தாளில் கிரீஸ் அல்லது ஆமணக்கு எண்ணெய் தடவியது).",
+        "மிகவும் பாதித்த இலைகளைப் பறித்து அழியுங்கள்.",
+        "கருப்புப் படலத்தை மென்மையான நீர்த் தெளிப்பால் கழுவுங்கள்."
+      ],
+      "prevent": "3–4 நாளுக்கு ஒருமுறை இலைகளின் அடிப்புறத்தைப் பாருங்கள்; பூச்சிகளுக்குத் தங்குமிடம் தரும் நிலத்தைச் சுற்றியுள்ள களைகளை அகற்றுங்கள்."
+    }
+  },
+  {
+    "_id": "aphids",
+    "icon": "🐜",
+    "severity": "medium",
+    "crops": [],
+    "weights": {
+      "insect_clusters": 3,
+      "curled": 2,
+      "sticky": 2,
+      "stunted": 1
+    },
+    "en": {
+      "name": "Aphids",
+      "cause": "Clusters of soft sap-sucking insects gather on young shoots. They twist the new leaves and leave sticky honeydew that attracts ants and sooty mould.",
+      "fix": [
+        "Knock them off with a strong spray of plain water, or squash small clusters by hand.",
+        "Spray neem oil solution (5 ml + soap in 1 litre of water) on shoot tips, weekly.",
+        "Cut off and destroy the worst-hit tips."
+      ],
+      "prevent": "Avoid over-fertilizing with nitrogen — soft, lush growth attracts aphids."
+    },
+    "ta": {
+      "name": "அசுவினி",
+      "cause": "இளம் தளிர்களில் மென்மையான சாறு உறிஞ்சும் பூச்சிகள் கூட்டமாகச் சேர்கின்றன. அவை புதிய இலைகளை முறுக்கி, எறும்புகளையும் கருப்புப் பூஞ்சையையும் ஈர்க்கும் ஒட்டும் திரவத்தை விடுகின்றன.",
+      "fix": [
+        "சாதாரண நீரை வேகமாகத் தெளித்துப் பூச்சிகளை உதிர்த்துவிடுங்கள்; சிறிய கூட்டங்களைக் கையால் நசுக்கலாம்.",
+        "வாரம் ஒருமுறை நுனிகளில் வேப்பெண்ணெய்க் கரைசல் (1 லிட்டர் நீரில் 5 மி.லி + சோப்பு) தெளியுங்கள்.",
+        "மிகவும் பாதித்த நுனிகளை வெட்டி அழியுங்கள்."
+      ],
+      "prevent": "நைட்ரஜன் உரத்தை அதிகமாக இடாதீர்கள் — மென்மையான, பசுமையான வளர்ச்சி அசுவினியை ஈர்க்கும்."
+    }
+  },
+  {
+    "_id": "powdery_mildew",
+    "icon": "❄️",
+    "severity": "medium",
+    "crops": [],
+    "weights": {
+      "white_powder": 3,
+      "yellow_lower": 1,
+      "curled": 1
+    },
+    "en": {
+      "name": "Powdery mildew",
+      "cause": "A fungus that grows on the leaf surface in warm days and cool, humid nights, or when plants are crowded and air cannot move between them.",
+      "fix": [
+        "Remove and destroy the most affected leaves (do not compost them).",
+        "Water at the base in the morning so leaves stay dry.",
+        "Spray a mix of 1 litre of milk in 9 litres of water on leaves, in the morning sun, once a week.",
+        "Thin out crowded plants so air can pass."
+      ],
+      "prevent": "Keep the spacing given in the guide and avoid wetting leaves late in the day."
+    },
+    "ta": {
+      "name": "சாம்பல் நோய் (பவுடரி மில்டியூ)",
+      "cause": "வெப்பமான பகலும் குளிர்ந்த ஈரமான இரவும் இருக்கும்போது, அல்லது செடிகள் நெருக்கமாக இருந்து காற்று செல்ல முடியாதபோது, இலை மேற்பரப்பில் வளரும் பூஞ்சை.",
+      "fix": [
+        "மிகவும் பாதித்த இலைகளைப் பறித்து அழியுங்கள் (உரக்குழியில் போடாதீர்கள்).",
+        "இலைகள் உலர்ந்திருக்க, காலையில் அடிப்பகுதியில் நீர் பாய்ச்சுங்கள்.",
+        "வாரம் ஒருமுறை, காலை வெயிலில், 9 லிட்டர் நீரில் 1 லிட்டர் பால் கலந்து இலைகளில் தெளியுங்கள்.",
+        "காற்று செல்லும்படி நெருக்கமான செடிகளைக் கலைத்து இடைவெளி விடுங்கள்."
+      ],
+      "prevent": "வழிகாட்டியில் கூறிய இடைவெளியைப் பின்பற்றுங்கள்; மாலை நேரத்தில் இலைகளை நனைப்பதைத் தவிருங்கள்."
+    }
+  },
+  {
+    "_id": "leaf_spot",
+    "icon": "🟤",
+    "severity": "medium",
+    "crops": [],
+    "weights": {
+      "brown_spots": 3,
+      "yellow_lower": 1,
+      "waterlogged": 1
+    },
+    "en": {
+      "name": "Fungal leaf spot",
+      "cause": "Fungal spores spread by splashing water and humid weather. Spots grow, often with a yellow ring, and the leaf eventually dies.",
+      "fix": [
+        "Pick off spotted leaves and take them out of the plot.",
+        "Water only at the base, in the morning.",
+        "Do not work among the plants when the leaves are wet — you carry spores on your hands.",
+        "If spots keep spreading on new leaves, show a sample to your agriculture office."
+      ],
+      "prevent": "Avoid overhead watering, keep good spacing, and clear fallen leaves."
+    },
+    "ta": {
+      "name": "இலைப்புள்ளி நோய் (பூஞ்சை)",
+      "cause": "தெறிக்கும் நீராலும் ஈரமான வானிலையாலும் பூஞ்சை வித்துக்கள் பரவுகின்றன. புள்ளிகள் பெரிதாகி, பெரும்பாலும் மஞ்சள் வளையத்துடன் இலை இறுதியில் இறந்துவிடும்.",
+      "fix": [
+        "புள்ளி விழுந்த இலைகளைப் பறித்து நிலத்துக்கு வெளியே கொண்டு செல்லுங்கள்.",
+        "காலையில், அடிப்பகுதியில் மட்டும் நீர் பாய்ச்சுங்கள்.",
+        "இலைகள் ஈரமாக இருக்கும்போது செடிகளுக்கு இடையே வேலை செய்யாதீர்கள் — கைகளில் வித்துக்களை எடுத்துச் செல்வீர்கள்.",
+        "புதிய இலைகளிலும் புள்ளிகள் பரவினால், மாதிரியை வேளாண் அலுவலகத்தில் காட்டுங்கள்."
+      ],
+      "prevent": "மேலிருந்து நீர் பாய்ச்சுவதைத் தவிருங்கள்; நல்ல இடைவெளி விடுங்கள்; உதிர்ந்த இலைகளை அகற்றுங்கள்."
+    }
+  },
+  {
+    "_id": "damping_off",
+    "icon": "🌱",
+    "severity": "high",
+    "crops": [],
+    "weights": {
+      "seedlings_fall": 3,
+      "no_germ": 2,
+      "base_rot": 2,
+      "waterlogged": 1
+    },
+    "en": {
+      "name": "Damping-off (seedling collapse)",
+      "cause": "Soil fungi attack young seedlings at ground level in cool, wet, poorly drained soil. The stem pinches and the seedling falls over.",
+      "fix": [
+        "Stop watering for a few days and let the surface dry.",
+        "Remove collapsed seedlings and the soil right around them.",
+        "Loosen and lightly scratch the surface so air reaches the roots.",
+        "Re-sow the gaps with fresh seed if it is still early in the season."
+      ],
+      "prevent": "Sow into well-drained soil, do not sow too deep or too thick, and water lightly in the morning."
+    },
+    "ta": {
+      "name": "நாற்று அழுகல் (டேம்பிங்-ஆஃப்)",
+      "cause": "குளிர்ந்த, ஈரமான, நீர் வடியாத மண்ணில் மண்ணிலுள்ள பூஞ்சைகள் இளம் நாற்றுகளை மண் மட்டத்தில் தாக்குகின்றன. தண்டு நசுங்கி நாற்று சாய்ந்துவிடும்.",
+      "fix": [
+        "சில நாள் நீர் பாய்ச்சுவதை நிறுத்தி மேற்பரப்பு காய விடுங்கள்.",
+        "சாய்ந்த நாற்றுகளையும் அவற்றைச் சுற்றியுள்ள மண்ணையும் அகற்றுங்கள்.",
+        "வேர்களுக்குக் காற்று கிடைக்க மேற்பரப்பை லேசாகக் கீறித் தளர்த்துங்கள்.",
+        "பருவம் இன்னும் தாமதமாகவில்லை என்றால் இடைவெளிகளில் புதிய விதையை மீண்டும் விதையுங்கள்."
+      ],
+      "prevent": "நீர் நன்கு வடியும் மண்ணில் விதையுங்கள்; மிக ஆழமாகவோ அடர்த்தியாகவோ விதைக்காதீர்கள்; காலையில் இலேசாக நீர் பாய்ச்சுங்கள்."
+    }
+  },
+  {
+    "_id": "caterpillars",
+    "icon": "🪱",
+    "severity": "medium",
+    "crops": [],
+    "weights": {
+      "holes_leaves": 3,
+      "caterpillars": 3
+    },
+    "en": {
+      "name": "Leaf-eating caterpillars",
+      "cause": "Caterpillars and other leaf-eaters chew holes in leaves, usually at night or early morning, and can strip a young plant quickly.",
+      "fix": [
+        "Hand-pick caterpillars early in the morning or in the evening and destroy them.",
+        "Look under leaves for clusters of eggs and crush them.",
+        "Spray neem oil solution (5 ml + soap in 1 litre of water) on leaves, weekly."
+      ],
+      "prevent": "Walk the rows every few days — catching the first few caterpillars prevents an outbreak."
+    },
+    "ta": {
+      "name": "இலை உண்ணும் புழுக்கள்",
+      "cause": "புழுக்களும் பிற இலை உண்ணிகளும் பெரும்பாலும் இரவிலோ அதிகாலையிலோ இலைகளில் துளைகளைக் கடித்து, இளம் செடியை வேகமாகச் சிதைத்துவிடும்.",
+      "fix": [
+        "அதிகாலை அல்லது மாலையில் புழுக்களைக் கையால் பொறுக்கி அழியுங்கள்.",
+        "இலைகளின் அடியில் முட்டைக் கூட்டங்களைத் தேடி நசுக்குங்கள்.",
+        "வாரம் ஒருமுறை இலைகளில் வேப்பெண்ணெய்க் கரைசல் (1 லிட்டர் நீரில் 5 மி.லி + சோப்பு) தெளியுங்கள்."
+      ],
+      "prevent": "சில நாளுக்கு ஒருமுறை வரிசைகளில் நடந்து பாருங்கள் — முதல் சில புழுக்களைப் பிடித்தாலே பெருக்கம் தடுக்கப்படும்."
+    }
+  },
+  {
+    "_id": "yellow_vein_mosaic",
+    "icon": "🕸️",
+    "severity": "high",
+    "crops": [
+      "okra"
+    ],
+    "weights": {
+      "yellow_veins": 3,
+      "stunted": 1,
+      "white_insects": 1,
+      "pale_all": 1
+    },
+    "en": {
+      "name": "Yellow vein mosaic virus (okra)",
+      "cause": "A virus spread from plant to plant by whiteflies. It cannot be cured once a plant is infected.",
+      "fix": [
+        "Pull out and destroy the infected plants right away (bury or burn — do not leave them lying in the plot).",
+        "Control whiteflies with neem oil spray and yellow sticky boards so healthy plants are not infected.",
+        "Ask your agriculture office about virus-tolerant okra varieties for your next sowing."
+      ],
+      "prevent": "Control whiteflies from the first week and choose a tolerant variety next season."
+    },
+    "ta": {
+      "name": "மஞ்சள் நரம்புத் தேமல் வைரஸ் (வெண்டை)",
+      "cause": "வெள்ளை ஈக்களால் செடியிலிருந்து செடிக்குப் பரவும் வைரஸ். ஒரு செடி பாதித்தபின் அதைக் குணப்படுத்த முடியாது.",
+      "fix": [
+        "பாதித்த செடிகளை உடனே பிடுங்கி அழியுங்கள் (புதைக்கவும் அல்லது எரிக்கவும் — நிலத்தில் போட்டு வைக்காதீர்கள்).",
+        "ஆரோக்கியமான செடிகள் பாதிக்காமல் இருக்க வேப்பெண்ணெய்த் தெளிப்பு, மஞ்சள் ஒட்டுப்பொறிகளால் வெள்ளை ஈயைக் கட்டுப்படுத்துங்கள்.",
+        "அடுத்த விதைப்புக்கு வைரஸைத் தாங்கும் வெண்டை ரகங்கள் பற்றி வேளாண் அலுவலகத்தில் கேளுங்கள்."
+      ],
+      "prevent": "முதல் வாரத்திலிருந்தே வெள்ளை ஈயைக் கட்டுப்படுத்துங்கள்; அடுத்த பருவத்தில் தாங்கும் ரகத்தைத் தேர்ந்தெடுங்கள்."
+    }
+  },
+  {
+    "_id": "excess_nitrogen",
+    "icon": "🌿",
+    "severity": "low",
+    "crops": [
+      "marigold",
+      "okra"
+    ],
+    "weights": {
+      "no_flowers": 3,
+      "fert_recent": 1,
+      "curled": 1
+    },
+    "en": {
+      "name": "Too much nitrogen (all leaf, no flowers)",
+      "cause": "Excess nitrogen pushes the plant to grow leaves and soft stems instead of flowers. It usually means the fertilizer mix had too little potassium for that stage.",
+      "fix": [
+        "Stop nitrogen fertilizer completely for now.",
+        "Water well once to help wash extra nitrogen down.",
+        "For marigold, pinch off the growing tips to force branching and buds.",
+        "In the next dose, use a potassium-rich fertilizer as the guide suggests."
+      ],
+      "prevent": "Follow the fertilizer amounts in the guide — more is not better."
+    },
+    "ta": {
+      "name": "நைட்ரஜன் அதிகம் (இலை மட்டும், பூ இல்லை)",
+      "cause": "அதிக நைட்ரஜன் செடியை பூக்களுக்குப் பதிலாக இலைகளையும் மென்மையான தண்டுகளையும் வளர்க்கத் தூண்டும். இந்தக் கட்டத்துக்கு உர கலவையில் பொட்டாசியம் குறைவாக இருந்திருக்கலாம்.",
+      "fix": [
+        "இப்போதைக்கு நைட்ரஜன் உரத்தை முழுவதுமாக நிறுத்துங்கள்.",
+        "கூடுதல் நைட்ரஜன் கீழே இறங்க ஒருமுறை நன்கு நீர் பாய்ச்சுங்கள்.",
+        "செண்டுமல்லியில், கிளைவிட்டு மொட்டுகள் உருவாக நுனிகளைக் கிள்ளிவிடுங்கள்.",
+        "அடுத்த தவணையில் வழிகாட்டி கூறியபடி பொட்டாசியம் நிறைந்த உரத்தைப் பயன்படுத்துங்கள்."
+      ],
+      "prevent": "வழிகாட்டியில் உள்ள உர அளவுகளைப் பின்பற்றுங்கள் — அதிகம் என்பது நல்லது அல்ல."
+    }
+  },
+  {
+    "_id": "fertilizer_burn",
+    "icon": "🔥",
+    "severity": "medium",
+    "crops": [],
+    "weights": {
+      "brown_edges": 3,
+      "fert_recent": 2,
+      "wilt_day": 1
+    },
+    "en": {
+      "name": "Fertilizer burn",
+      "cause": "Too much fertilizer, or fertilizer too close to the stem, draws water out of the roots and scorches the leaf edges within days.",
+      "fix": [
+        "Water the plot deeply and slowly a few times over the next days to wash the extra fertilizer down.",
+        "Scrape away any visible fertilizer lying near the stems.",
+        "Do not fertilize again for at least two weeks."
+      ],
+      "prevent": "Measure the dose, keep a gap from the stem, and always water it in."
+    },
+    "ta": {
+      "name": "உரக் கருகல்",
+      "cause": "அதிக உரம், அல்லது தண்டுக்கு மிக அருகில் இட்ட உரம், வேர்களிலிருந்து நீரை உறிஞ்சி சில நாளில் இலை ஓரங்களைக் கருக்கிவிடும்.",
+      "fix": [
+        "கூடுதல் உரம் கீழே இறங்க, அடுத்த சில நாளில் நிலத்தை ஆழமாகவும் மெதுவாகவும் சில முறை நனையுங்கள்.",
+        "தண்டுகளுக்கு அருகில் தெரியும் உரத்தைச் சுரண்டி அகற்றுங்கள்.",
+        "குறைந்தது இரண்டு வாரம் மீண்டும் உரமிடாதீர்கள்."
+      ],
+      "prevent": "அளவைச் சரியாக அளந்து இடுங்கள்; தண்டிலிருந்து இடைவெளி விடுங்கள்; இட்டவுடன் நீர் பாய்ச்சுங்கள்."
+    }
+  },
+  {
+    "_id": "bolting",
+    "icon": "🌾",
+    "severity": "medium",
+    "crops": [
+      "spinach"
+    ],
+    "weights": {
+      "tall_stalk": 3,
+      "wilt_day": 1
+    },
+    "en": {
+      "name": "Bolting (going to flower too early)",
+      "cause": "Heat and irregular watering trigger spinach to shoot up a flower stalk. Once it starts, leaves turn bitter and small.",
+      "fix": [
+        "Harvest everything that is usable right away.",
+        "Pinching off the stalk buys a day or two at most — plan to clear and re-sow.",
+        "Sow the next batch in a cooler season or in light afternoon shade, and keep watering even."
+      ],
+      "prevent": "Water evenly, harvest on time (day 28–30) and avoid sowing in the hottest weeks."
+    },
+    "ta": {
+      "name": "முன்கூட்டிய பூத்தல் (போல்டிங்)",
+      "cause": "வெப்பமும் ஒழுங்கற்ற நீர்ப்பாசனமும் பசலையைப் பூத்தண்டு விடத் தூண்டுகின்றன. தொடங்கிவிட்டால் இலைகள் கசப்பாகவும் சிறியதாகவும் ஆகிவிடும்.",
+      "fix": [
+        "பயன்படுத்தக்கூடிய அனைத்தையும் உடனே அறுவடை செய்யுங்கள்.",
+        "தண்டைக் கிள்ளுவது அதிகபட்சம் ஒரு நாள் இரண்டு நாள் மட்டுமே கூடுதல் நேரம் தரும் — நிலத்தைச் சுத்தம் செய்து மீண்டும் விதைக்கத் திட்டமிடுங்கள்.",
+        "அடுத்த தொகுப்பைக் குளிர்ச்சியான பருவத்தில் அல்லது பிற்பகல் லேசான நிழலில் விதைத்து, நீர்ப்பாசனத்தைச் சீராக வையுங்கள்."
+      ],
+      "prevent": "சீராக நீர் பாய்ச்சுங்கள்; நேரத்தில் (நாள் 28–30) அறுவடை செய்யுங்கள்; மிகவும் சூடான வாரங்களில் விதைப்பதைத் தவிருங்கள்."
+    }
+  },
+  {
+    "_id": "flower_rot",
+    "icon": "🌼",
+    "severity": "medium",
+    "crops": [
+      "marigold"
+    ],
+    "weights": {
+      "flower_rot": 3,
+      "waterlogged": 1,
+      "brown_spots": 1
+    },
+    "en": {
+      "name": "Flower-head rot (too much moisture)",
+      "cause": "Wet flower heads and humid weather let fungus grow at the base of the flower, so blooms brown and rot before they can be picked.",
+      "fix": [
+        "Pick affected flowers now, even if not fully open, and throw them away from the plot.",
+        "Water only at the base and cut the frequency slightly while flowering peaks.",
+        "Pick open flowers every 3–4 days so none stay on the plant."
+      ],
+      "prevent": "Avoid wetting flower heads and ease off watering as flowering peaks."
+    },
+    "ta": {
+      "name": "பூத்தலை அழுகல் (அதிக ஈரம்)",
+      "cause": "ஈரமான பூத்தலைகளும் ஈரப்பதமான வானிலையும் பூவின் அடியில் பூஞ்சை வளர இடம் தருவதால், பறிப்பதற்குள் பூக்கள் பழுப்பாகி அழுகிவிடுகின்றன.",
+      "fix": [
+        "பாதித்த பூக்களை முழுவதும் மலராவிட்டாலும் இப்போதே பறித்து, நிலத்துக்கு வெளியே எறியுங்கள்.",
+        "அடிப்பகுதியில் மட்டும் நீர் பாய்ச்சுங்கள்; பூப்பு உச்சத்தில் இருக்கும்போது இடைவெளியைச் சற்றுக் கூட்டுங்கள்.",
+        "மலர்ந்த பூக்களை 3–4 நாளுக்கு ஒருமுறை பறியுங்கள் — எதுவும் செடியில் தங்கிவிடக் கூடாது."
+      ],
+      "prevent": "பூத்தலைகளை நனைப்பதைத் தவிருங்கள்; பூப்பு உச்சத்தில் நீரைக் குறையுங்கள்."
+    }
+  }
+]

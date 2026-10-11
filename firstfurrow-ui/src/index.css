@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&display=swap');
+
+:root {
+  /* ---- Design tokens : "field at dawn" palette ---- */
+  --field: #1e3a28;         /* deep forest green — primary surface */
+  --field-deep: #12261a;    /* shadowed green — gradients / depth */
+  --soil: #3a2a1e;          /* warm soil brown — secondary surface */
+  --soil-deep: #2a1d14;
+  --sprout: #9acb6b;        /* growth green — primary accent */
+  --sprout-deep: #6fa347;
+  --turmeric: #e7a93e;      /* turmeric gold — CTA / highlight */
+  --turmeric-deep: #c98d29;
+  --mist: #f6f2e7;          /* warm paper — light surfaces / text on dark */
+  --mist-dim: #ded6c2;
+  --chili: #c1442c;         /* sparing alert accent */
+  --ink: #1a1410;           /* near-black warm ink for text on light */
+
+  --font-display: 'Fraunces', 'Noto Serif Tamil', ui-serif, Georgia, serif;
+  --font-body: 'Space Grotesk', 'Noto Sans Tamil', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-s: 10px;
+  --radius-m: 18px;
+  --radius-l: 28px;
+
+  --shadow-soft: 0 20px 60px -25px rgba(18, 38, 26, 0.55);
+  --shadow-card: 0 12px 30px -14px rgba(26, 20, 16, 0.35);
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--mist);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root { min-height: 100vh; display: flex; flex-direction: column; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0; }
+button { font-family: var(--font-body); cursor: pointer; border: none; background: none; }
+a { color: inherit; }
+::selection { background: var(--turmeric); color: var(--ink); }
+
+:focus-visible {
+  outline: 3px solid var(--turmeric);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--turmeric);
+  color: var(--ink);
+  box-shadow: 0 10px 24px -10px rgba(231, 169, 62, 0.65);
+}
+.btn-primary:hover {
+  background: var(--turmeric-deep);
+  box-shadow: 0 14px 30px -10px rgba(231, 169, 62, 0.8);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--mist);
+  border: 1.5px solid rgba(246, 242, 231, 0.35);
+}
+.btn-ghost:hover { border-color: var(--mist); background: rgba(246, 242, 231, 0.08); }
+
+.btn-dark { background: var(--field-deep); color: var(--mist); }
+.btn-dark:hover { background: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ---- Tamil typography: taller line-height, no all-caps / wide tracking (they break Tamil script) ---- */
+:lang(ta) body { line-height: 1.7; }
+:lang(ta) h1, :lang(ta) h2, :lang(ta) h3, :lang(ta) h4 { line-height: 1.35; letter-spacing: 0; }
+:lang(ta) .eyebrow { text-transform: none; letter-spacing: 0.02em; font-size: 0.82rem; }
+:lang(ta) .btn { line-height: 1.4; }

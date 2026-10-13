@@ -10,7 +10,24 @@ import { DuplicateEmailError } from '../errors.js';
 
 const rename = ({ _id, ...rest }) => ({ id: String(_id), ...rest });
 
-const toUser = ({ _id, name, email, passwordHash, createdAt, passwordChangedAt }) => ({ id: String(_id), name, email, passwordHash, createdAt, passwordChangedAt: passwordChangedAt ?? null });
+const toUser = (d) => {
+  if (!d) return null;
+  const { _id, name, email, passwordHash, createdAt, passwordChangedAt, emailVerified, verificationCodeHash, verificationExpiresAt, verificationCooldown, failedLoginAttempts, lockUntil } = d;
+  return {
+    id: String(_id),
+    name,
+    email,
+    passwordHash,
+    createdAt,
+    passwordChangedAt: passwordChangedAt ?? null,
+    emailVerified: Boolean(emailVerified),
+    verificationCodeHash: verificationCodeHash ?? null,
+    verificationExpiresAt: verificationExpiresAt ?? null,
+    verificationCooldown: verificationCooldown ?? null,
+    failedLoginAttempts: Number(failedLoginAttempts || 0),
+    lockUntil: lockUntil ?? null,
+  };
+};
 const toReset = ({ _id, userId, tokenHash, expiresAt, createdAt }) => ({ id: String(_id), userId: String(userId), tokenHash, expiresAt, createdAt });
 
 function toPlan(d) {
@@ -47,9 +64,9 @@ export function createMongoRepo() {
     },
 
     users: {
-      async create({ name, email, passwordHash }) {
+      async create({ name, email, passwordHash, emailVerified = false, verificationCodeHash = null, verificationExpiresAt = null }) {
         try {
-          const doc = await User.create({ name, email, passwordHash });
+          const doc = await User.create({ name, email, passwordHash, emailVerified, verificationCodeHash, verificationExpiresAt });
           return toUser(doc.toObject());
         } catch (err) {
           if (err?.code === 11000) throw new DuplicateEmailError();
@@ -79,7 +96,27 @@ export function createMongoRepo() {
       },
       async updatePassword(id, passwordHash) {
         const d = await User.findByIdAndUpdate(id, { $set: { passwordHash, passwordChangedAt: new Date() } }, { new: true }).lean();
-        return d ? toUser(d) : null;
+        return toUser(d);
+      },
+      async setVerificationCode(id, { codeHash, expiresAt, cooldown = null }) {
+        const d = await User.findByIdAndUpdate(id, { $set: { verificationCodeHash: codeHash, verificationExpiresAt: expiresAt, verificationCooldown: cooldown } }, { new: true }).lean();
+        return toUser(d);
+      },
+      async markEmailVerified(id) {
+        const d = await User.findByIdAndUpdate(id, { $set: { emailVerified: true, verificationCodeHash: null, verificationExpiresAt: null } }, { new: true }).lean();
+        return toUser(d);
+      },
+      async recordFailedAttempt(id, { attempts, lockUntil = null }) {
+        const d = await User.findByIdAndUpdate(id, { $set: { failedLoginAttempts: attempts, lockUntil } }, { new: true }).lean();
+        return toUser(d);
+      },
+      async resetFailedAttempts(id) {
+        const d = await User.findByIdAndUpdate(id, { $set: { failedLoginAttempts: 0, lockUntil: null } }, { new: true }).lean();
+        return toUser(d);
+      },
+      async delete(id) {
+        const r = await User.findByIdAndDelete(id);
+        return Boolean(r);
       },
     },
 
@@ -123,6 +160,10 @@ export function createMongoRepo() {
       async remove(userId, id) {
         const r = await Plan.deleteOne({ _id: id, userId });
         return r.deletedCount === 1;
+      },
+      async deleteAllForUser(userId) {
+        const r = await Plan.deleteMany({ userId });
+        return r.deletedCount;
       },
     },
   };

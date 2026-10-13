@@ -17,6 +17,9 @@ export function validatePassword(pw) {
   if (!isStr(pw) || pw.length < 8 || Buffer.byteLength(pw) > 72) {
     throw badRequest('Password must be 8 to 72 characters.', 'weak_password');
   }
+  if (!/[a-zA-Z]/.test(pw) || !/[0-9]/.test(pw)) {
+    throw badRequest('Password must contain at least one letter and one number.', 'weak_password');
+  }
   return pw;
 }
 
@@ -63,4 +66,4 @@ export function verifyToken(token, { jwtSecret }) {
   }
 }
 
-export const publicUser = ({ id, name, email }) => ({ id, name, email });
+export const publicUser = ({ id, name, email, emailVerified = false }) => ({ id, name, email, emailVerified: Boolean(emailVerified) });

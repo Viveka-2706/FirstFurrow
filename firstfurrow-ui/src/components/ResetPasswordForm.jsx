@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '../i18n/useLang';
 import { errKey } from '../api/errorKey';
+import PasswordField from './PasswordField';
 import './AuthForm.css';
 
 // The page the emailed link opens. `onSubmit(newPassword)` returns a promise; it throws if the link is bad.
@@ -43,12 +44,23 @@ export default function ResetPasswordForm({ hasToken, onSubmit, onRequestNew }) 
           <form className="auth-form" onSubmit={submit}>
             <label className="auth-field">
               <span>{t('reset.new')}</span>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" minLength={8} maxLength={72} autoComplete="new-password" required autoFocus />
+              <PasswordField
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="new-password"
+                showRules={true}
+                required
+              />
               <small className="auth-hint">{t('auth.pwHint')}</small>
             </label>
             <label className="auth-field">
               <span>{t('reset.confirm')}</span>
-              <input type="password" value={confirm} onChange={(e) => setConfirm(e.target.value)} placeholder="••••••••" minLength={8} maxLength={72} autoComplete="new-password" required />
+              <PasswordField
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                autoComplete="new-password"
+                required
+              />
             </label>
             {error && <p className="auth-error" role="alert">{error === 'mismatch' ? t('reset.mismatch') : t(errKey(error))}</p>}
             <motion.button className="btn btn-primary auth-submit" type="submit" disabled={busy} whileHover={{ scale: busy ? 1 : 1.03 }} whileTap={{ scale: busy ? 1 : 0.97 }}>

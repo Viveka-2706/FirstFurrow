@@ -25,10 +25,23 @@ export function createMemoryRepo(seed) {
     symptoms: { groups: get(seed.groups), all: get(seed.symptoms), problems: get(seed.problems) },
 
     users: {
-      async create({ name, email, passwordHash }) {
+      async create({ name, email, passwordHash, emailVerified = false, verificationCodeHash = null, verificationExpiresAt = null }) {
         const lower = email.toLowerCase();
         if ([...users.values()].some((u) => u.email === lower)) throw new DuplicateEmailError();
-        const user = { id: newId(), name, email: lower, passwordHash, createdAt: new Date(), passwordChangedAt: null };
+        const user = {
+          id: newId(),
+          name,
+          email: lower,
+          passwordHash,
+          createdAt: new Date(),
+          passwordChangedAt: null,
+          emailVerified: Boolean(emailVerified),
+          verificationCodeHash,
+          verificationExpiresAt,
+          verificationCooldown: null,
+          failedLoginAttempts: 0,
+          lockUntil: null,
+        };
         users.set(user.id, user);
         return clone(user);
       },
@@ -51,6 +64,39 @@ export function createMemoryRepo(seed) {
         u.passwordHash = passwordHash;
         u.passwordChangedAt = new Date();
         return clone(u);
+      },
+      async setVerificationCode(id, { codeHash, expiresAt, cooldown = null }) {
+        const u = users.get(id);
+        if (!u) return null;
+        u.verificationCodeHash = codeHash;
+        u.verificationExpiresAt = expiresAt;
+        u.verificationCooldown = cooldown;
+        return clone(u);
+      },
+      async markEmailVerified(id) {
+        const u = users.get(id);
+        if (!u) return null;
+        u.emailVerified = true;
+        u.verificationCodeHash = null;
+        u.verificationExpiresAt = null;
+        return clone(u);
+      },
+      async recordFailedAttempt(id, { attempts, lockUntil = null }) {
+        const u = users.get(id);
+        if (!u) return null;
+        u.failedLoginAttempts = attempts;
+        u.lockUntil = lockUntil;
+        return clone(u);
+      },
+      async resetFailedAttempts(id) {
+        const u = users.get(id);
+        if (!u) return null;
+        u.failedLoginAttempts = 0;
+        u.lockUntil = null;
+        return clone(u);
+      },
+      async delete(id) {
+        return users.delete(id);
       },
     },
 
@@ -96,6 +142,16 @@ export function createMemoryRepo(seed) {
         if (!p || p.userId !== userId) return false;
         plans.delete(id);
         return true;
+      },
+      async deleteAllForUser(userId) {
+        let count = 0;
+        for (const [k, p] of [...plans.entries()]) {
+          if (p.userId === userId) {
+            plans.delete(k);
+            count++;
+          }
+        }
+        return count;
       },
     },
   };

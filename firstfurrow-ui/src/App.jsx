@@ -45,6 +45,7 @@ export default function App() {
   const [authMode, setAuthMode] = useState('signup');
   const [authError, setAuthError] = useState('');
   const [authBusy, setAuthBusy] = useState(false);
+  const [verifyEmailAddress, setVerifyEmailAddress] = useState(null);
   const [wizardForm, setWizardForm] = useState(null);
   const [activePlanId, setActivePlanId] = useState(null);
   const [welcomeName, setWelcomeName] = useState(null);
@@ -131,17 +132,78 @@ export default function App() {
     setAuthNotice('');
     setAuthBusy(true);
     try {
-      const account = authMode === 'signup' ? await store.signup(payload) : await store.login(payload);
+      if (authMode === 'signup') {
+        const res = await store.signup({ ...payload, lang });
+        if (res.requiresVerification) {
+          setVerifyEmailAddress(res.email || payload.email);
+          return;
+        }
+        const list = await store.getPlans();
+        setUser(res.user);
+        setPlans(list);
+        setWelcomeName(res.user.name.split(' ')[0]);
+        setView('dashboard');
+      } else {
+        const account = await store.login(payload);
+        const list = await store.getPlans();
+        setUser(account);
+        setPlans(list);
+        setWelcomeName(account.name.split(' ')[0]);
+        setView('dashboard');
+      }
+    } catch (err) {
+      if (err.code === 'email_not_verified') {
+        setVerifyEmailAddress(payload.email);
+      }
+      setAuthError(err.code || 'generic');
+    } finally {
+      setAuthBusy(false);
+    }
+  };
+
+  const handleVerifyEmail = async ({ email, code }) => {
+    if (authBusy) return;
+    setAuthBusy(true);
+    setAuthError('');
+    try {
+      const user = await store.verifyEmail({ email, code });
       const list = await store.getPlans();
-      setUser(account);
+      setUser(user);
       setPlans(list);
-      setWelcomeName(account.name.split(' ')[0]);
+      setVerifyEmailAddress(null);
+      setWelcomeName(user.name.split(' ')[0]);
       setView('dashboard');
     } catch (err) {
       setAuthError(err.code || 'generic');
     } finally {
       setAuthBusy(false);
     }
+  };
+
+  const handleResendVerification = async (email) => {
+    try {
+      await store.resendVerification({ email, lang });
+      return true;
+    } catch (err) {
+      setAuthError(err.code || 'generic');
+      return false;
+    }
+  };
+
+  const handleCancelVerification = () => {
+    setVerifyEmailAddress(null);
+    setAuthError('');
+  };
+
+  const handleDeleteAccount = async (password) => {
+    await store.deleteAccount(password);
+    setUser(null);
+    setPlans([]);
+    setActivePlanId(null);
+    setCompletionPlanId(null);
+    setAuthMode('login');
+    setAuthNotice('account_deleted');
+    setView('auth');
   };
 
   const goForgot = () => { setAuthError(''); setAuthNotice(''); setView('forgot'); };
@@ -251,10 +313,14 @@ export default function App() {
               error={authError}
               busy={authBusy}
               onSubmit={handleAuthSubmit}
-              onSwitchMode={() => { setAuthMode(authMode === 'signup' ? 'login' : 'signup'); setAuthError(''); setAuthNotice(''); }}
+              onSwitchMode={() => { setAuthMode(authMode === 'signup' ? 'login' : 'signup'); setAuthError(''); setAuthNotice(''); setVerifyEmailAddress(null); }}
               onForgot={goForgot}
               notice={authNotice}
-              onBack={() => setView('landing')}
+              onBack={() => { setVerifyEmailAddress(null); setView('landing'); }}
+              verifyEmailAddress={verifyEmailAddress}
+              onVerifyEmail={handleVerifyEmail}
+              onResendVerification={handleResendVerification}
+              onCancelVerification={handleCancelVerification}
             />
           </motion.div>
         )}
@@ -288,7 +354,13 @@ export default function App() {
 
         {view === 'settings' && user && (
           <motion.div key="settings" variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.4 }}>
-            <Settings user={user} onBack={() => setView('dashboard')} onSaveProfile={handleSaveProfile} onChangePassword={handleChangePassword} />
+            <Settings
+              user={user}
+              onBack={() => setView('dashboard')}
+              onSaveProfile={handleSaveProfile}
+              onChangePassword={handleChangePassword}
+              onDeleteAccount={handleDeleteAccount}
+            />
           </motion.div>
         )}
 
@@ -318,7 +390,11 @@ export default function App() {
 
         {view === 'completed-detail' && activePlan && (
           <motion.div key="completed-detail" variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.4 }}>
-            <CompletedDetail plan={activePlan} onBack={() => setView('dashboard')} />
+            <CompletedDetail
+              plan={activePlan}
+              onBack={() => setView('dashboard')}
+              onPlanNext={() => { setWizardForm(null); setView('wizard'); }}
+            />
           </motion.div>
         )}
       </AnimatePresence>

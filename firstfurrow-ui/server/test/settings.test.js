@@ -13,7 +13,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 test('settings need a login', withApp({}, async (app) => {
   assert.equal((await profile(app, null, { name: 'X' })).status, 401);
-  assert.equal((await changePw(app, null, { currentPassword: 'a', newPassword: 'bbbbbbbb' })).status, 401);
+  assert.equal((await changePw(app, null, { currentPassword: 'a', newPassword: 'bbbbbbbb1' })).status, 401);
 }));
 
 test('the name can be changed without the password', withApp({}, async (app) => {
@@ -71,17 +71,17 @@ test('changing the password: needs the current one, rules apply, other devices a
   const otherDevice = (await login(app, f.email, f.password)).body.token;
   await sleep(1100); // tokens are dated to the second
 
-  const wrong = await changePw(app, f.token, { currentPassword: 'wrong-wrong', newPassword: 'brand-new-pass' });
+  const wrong = await changePw(app, f.token, { currentPassword: 'wrong-wrong', newPassword: 'brand-new-pass1' });
   assert.equal(wrong.status, 403); assert.equal(wrong.body.code, 'wrong_password');
   assert.equal((await changePw(app, f.token, { currentPassword: f.password, newPassword: 'short' })).body.code, 'weak_password');
   assert.equal((await changePw(app, f.token, { currentPassword: f.password, newPassword: f.password })).body.code, 'same_password');
   assert.equal((await changePw(app, f.token, { currentPassword: f.password })).status, 400);
-  assert.equal((await changePw(app, f.token, { currentPassword: ['x'], newPassword: 'brand-new-pass' })).status, 403);
+  assert.equal((await changePw(app, f.token, { currentPassword: ['x'], newPassword: 'brand-new-pass1' })).status, 403);
 
-  const ok = await changePw(app, f.token, { currentPassword: f.password, newPassword: 'brand-new-pass', lang: 'en' });
+  const ok = await changePw(app, f.token, { currentPassword: f.password, newPassword: 'brand-new-pass1', lang: 'en' });
   assert.equal(ok.status, 200); assert.ok(ok.body.token); assert.equal(ok.body.user.email, f.email);
   assert.equal((await login(app, f.email, f.password)).status, 401, 'old password is dead');
-  assert.equal((await login(app, f.email, 'brand-new-pass')).status, 200);
+  assert.equal((await login(app, f.email, 'brand-new-pass1')).status, 200);
   assert.equal((await app.request('GET', '/api/auth/me', { token: ok.body.token })).status, 200, 'this device keeps working');
   assert.equal((await app.request('GET', '/api/auth/me', { token: otherDevice })).status, 401, 'other devices are signed out');
   assert.equal((await app.request('GET', '/api/auth/me', { token: f.token })).status, 401, 'the old token is dead too');

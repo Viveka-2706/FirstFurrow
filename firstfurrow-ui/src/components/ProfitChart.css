@@ -1,9 +1,22 @@
 .profit-chart-card {
-  background: #fff;
-  border-radius: var(--radius-l);
-  box-shadow: var(--shadow-card);
-  padding: 24px 26px 10px;
-  margin-bottom: 28px;
+  background: #ffffff;
+  border-radius: var(--radius-l, 16px);
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(26, 20, 16, 0.06), 0 2px 6px -1px rgba(26, 20, 16, 0.03);
+  padding: 24px 28px 18px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.profit-chart-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2e7d32, #6fa347, #d35438);
 }
 
 .profit-chart-head {
@@ -12,17 +25,209 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 14px;
+  margin-bottom: 18px;
+}
+
+.profit-chart-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.09);
+  padding: 3px 10px;
+  border-radius: 999px;
   margin-bottom: 6px;
 }
 
-.profit-chart-title { font-size: 1.15rem; margin-top: 4px; }
-
-.profit-chart-totals {
-  display: flex;
-  gap: 18px;
-  font-size: 0.82rem;
-  color: rgba(26,20,16,0.6);
+.profit-chart-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2e7d32;
 }
-.profit-chart-totals strong { color: var(--ink); font-size: 0.9rem; }
 
-.profit-chart-body { margin-top: 8px; }
+.profit-chart-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink, #1a1410);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.profit-chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chart-view-toggle {
+  display: inline-flex;
+  background: rgba(26, 20, 16, 0.05);
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid rgba(26, 20, 16, 0.06);
+}
+
+.chart-view-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(26, 20, 16, 0.65);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chart-view-btn:hover {
+  color: var(--ink, #1a1410);
+}
+
+.chart-view-btn.is-active {
+  background: #ffffff;
+  color: #2e7d32;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* KPI Banner */
+.profit-chart-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  background: #fbfaf8;
+  border: 1px solid rgba(26, 20, 16, 0.06);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+}
+
+.chart-kpi-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chart-kpi-item .kpi-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(26, 20, 16, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.chart-kpi-item .kpi-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink, #1a1410);
+  letter-spacing: -0.01em;
+}
+
+.chart-kpi-item .kpi-value.text-gain {
+  color: #2e7d32;
+}
+
+.chart-kpi-item .kpi-value.text-loss {
+  color: #c62828;
+}
+
+.chart-kpi-item .kpi-value.accent-badge {
+  color: #1b5e20;
+}
+
+.profit-chart-body {
+  margin-top: 10px;
+  position: relative;
+}
+
+/* Custom Tooltip */
+.profit-chart-tooltip {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 12px 14px;
+  border: 1px solid rgba(26, 20, 16, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  min-width: 170px;
+  font-size: 0.82rem;
+}
+
+.tooltip-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ink, #1a1410);
+  margin: 0 0 2px;
+}
+
+.tooltip-sub {
+  font-size: 0.74rem;
+  color: rgba(26, 20, 16, 0.5);
+  margin: 0 0 10px;
+}
+
+.tooltip-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tooltip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(26, 20, 16, 0.7);
+}
+
+.tooltip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.tooltip-dot.dot-inv {
+  background: #d35438;
+}
+
+.tooltip-dot.dot-prof {
+  background: #6fa347;
+}
+
+.tooltip-row strong.text-gain {
+  color: #2e7d32;
+}
+
+.tooltip-row strong.text-loss {
+  color: #c62828;
+}
+
+.tooltip-roi-row {
+  border-top: 1px dashed rgba(26, 20, 16, 0.1);
+  padding-top: 6px;
+  margin-top: 2px;
+}
+
+.tooltip-roi-badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.tooltip-roi-badge.is-pos {
+  background: rgba(46, 125, 50, 0.12);
+  color: #2e7d32;
+}
+
+.tooltip-roi-badge.is-neg {
+  background: rgba(198, 40, 40, 0.12);
+  color: #c62828;
+}

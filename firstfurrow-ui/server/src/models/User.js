@@ -8,6 +8,14 @@ const userSchema = new mongoose.Schema(
     passwordHash: { type: String, required: true },
     // set when the password is reset; login tokens issued before this moment stop working
     passwordChangedAt: { type: Date, default: null },
+    // email verification status and transient OTP code hash
+    emailVerified: { type: Boolean, default: false },
+    verificationCodeHash: { type: String, default: null },
+    verificationExpiresAt: { type: Date, default: null },
+    verificationCooldown: { type: Date, default: null },
+    // account-level lockout for repeated wrong passwords
+    failedLoginAttempts: { type: Number, default: 0 },
+    lockUntil: { type: Date, default: null },
   },
   { timestamps: true, versionKey: false }
 );

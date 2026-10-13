@@ -70,30 +70,30 @@ test('only a HASH of the token is stored — a copy of the database cannot reset
 
 test('full journey: reset → old password dead → new password works → confirmation email', withApp({}, async (app) => {
   const f = await requestReset(app);
-  const r = await reset(app, { token: f.token, password: 'brand-new-pass' });
+  const r = await reset(app, { token: f.token, password: 'brand-new-pass1' });
   assert.equal(r.status, 200); assert.deepEqual(r.body, { ok: true });
 
   assert.equal((await login(app, f.email, f.password)).status, 401, 'old password no longer works');
-  const ok = await login(app, f.email, 'brand-new-pass');
+  const ok = await login(app, f.email, 'brand-new-pass1');
   assert.equal(ok.status, 200); assert.ok(ok.body.token);
 
   await app.idle();
   const confirm = app.outbox.at(-1);
   assert.equal(app.outbox.length, 2); assert.equal(confirm.to, f.email); assert.match(confirm.subject, /changed/i);
-  assert.ok(!confirm.text.includes('brand-new-pass'), 'the new password is never emailed');
+  assert.ok(!confirm.text.includes('brand-new-pass1'), 'the new password is never emailed');
 }));
 
 test('a link works exactly once', withApp({}, async (app) => {
   const f = await requestReset(app);
-  assert.equal((await reset(app, { token: f.token, password: 'first-new-pass' })).status, 200);
-  const again = await reset(app, { token: f.token, password: 'second-new-pass' });
+  assert.equal((await reset(app, { token: f.token, password: 'first-new-pass1' })).status, 200);
+  const again = await reset(app, { token: f.token, password: 'second-new-pass1' });
   assert.equal(again.status, 400); assert.equal(again.body.code, 'invalid_reset_token');
-  assert.equal((await login(app, f.email, 'first-new-pass')).status, 200, 'the first password stands');
+  assert.equal((await login(app, f.email, 'first-new-pass1')).status, 200, 'the first password stands');
 }));
 
 test('two people clicking the same link at once: only one wins', withApp({}, async (app) => {
   const f = await requestReset(app);
-  const [a, b] = await Promise.all([reset(app, { token: f.token, password: 'racer-pass-one' }), reset(app, { token: f.token, password: 'racer-pass-two' })]);
+  const [a, b] = await Promise.all([reset(app, { token: f.token, password: 'racer-pass-one1' }), reset(app, { token: f.token, password: 'racer-pass-two2' })]);
   assert.deepEqual([a.status, b.status].sort(), [200, 400]);
 }));
 
@@ -103,7 +103,7 @@ test('an expired link is refused', withApp({}, async (app) => {
   await app.repo.resets.deleteForUser(user.id);
   const raw = 'e'.repeat(43);
   await app.repo.resets.create({ userId: user.id, tokenHash: hashToken(raw), expiresAt: new Date(Date.now() - 1000) });
-  const r = await reset(app, { token: raw, password: 'fresh-password' });
+  const r = await reset(app, { token: raw, password: 'fresh-password1' });
   assert.equal(r.status, 400); assert.equal(r.body.code, 'invalid_reset_token');
   assert.equal((await login(app, f.email, f.password)).status, 200, 'password unchanged');
 }));
@@ -111,7 +111,7 @@ test('an expired link is refused', withApp({}, async (app) => {
 test('made-up, malformed and wrongly-typed tokens are all refused', withApp({}, async (app) => {
   const bad = ['x'.repeat(43), 'short', '', 'a'.repeat(44), `${'a'.repeat(42)}!`, 12345, null, { $ne: null }, ['a'.repeat(43)], undefined];
   for (const token of bad) {
-    const r = await reset(app, { token, password: 'a-fine-password' });
+    const r = await reset(app, { token, password: 'a-fine-password1' });
     assert.equal(r.status, 400, JSON.stringify(token)); assert.equal(r.body.code, 'invalid_reset_token');
   }
 }));
@@ -122,7 +122,7 @@ test('a too-short new password is refused WITHOUT using up the link', withApp({}
     const r = await reset(app, { token: f.token, password });
     assert.equal(r.status, 400); assert.equal(r.body.code, 'weak_password');
   }
-  assert.equal((await reset(app, { token: f.token, password: 'now-a-good-one' })).status, 200, 'same link still works for a valid password');
+  assert.equal((await reset(app, { token: f.token, password: 'now-a-good-one1' })).status, 200, 'same link still works for a valid password');
 }));
 
 test('resetting logs out every older session (someone who stole a login is kicked out)', withApp({}, async (app) => {
@@ -131,18 +131,18 @@ test('resetting logs out every older session (someone who stole a login is kicke
   const oldToken = (await login(app, f.email, f.password)).body.token;
   assert.equal((await app.request('GET', '/api/auth/me', { token: oldToken })).status, 200);
   await new Promise((r) => setTimeout(r, 1100));
-  await reset(app, { token: f.token, password: 'after-the-reset' });
+  await reset(app, { token: f.token, password: 'after-the-reset1' });
   const stale = await app.request('GET', '/api/auth/me', { token: oldToken });
   assert.equal(stale.status, 401); assert.equal(stale.body.code, 'unauthorized');
-  const fresh = (await login(app, f.email, 'after-the-reset')).body.token;
+  const fresh = (await login(app, f.email, 'after-the-reset1')).body.token;
   assert.equal((await app.request('GET', '/api/auth/me', { token: fresh })).status, 200);
 }));
 
 test('a farmer can still use their plans after resetting (data is untouched)', withApp({}, async (app) => {
   const f = await requestReset(app);
   await app.request('POST', '/api/plans', { token: f.token ? (await login(app, f.email, f.password)).body.token : '', body: { cropId: 'okra', land: 1, soilId: 'red', region: 'Salem', season: 'Kharif (Jun–Oct)' } });
-  await reset(app, { token: f.token, password: 'after-the-reset' });
-  const t2 = (await login(app, f.email, 'after-the-reset')).body.token;
+  await reset(app, { token: f.token, password: 'after-the-reset1' });
+  const t2 = (await login(app, f.email, 'after-the-reset1')).body.token;
   assert.equal((await app.request('GET', '/api/plans', { token: t2 })).body.plans.length, 1);
 }));
 
@@ -161,8 +161,8 @@ test('asking again quickly does not send a second email; asking later replaces t
     assert.equal(app2.outbox.length, 2);
     const [first, second] = app2.outbox.map(tokenFrom);
     assert.notEqual(first, second);
-    assert.equal((await reset(app2, { token: first, password: 'old-link-pass' })).status, 400, 'the earlier link is dead');
-    assert.equal((await reset(app2, { token: second, password: 'new-link-pass' })).status, 200);
+    assert.equal((await reset(app2, { token: first, password: 'old-link-pass1' })).status, 400, 'the earlier link is dead');
+    assert.equal((await reset(app2, { token: second, password: 'new-link-pass1' })).status, 200);
   } finally { await app2.close(); }
 });
 

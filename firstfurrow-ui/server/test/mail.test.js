@@ -22,7 +22,7 @@ function fakeSmtp() {
 
 const smtpConfig = (port, over = {}) => loadConfig({
   JWT_SECRET: 'x'.repeat(40), SMTP_HOST: '127.0.0.1', SMTP_PORT: String(port), SMTP_SECURE: 'false',
-  MAIL_USER: 'farm@gmail.test', MAIL_APP_PASSWORD: 'abcd efgh ijkl mnop', ...over,
+  MAIL_USER: 'farm@gmail.test', MAIL_APP_PASSWORD: 'abcd efgh ijkl mnop', SKIP_EMAIL_VERIFICATION: 'true', ...over,
 });
 
 test('the mailer delivers a message over SMTP, authenticating with the app password', async () => {
@@ -65,9 +65,9 @@ test('END TO END: "forgot password" really emails a link that really resets the 
     assert.ok(link, 'the delivered email contains the reset link');
     assert.ok(received[0].mail.html.includes(link[1]));
 
-    const r = await app.request('POST', '/api/auth/reset-password', { body: { token: link[1], password: 'reset-over-smtp' } });
+    const r = await app.request('POST', '/api/auth/reset-password', { body: { token: link[1], password: 'reset-over-smtp1' } });
     assert.equal(r.status, 200);
-    assert.equal((await app.request('POST', '/api/auth/login', { body: { email: f.email, password: 'reset-over-smtp' } })).status, 200);
+    assert.equal((await app.request('POST', '/api/auth/login', { body: { email: f.email, password: 'reset-over-smtp1' } })).status, 200);
   } finally { await app.close(); server.close(); }
 });
 

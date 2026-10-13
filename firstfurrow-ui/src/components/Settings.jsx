@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useLang } from '../i18n/useLang';
 import { errKey } from '../api/errorKey';
 import LangToggle from './LangToggle';
+import PasswordField from './PasswordField';
 import './AuthForm.css';
 import './Settings.css';
 
-// Account settings: change the name, the login email (the farmer's "user ID") and the password.
-//   onSaveProfile({ name, email, currentPassword }) → resolves to the updated user, throws an error with .code
-//   onChangePassword(currentPassword, newPassword)  → resolves when done, throws an error with .code
-export default function Settings({ user, onBack, onSaveProfile, onChangePassword }) {
+// Account settings: change the name, login email, password, and delete account.
+//   onSaveProfile({ name, email, currentPassword }) → resolves to the updated user
+//   onChangePassword(currentPassword, newPassword)  → resolves when done
+//   onDeleteAccount(password)                       → resolves when deleted
+export default function Settings({ user, onBack, onSaveProfile, onChangePassword, onDeleteAccount }) {
   const { t } = useLang();
 
   // ── details ──
@@ -67,6 +69,25 @@ export default function Settings({ user, onBack, onSaveProfile, onChangePassword
     }
   };
 
+  // ── delete account ──
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deletePw, setDeletePw] = useState('');
+  const [deleteBusy, setDeleteBusy] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
+
+  const confirmDelete = async (e) => {
+    e.preventDefault();
+    if (deleteBusy || !deletePw) return;
+    setDeleteBusy(true);
+    setDeleteError('');
+    try {
+      await onDeleteAccount(deletePw);
+    } catch (err) {
+      setDeleteError(err.code || 'generic');
+      setDeleteBusy(false);
+    }
+  };
+
   const message = (code) => (code === 'mismatch' ? t('reset.mismatch') : t(errKey(code)));
 
   return (
@@ -83,6 +104,7 @@ export default function Settings({ user, onBack, onSaveProfile, onChangePassword
       </header>
 
       <main className="set-main">
+        {/* Profile Card */}
         <motion.section className="set-card" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
           <h3>{t('set.profileTitle')}</h3>
           <form className="auth-form" onSubmit={saveProfile}>
@@ -98,7 +120,12 @@ export default function Settings({ user, onBack, onSaveProfile, onChangePassword
             {emailChanged && (
               <label className="auth-field">
                 <span>{t('set.curPwEmail')}</span>
-                <input type="password" value={pwForEmail} onChange={(e) => setPwForEmail(e.target.value)} placeholder="••••••••" autoComplete="current-password" maxLength={72} required />
+                <PasswordField
+                  value={pwForEmail}
+                  onChange={(e) => setPwForEmail(e.target.value)}
+                  autoComplete="current-password"
+                  required
+                />
               </label>
             )}
             {profError && <p className="auth-error" role="alert">{message(profError)}</p>}
@@ -109,22 +136,39 @@ export default function Settings({ user, onBack, onSaveProfile, onChangePassword
           </form>
         </motion.section>
 
+        {/* Password Card */}
         <motion.section className="set-card" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.08 }}>
           <h3>{t('set.pwTitle')}</h3>
           <p className="set-lead">{t('set.pwLead')}</p>
           <form className="auth-form" onSubmit={savePassword}>
             <label className="auth-field">
               <span>{t('set.curPw')}</span>
-              <input type="password" value={cur} onChange={(e) => setCur(e.target.value)} placeholder="••••••••" autoComplete="current-password" maxLength={72} required />
+              <PasswordField
+                value={cur}
+                onChange={(e) => setCur(e.target.value)}
+                autoComplete="current-password"
+                required
+              />
             </label>
             <label className="auth-field">
               <span>{t('set.newPw')}</span>
-              <input type="password" value={next} onChange={(e) => setNext(e.target.value)} placeholder="••••••••" minLength={8} maxLength={72} autoComplete="new-password" required />
+              <PasswordField
+                value={next}
+                onChange={(e) => setNext(e.target.value)}
+                autoComplete="new-password"
+                showRules={true}
+                required
+              />
               <small className="auth-hint">{t('auth.pwHint')}</small>
             </label>
             <label className="auth-field">
               <span>{t('set.confirmPw')}</span>
-              <input type="password" value={again} onChange={(e) => setAgain(e.target.value)} placeholder="••••••••" minLength={8} maxLength={72} autoComplete="new-password" required />
+              <PasswordField
+                value={again}
+                onChange={(e) => setAgain(e.target.value)}
+                autoComplete="new-password"
+                required
+              />
             </label>
             {pwError && <p className="auth-error" role="alert">{message(pwError)}</p>}
             {pwSaved && !pwError && <p className="set-ok" role="status">{t('set.pwSaved')}</p>}
@@ -133,7 +177,76 @@ export default function Settings({ user, onBack, onSaveProfile, onChangePassword
             </motion.button>
           </form>
         </motion.section>
+
+        {/* Danger Zone: Delete Account */}
+        <motion.section className="set-card is-danger" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.16 }}>
+          <h3>{t('set.deleteTitle')}</h3>
+          <p className="set-lead">{t('set.deleteLead')}</p>
+          <button
+            type="button"
+            className="btn-danger"
+            onClick={() => { setShowDeleteModal(true); setDeletePw(''); setDeleteError(''); }}
+          >
+            {t('set.deleteBtn')}
+          </button>
+        </motion.section>
       </main>
+
+      {/* Confirmation Modal */}
+      <AnimatePresence>
+        {showDeleteModal && (
+          <motion.div
+            className="modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => { if (!deleteBusy) setShowDeleteModal(false); }}
+          >
+            <motion.div
+              className="modal-box"
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3>{t('set.deleteModalTitle')}</h3>
+              <p className="modal-warning-text">{t('set.deleteModalWarning')}</p>
+
+              <form onSubmit={confirmDelete}>
+                <label className="auth-field">
+                  <span>{t('set.deleteModalPw')}</span>
+                  <PasswordField
+                    value={deletePw}
+                    onChange={(e) => setDeletePw(e.target.value)}
+                    autoComplete="current-password"
+                    required
+                  />
+                </label>
+
+                {deleteError && <p className="auth-error" style={{ marginTop: '12px' }} role="alert">{message(deleteError)}</p>}
+
+                <div className="modal-actions">
+                  <button
+                    type="button"
+                    className="btn btn-ghost-dark"
+                    onClick={() => setShowDeleteModal(false)}
+                    disabled={deleteBusy}
+                  >
+                    {t('set.deleteModalCancel')}
+                  </button>
+                  <button
+                    type="submit"
+                    className="btn-danger"
+                    disabled={deleteBusy || !deletePw}
+                  >
+                    {deleteBusy ? t('auth.busy') : t('set.deleteModalConfirm')}
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

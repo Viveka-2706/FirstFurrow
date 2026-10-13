@@ -66,10 +66,12 @@ export function createApp(repo, config, { mailer = createMailer(config) } = {}) 
   app.use('/api/auth/login', authLimit);
   app.use('/api/auth/signup', authLimit);
   app.use('/api/auth/reset-password', authLimit);
+  app.use('/api/auth/verify-email', authLimit);
   app.use('/api/auth/change-password', authLimit); // each try checks the current password, so guessing is limited like logging in
   app.use('/api/auth/profile', authLimit);
-  // asking for reset emails is limited much harder than logging in
+  // asking for reset or verification emails is limited much harder than logging in
   app.use('/api/auth/forgot-password', limiter(config.rateLimits.forgot ?? config.rateLimits.auth, 'Too many reset requests. Please wait a few minutes and try again.'));
+  app.use('/api/auth/resend-verification', limiter(config.rateLimits.forgot ?? config.rateLimits.auth, 'Too many verification requests. Please wait a few minutes and try again.'));
 
   const auth = authRoutes(repo, config, mailer);
   app.locals.idle = auth.idle;

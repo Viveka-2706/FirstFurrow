@@ -5,10 +5,22 @@ import { api, getToken, setToken, clearToken } from './client';
 
 export const hasSession = () => Boolean(getToken());
 
-export async function signup({ name, email, password }) {
-  const { token, user } = await api('/auth/signup', { method: 'POST', body: { name, email, password }, auth: false });
+export async function signup({ name, email, password, lang }) {
+  const res = await api('/auth/signup', { method: 'POST', body: { name, email, password, lang }, auth: false });
+  if (res.token) {
+    setToken(res.token);
+  }
+  return res;
+}
+
+export async function verifyEmail({ email, code }) {
+  const { token, user } = await api('/auth/verify-email', { method: 'POST', body: { email, code }, auth: false });
   setToken(token);
   return user;
+}
+
+export async function resendVerification({ email, lang }) {
+  return api('/auth/resend-verification', { method: 'POST', body: { email, lang }, auth: false });
 }
 
 export async function login({ email, password }) {
@@ -65,4 +77,11 @@ export const updateProfile = async ({ name, email, currentPassword, lang }) =>
 export async function changePassword(currentPassword, newPassword, lang) {
   const { token } = await api('/auth/change-password', { method: 'POST', body: { currentPassword, newPassword, lang } });
   setToken(token);
+}
+
+// Permanently wipes the user's account and farm data from the database.
+export async function deleteAccount(password) {
+  const res = await api('/auth/me', { method: 'DELETE', body: { password } });
+  clearToken();
+  return res;
 }

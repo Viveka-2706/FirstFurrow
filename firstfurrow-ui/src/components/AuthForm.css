@@ -57,3 +57,40 @@
 .auth-forgot { align-self: flex-end; margin-top: 2px; font-size: 0.82rem; font-weight: 600; color: var(--sprout-deep); text-decoration: underline; text-underline-offset: 3px; }
 .auth-forgot:hover { color: var(--field); }
 .auth-card .auth-submit.btn-ghost-dark { width: 100%; margin-bottom: 4px; }
+
+.auth-code-input {
+  font-family: monospace !important;
+  font-size: 1.6rem !important;
+  letter-spacing: 0.4em !important;
+  text-align: center;
+  padding: 12px !important;
+  font-weight: 700;
+  color: var(--sprout-deep);
+}
+
+.auth-verify-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.auth-resend-btn {
+  background: none;
+  border: none;
+  color: var(--sprout-deep);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+
+.auth-resend-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+

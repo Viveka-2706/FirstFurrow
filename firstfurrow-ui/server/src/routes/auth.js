@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { HttpError, badRequest, conflict, unauthorized, DuplicateEmailError } from '../errors.js';
 import { validateSignup, validateLogin, validateEmail, validatePassword, validateProfile, hashPassword, checkPassword, signToken, publicUser } from '../services/auth.js';
 import { newToken, hashToken, TOKEN_RE, resetEmail, changedEmail, emailChangedEmail } from '../services/passwordReset.js';
+import { newVerificationCode, hashVerificationCode, verificationEmail } from '../services/emailVerification.js';
 import { isStr } from '../validate.js';
 import { requireAuth } from '../middleware/auth.js';
 import { wrap } from '../middleware/wrap.js';
@@ -13,7 +14,7 @@ export function authRoutes(repo, config, mailer) {
   // address has an account (so timing can't reveal who is registered), and a slow mail server never blocks the page.
   const pending = new Set();
   const inBackground = (promise) => {
-    const task = promise.catch((err) => console.error(`[password reset] ${err.message}`)).finally(() => pending.delete(task));
+    const task = promise.catch((err) => console.error(`[email service] ${err.message}`)).finally(() => pending.delete(task));
     pending.add(task);
   };
   router.idle = () => Promise.allSettled([...pending]); // lets tests wait for background work
@@ -22,21 +23,166 @@ export function authRoutes(repo, config, mailer) {
 
   router.post('/signup', wrap(async (req, res) => {
     const { name, email, password } = validateSignup(req.body);
+    const lang = req.body?.lang === 'ta' ? 'ta' : 'en';
+
+    // If skipEmailVerification is enabled (e.g. fast unit tests), auto-verify
+    if (config.skipEmailVerification) {
+      let user;
+      try {
+        user = await repo.users.create({
+          name,
+          email,
+          passwordHash: await hashPassword(password, config.bcryptRounds),
+          emailVerified: true,
+        });
+      } catch (err) {
+        if (err instanceof DuplicateEmailError) throw conflict('An account with this email already exists.', 'email_taken');
+        throw err;
+      }
+      return res.status(201).json({ token: signToken(user.id, config), user: publicUser(user) });
+    }
+
+    const code = newVerificationCode();
+    const codeHash = hashVerificationCode(code);
+    const expiresAt = new Date(Date.now() + config.verificationCodeMinutes * 60 * 1000);
+
     let user;
     try {
-      user = await repo.users.create({ name, email, passwordHash: await hashPassword(password, config.bcryptRounds) });
+      user = await repo.users.create({
+        name,
+        email,
+        passwordHash: await hashPassword(password, config.bcryptRounds),
+        emailVerified: false,
+        verificationCodeHash: codeHash,
+        verificationExpiresAt: expiresAt,
+      });
     } catch (err) {
       if (err instanceof DuplicateEmailError) throw conflict('An account with this email already exists.', 'email_taken');
       throw err;
     }
-    res.status(201).json({ token: signToken(user.id, config), user: publicUser(user) });
+
+    // Send verification email
+    if (mailer && mailer.kind !== 'none') {
+      inBackground(mailer.send({
+        to: user.email,
+        ...verificationEmail({ lang, name: user.name, code, minutes: config.verificationCodeMinutes }),
+      }));
+    } else {
+      console.log(`[FirstFurrow DEV] Email verification code for ${user.email} is: ${code}`);
+    }
+
+    res.status(201).json({
+      requiresVerification: true,
+      email: user.email,
+      message: 'Verification code sent to your email.',
+      user: publicUser(user),
+    });
+  }));
+
+  // ── Email verification ────────────────────────────────────────────────────────
+  router.post('/verify-email', wrap(async (req, res) => {
+    const email = validateEmail(req.body?.email);
+    const codeStr = String(req.body?.code ?? '').trim();
+    if (!/^\d{6}$/.test(codeStr)) throw badRequest('Please enter a valid 6-digit verification code.', 'invalid_code');
+
+    const user = await repo.users.findByEmail(email);
+    if (!user) throw badRequest('Invalid verification request.', 'invalid_code');
+
+    if (user.emailVerified) {
+      return res.json({ token: signToken(user.id, config), user: publicUser(user), alreadyVerified: true });
+    }
+
+    if (!user.verificationCodeHash || !user.verificationExpiresAt || new Date(user.verificationExpiresAt).getTime() <= Date.now()) {
+      throw badRequest('Verification code has expired. Please request a new one.', 'code_expired');
+    }
+
+    if (hashVerificationCode(codeStr) !== user.verificationCodeHash) {
+      throw badRequest('Incorrect verification code. Please check and try again.', 'invalid_code');
+    }
+
+    const updated = await repo.users.markEmailVerified(user.id);
+    res.json({ token: signToken(user.id, config), user: publicUser(updated) });
+  }));
+
+  router.post('/resend-verification', wrap(async (req, res) => {
+    const email = validateEmail(req.body?.email);
+    const lang = req.body?.lang === 'ta' ? 'ta' : 'en';
+
+    const user = await repo.users.findByEmail(email);
+    if (!user || user.emailVerified) return res.json({ ok: true }); // do not disclose registration status
+
+    if (user.verificationCooldown && Date.now() - new Date(user.verificationCooldown).getTime() < config.verificationCooldownSeconds * 1000) {
+      throw new HttpError(429, 'Please wait a moment before requesting another verification code.', 'rate_limited');
+    }
+
+    const code = newVerificationCode();
+    const codeHash = hashVerificationCode(code);
+    const expiresAt = new Date(Date.now() + config.verificationCodeMinutes * 60 * 1000);
+    await repo.users.setVerificationCode(user.id, { codeHash, expiresAt, cooldown: new Date() });
+
+    if (mailer && mailer.kind !== 'none') {
+      inBackground(mailer.send({
+        to: user.email,
+        ...verificationEmail({ lang, name: user.name, code, minutes: config.verificationCodeMinutes }),
+      }));
+    } else {
+      console.log(`[FirstFurrow DEV] Email verification code for ${user.email} is: ${code}`);
+    }
+
+    res.json({ ok: true });
   }));
 
   router.post('/login', wrap(async (req, res) => {
     const { email, password } = validateLogin(req.body);
+    const lang = req.body?.lang === 'ta' ? 'ta' : 'en';
     const user = await repo.users.findByEmail(email);
+
+    // Account-level lockout check:
+    if (user?.lockUntil && new Date(user.lockUntil).getTime() > Date.now()) {
+      const remainingMins = Math.max(1, Math.ceil((new Date(user.lockUntil).getTime() - Date.now()) / 60000));
+      throw new HttpError(429, `This account is temporarily locked due to repeated incorrect password attempts. Please try again in ${remainingMins} minute(s).`, 'account_locked');
+    }
+
     const ok = await checkPassword(password, user ? user.passwordHash : await dummyHash);
-    if (!user || !ok) throw unauthorized('Incorrect email or password.', 'bad_credentials');
+    if (!user || !ok) {
+      if (user) {
+        const attempts = (user.failedLoginAttempts || 0) + 1;
+        if (attempts >= config.maxFailedLogins) {
+          const lockUntil = new Date(Date.now() + config.lockoutMinutes * 60 * 1000);
+          await repo.users.recordFailedAttempt(user.id, { attempts, lockUntil });
+          throw new HttpError(429, `Too many incorrect password attempts. This account is locked for ${config.lockoutMinutes} minutes.`, 'account_locked');
+        } else {
+          await repo.users.recordFailedAttempt(user.id, { attempts, lockUntil: null });
+        }
+      }
+      throw unauthorized('Incorrect email or password.', 'bad_credentials');
+    }
+
+    // Require email verification unless explicitly skipped by config
+    if (!user.emailVerified && !config.skipEmailVerification) {
+      const codeValid = user.verificationCodeHash && user.verificationExpiresAt && new Date(user.verificationExpiresAt).getTime() > Date.now();
+      if (!codeValid) {
+        const code = newVerificationCode();
+        const codeHash = hashVerificationCode(code);
+        const expiresAt = new Date(Date.now() + config.verificationCodeMinutes * 60 * 1000);
+        await repo.users.setVerificationCode(user.id, { codeHash, expiresAt, cooldown: new Date() });
+        if (mailer && mailer.kind !== 'none') {
+          inBackground(mailer.send({
+            to: user.email,
+            ...verificationEmail({ lang, name: user.name, code, minutes: config.verificationCodeMinutes }),
+          }));
+        } else {
+          console.log(`[FirstFurrow DEV] Email verification code for ${user.email} is: ${code}`);
+        }
+      }
+      throw new HttpError(403, 'Please verify your email address before logging in.', 'email_not_verified');
+    }
+
+    // Successful login: reset failed login attempts if any were recorded
+    if (user.failedLoginAttempts > 0 || user.lockUntil) {
+      await repo.users.resetFailedAttempts(user.id);
+    }
+
     res.json({ token: signToken(user.id, config), user: publicUser(user) });
   }));
 
@@ -90,9 +236,7 @@ export function authRoutes(repo, config, mailer) {
     res.json({ user: publicUser(await repo.users.findById(req.userId)) });
   }));
 
-  // ── Settings (the farmer is logged in) ──────────────────────────────────────
-  // A stolen or left-open session must not be enough to take over an account, so changing the login email or the
-  // password asks for the CURRENT password again. (403, not 401: the login itself is fine, so the app must not log out.)
+  // ── Settings & Account Deletion ──────────────────────────────────────────────
   const wrongPassword = () => new HttpError(403, 'Your current password is not correct.', 'wrong_password');
   const lang = (req) => (req.body?.lang === 'ta' ? 'ta' : 'en');
 
@@ -135,6 +279,22 @@ export function authRoutes(repo, config, mailer) {
     if (config.appUrl) inBackground(mailer.send({ to: user.email, ...changedEmail({ lang: lang(req), name: user.name, forgotUrl: `${config.appUrl}/` }) }));
     // Every login issued before now stops working (that is what signs out other devices). This device gets a fresh one.
     res.json({ token: signToken(user.id, config), user: publicUser(user) });
+  }));
+
+  // ── Delete my account ───────────────────────────────────────────────────────
+  // Permanently wipes the user's account and all associated farm plans and reset tokens.
+  // Requires verifying current password so an unattended session cannot be abused.
+  router.delete('/me', requireAuth(config, repo), wrap(async (req, res) => {
+    const { password } = req.body ?? {};
+    const user = await repo.users.findById(req.userId);
+    if (!user) throw unauthorized();
+    if (!isStr(password) || !(await checkPassword(password, user.passwordHash))) throw wrongPassword();
+
+    await repo.plans.deleteAllForUser(user.id);
+    await repo.resets.deleteForUser(user.id);
+    await repo.users.delete(user.id);
+
+    res.json({ ok: true, deleted: true });
   }));
 
   return router;

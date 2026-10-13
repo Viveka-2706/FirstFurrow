@@ -43,6 +43,11 @@ export function loadConfig(env = process.env) {
     },
     resetTokenMinutes: Number(env.RESET_TOKEN_MINUTES) || 30,
     resetCooldownSeconds: 60, // at most one reset email per account per minute (stops email-bombing)
+    verificationCodeMinutes: Number(env.VERIFICATION_CODE_MINUTES) || 15,
+    verificationCooldownSeconds: 60, // 1 minute cooldown between resending codes
+    maxFailedLogins: Number(env.MAX_FAILED_LOGINS) || 5,
+    lockoutMinutes: Number(env.LOCKOUT_MINUTES) || 10,
+    skipEmailVerification: env.SKIP_EMAIL_VERIFICATION === 'true',
     clientOrigins: list(env.CLIENT_ORIGIN), // only needed when the frontend is hosted on a different domain
     clientDir: env.CLIENT_DIST ? path.resolve(env.CLIENT_DIST) : path.resolve(here, '../../dist'),
     serveClient: env.SERVE_CLIENT !== 'false',

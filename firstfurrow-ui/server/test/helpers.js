@@ -24,6 +24,7 @@ export function testConfig(overrides = {}) {
     rateLimits: { auth: { windowMs: 60000, limit: 10000 }, api: { windowMs: 60000, limit: 10000 }, forgot: { windowMs: 60000, limit: 10000 } },
     appUrl: 'https://farm.example.com',
     serveClient: false,
+    skipEmailVerification: true,
     ...overrides,
   };
 }
@@ -56,8 +57,8 @@ export async function startApp(overrides = {}) {
   // registers a fresh farmer and returns their token
   const signup = async (name = 'Test Farmer') => {
     const email = `farmer${++counter}-${Math.random().toString(36).slice(2, 7)}@example.com`;
-    const r = await request('POST', '/api/auth/signup', { body: { name, email, password: 'correct-horse' } });
-    return { token: r.body.token, user: r.body.user, email, password: 'correct-horse' };
+    const r = await request('POST', '/api/auth/signup', { body: { name, email, password: 'correct-horse1' } });
+    return { token: r.body.token, user: r.body.user, email, password: 'correct-horse1' };
   };
 
   return { repo, config, base, request, signup, outbox, mailer, idle: () => expressApp.locals.idle(), close: () => new Promise((r) => server.close(r)) };

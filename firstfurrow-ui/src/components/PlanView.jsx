@@ -8,6 +8,7 @@ import StageDetail from './StageDetail';
 import UpNextCard from './UpNextCard';
 import FieldJournal from './FieldJournal';
 import SymptomChecker from './SymptomChecker';
+import PrintPlan from './PrintPlan';
 import { useLang } from '../i18n/useLang';
 import { cropDisplayName } from '../data/dummyData';
 import { iconFor } from './StageNav';
@@ -129,6 +130,9 @@ export default function PlanView({ plan, onBack, onToggleStage, onAddJournal, on
           )}
         </div>
       </main>
+
+      {/* what actually comes out of the printer: the whole plan, not the screen */}
+      <PrintPlan plan={plan} crop={crop} />
     </div>
   );
 }

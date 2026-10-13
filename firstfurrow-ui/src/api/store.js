@@ -55,3 +55,14 @@ export const deleteJournalEntry = async (planId, entryId) =>
 export const requestPasswordReset = (email, lang) => api('/auth/forgot-password', { method: 'POST', body: { email, lang }, auth: false });
 
 export const resetPassword = (token, password, lang) => api('/auth/reset-password', { method: 'POST', body: { token, password, lang }, auth: false });
+
+// ── Settings ────────────────────────────────────────────────────────────────
+// name and/or email. Changing the email needs the current password. Resolves to the updated user.
+export const updateProfile = async ({ name, email, currentPassword, lang }) =>
+  (await api('/auth/profile', { method: 'PATCH', body: { name, email, currentPassword, lang } })).user;
+
+// The server signs every OTHER device out and hands this one a fresh login, which we keep.
+export async function changePassword(currentPassword, newPassword, lang) {
+  const { token } = await api('/auth/change-password', { method: 'POST', body: { currentPassword, newPassword, lang } });
+  setToken(token);
+}

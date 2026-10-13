@@ -2,5 +2,6 @@
 const KNOWN = new Set([
   'email_taken', 'bad_credentials', 'weak_password', 'invalid_email', 'validation', 'network', 'rate_limited',
   'server_error', 'unauthorized', 'invalid_reset_token', 'email_unavailable', 'plan_limit', 'stage_locked', 'plan_completed', 'not_finished', 'journal_full',
+  'wrong_password', 'same_password',
 ]);
 export const errKey = (code) => `err.${KNOWN.has(code) ? code : 'generic'}`;

@@ -204,3 +204,8 @@
 .plan-tile-confirm-actions { display: flex; gap: 10px; }
 .plan-tile-confirm-yes { background: var(--chili); box-shadow: none; }
 .plan-tile-confirm-yes:hover { background: #a53a24; }
+
+@media (max-width: 640px) {
+  .dashboard-nav { padding: 16px 4vw; }
+  .dashboard-user { display: none; } /* make room for Settings and Log out on a phone */
+}

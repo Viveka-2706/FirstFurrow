@@ -64,6 +64,19 @@ export function createMongoRepo() {
         const d = await User.findById(id).lean();
         return d ? toUser(d) : null;
       },
+      // name and/or email. A taken email throws DuplicateEmailError, same as signing up.
+      async updateProfile(id, { name, email }) {
+        const set = {};
+        if (name !== undefined) set.name = name;
+        if (email !== undefined) set.email = email.toLowerCase();
+        try {
+          const d = await User.findByIdAndUpdate(id, { $set: set }, { new: true, runValidators: true }).lean();
+          return d ? toUser(d) : null;
+        } catch (err) {
+          if (err?.code === 11000) throw new DuplicateEmailError();
+          throw err;
+        }
+      },
       async updatePassword(id, passwordHash) {
         const d = await User.findByIdAndUpdate(id, { $set: { passwordHash, passwordChangedAt: new Date() } }, { new: true }).lean();
         return d ? toUser(d) : null;

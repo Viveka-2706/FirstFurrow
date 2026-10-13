@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { HttpError, badRequest, conflict, unauthorized, DuplicateEmailError } from '../errors.js';
-import { validateSignup, validateLogin, validateEmail, validatePassword, hashPassword, checkPassword, signToken, publicUser } from '../services/auth.js';
-import { newToken, hashToken, TOKEN_RE, resetEmail, changedEmail } from '../services/passwordReset.js';
+import { validateSignup, validateLogin, validateEmail, validatePassword, validateProfile, hashPassword, checkPassword, signToken, publicUser } from '../services/auth.js';
+import { newToken, hashToken, TOKEN_RE, resetEmail, changedEmail, emailChangedEmail } from '../services/passwordReset.js';
 import { isStr } from '../validate.js';
 import { requireAuth } from '../middleware/auth.js';
 import { wrap } from '../middleware/wrap.js';
@@ -88,6 +88,53 @@ export function authRoutes(repo, config, mailer) {
 
   router.get('/me', requireAuth(config, repo), wrap(async (req, res) => {
     res.json({ user: publicUser(await repo.users.findById(req.userId)) });
+  }));
+
+  // ── Settings (the farmer is logged in) ──────────────────────────────────────
+  // A stolen or left-open session must not be enough to take over an account, so changing the login email or the
+  // password asks for the CURRENT password again. (403, not 401: the login itself is fine, so the app must not log out.)
+  const wrongPassword = () => new HttpError(403, 'Your current password is not correct.', 'wrong_password');
+  const lang = (req) => (req.body?.lang === 'ta' ? 'ta' : 'en');
+
+  router.patch('/profile', requireAuth(config, repo), wrap(async (req, res) => {
+    const changes = validateProfile(req.body);
+    const user = await repo.users.findById(req.userId);
+    if (!user) throw unauthorized();
+    const emailChanges = changes.email !== undefined && changes.email !== user.email;
+    if (changes.email === user.email) delete changes.email; // same address typed again: nothing to do
+    if (emailChanges) {
+      if (!isStr(req.body.currentPassword) || !(await checkPassword(req.body.currentPassword, user.passwordHash))) throw wrongPassword();
+    }
+    if (changes.name === user.name) delete changes.name;
+    if (!('name' in changes) && !('email' in changes)) return res.json({ user: publicUser(user) });
+
+    let updated;
+    try {
+      updated = await repo.users.updateProfile(user.id, changes);
+    } catch (err) {
+      if (err instanceof DuplicateEmailError) throw conflict('An account with this email already exists.', 'email_taken');
+      throw err;
+    }
+    if (emailChanges) {
+      await repo.resets.deleteForUser(user.id); // a reset link sent to the old address must not work any more
+      if (config.appUrl) inBackground(mailer.send({ to: user.email, ...emailChangedEmail({ lang: lang(req), name: updated.name, newEmail: updated.email, forgotUrl: `${config.appUrl}/` }) }));
+    }
+    res.json({ user: publicUser(updated) });
+  }));
+
+  router.post('/change-password', requireAuth(config, repo), wrap(async (req, res) => {
+    const { currentPassword, newPassword } = req.body ?? {};
+    const user = await repo.users.findById(req.userId);
+    if (!user) throw unauthorized();
+    if (!isStr(currentPassword) || !(await checkPassword(currentPassword, user.passwordHash))) throw wrongPassword();
+    validatePassword(newPassword);
+    if (newPassword === currentPassword) throw badRequest('Choose a password different from your current one.', 'same_password');
+
+    await repo.users.updatePassword(user.id, await hashPassword(newPassword, config.bcryptRounds));
+    await repo.resets.deleteForUser(user.id);
+    if (config.appUrl) inBackground(mailer.send({ to: user.email, ...changedEmail({ lang: lang(req), name: user.name, forgotUrl: `${config.appUrl}/` }) }));
+    // Every login issued before now stops working (that is what signs out other devices). This device gets a fresh one.
+    res.json({ token: signToken(user.id, config), user: publicUser(user) });
   }));
 
   return router;

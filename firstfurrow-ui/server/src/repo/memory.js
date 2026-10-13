@@ -34,6 +34,17 @@ export function createMemoryRepo(seed) {
       },
       findByEmail: async (email) => clone([...users.values()].find((u) => u.email === email.toLowerCase()) ?? null),
       findById: async (id) => clone(users.get(id) ?? null),
+      async updateProfile(id, { name, email }) {
+        const u = users.get(id);
+        if (!u) return null;
+        if (email !== undefined) {
+          const lower = email.toLowerCase();
+          if ([...users.values()].some((o) => o.id !== id && o.email === lower)) throw new DuplicateEmailError();
+          u.email = lower;
+        }
+        if (name !== undefined) u.name = name;
+        return clone(u);
+      },
       async updatePassword(id, passwordHash) {
         const u = users.get(id);
         if (!u) return null;

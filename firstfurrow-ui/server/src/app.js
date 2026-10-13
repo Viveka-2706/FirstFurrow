@@ -66,6 +66,8 @@ export function createApp(repo, config, { mailer = createMailer(config) } = {}) 
   app.use('/api/auth/login', authLimit);
   app.use('/api/auth/signup', authLimit);
   app.use('/api/auth/reset-password', authLimit);
+  app.use('/api/auth/change-password', authLimit); // each try checks the current password, so guessing is limited like logging in
+  app.use('/api/auth/profile', authLimit);
   // asking for reset emails is limited much harder than logging in
   app.use('/api/auth/forgot-password', limiter(config.rateLimits.forgot ?? config.rateLimits.auth, 'Too many reset requests. Please wait a few minutes and try again.'));
 

@@ -18,6 +18,9 @@ const COPY = {
     changedSubject: 'Your FirstFurrow password was changed',
     changedBody: 'The password for your FirstFurrow account was just changed.',
     changedWarn: "If this wasn't you, reset your password again straight away:",
+    emailSubject: 'Your FirstFurrow login email was changed',
+    emailBody: (to) => `The login email for your FirstFurrow account was just changed to ${to}. From now on, log in with the new address.`,
+    emailWarn: "If this wasn't you, reset your password straight away using the link below, then check your account.",
   },
   ta: {
     resetSubject: 'உங்கள் FirstFurrow கடவுச்சொல்லை மீட்டமைக்க',
@@ -28,6 +31,9 @@ const COPY = {
     changedSubject: 'உங்கள் FirstFurrow கடவுச்சொல் மாற்றப்பட்டது',
     changedBody: 'உங்கள் FirstFurrow கணக்கின் கடவுச்சொல் இப்போதுதான் மாற்றப்பட்டது.',
     changedWarn: 'இதை நீங்கள் செய்யவில்லை என்றால், உடனே மீண்டும் கடவுச்சொல்லை மீட்டமைக்கவும்:',
+    emailSubject: 'உங்கள் FirstFurrow உள்நுழைவு மின்னஞ்சல் மாற்றப்பட்டது',
+    emailBody: (to) => `உங்கள் FirstFurrow கணக்கின் உள்நுழைவு மின்னஞ்சல் இப்போதுதான் ${to} என மாற்றப்பட்டது. இனி புதிய முகவரியில் உள்நுழையுங்கள்.`,
+    emailWarn: 'இதை நீங்கள் செய்யவில்லை என்றால், கீழுள்ள இணைப்பில் உடனே கடவுச்சொல்லை மீட்டமைத்து, உங்கள் கணக்கைச் சரிபார்க்கவும்.',
   },
 };
 
@@ -51,4 +57,12 @@ export function changedEmail({ lang, name, forgotUrl }) {
   const text = `${c.resetIntro(name)}\n\n${c.changedBody}\n\n${c.changedWarn}\n${forgotUrl}\n`;
   const html = wrap(`<p>${esc(c.resetIntro(name))}</p><p>${esc(c.changedBody)}</p><p>${esc(c.changedWarn)}</p>${button(forgotUrl, COPY[lang]?.resetButton ?? COPY.en.resetButton)}`);
   return { subject: c.changedSubject, text, html };
+}
+
+// Sent to the OLD address when the login email is changed, so a stolen session can't quietly take over an account.
+export function emailChangedEmail({ lang, name, newEmail, forgotUrl }) {
+  const c = COPY[lang] ?? COPY.en;
+  const text = `${c.resetIntro(name)}\n\n${c.emailBody(newEmail)}\n\n${c.emailWarn}\n${forgotUrl}\n`;
+  const html = wrap(`<p>${esc(c.resetIntro(name))}</p><p>${esc(c.emailBody(newEmail))}</p><p>${esc(c.emailWarn)}</p>${button(forgotUrl, c.resetButton)}`);
+  return { subject: c.emailSubject, text, html };
 }

@@ -64,6 +64,20 @@ export function defineRepoContract(label, setup) {
       assert.equal(await repo.users.updatePassword('f'.repeat(24), 'x'), null);
     });
 
+    it('users: updateProfile changes name and/or email; a taken email is refused; unknown id is null', async () => {
+      const a = await repo.users.create({ name: 'Prof A', email: 'prof.a@example.com', passwordHash: 'x' });
+      const b = await repo.users.create({ name: 'Prof B', email: 'prof.b@example.com', passwordHash: 'x' });
+      const renamed = await repo.users.updateProfile(a.id, { name: 'Prof Alpha' });
+      assert.equal(renamed.name, 'Prof Alpha'); assert.equal(renamed.email, 'prof.a@example.com');
+      const moved = await repo.users.updateProfile(a.id, { email: 'Prof.Alpha@Example.com' });
+      assert.equal(moved.email, 'prof.alpha@example.com');
+      assert.equal(await repo.users.findByEmail('prof.a@example.com'), null);
+      assert.equal((await repo.users.findByEmail('prof.alpha@example.com')).id, a.id);
+      await assert.rejects(() => repo.users.updateProfile(a.id, { email: b.email }), DuplicateEmailError);
+      assert.equal((await repo.users.findById(a.id)).email, 'prof.alpha@example.com');
+      assert.equal(await repo.users.updateProfile('f'.repeat(24), { name: 'Nobody' }), null);
+    });
+
     it('password resets: create replaces older links, latest, consume is single-use, delete', async () => {
       const u = await repo.users.create({ name: 'Reset', email: 'reset@example.com', passwordHash: 'x' });
       const future = new Date(Date.now() + 60000);

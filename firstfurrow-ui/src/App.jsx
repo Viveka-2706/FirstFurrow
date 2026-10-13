@@ -14,6 +14,7 @@ import BootScreen from './components/BootScreen';
 import Toast from './components/Toast';
 import ForgotPasswordForm from './components/ForgotPasswordForm';
 import ResetPasswordForm from './components/ResetPasswordForm';
+import Settings from './components/Settings';
 import { useLang } from './i18n/useLang';
 import * as store from './api/store';
 import './App.css';
@@ -156,6 +157,14 @@ export default function App() {
     setView('auth');
   };
 
+  // Settings: let the page show the error itself (it throws), and keep the shown name in step with the server
+  const handleSaveProfile = async (changes) => {
+    const updated = await store.updateProfile({ ...changes, lang });
+    setUser(updated);
+    return updated;
+  };
+  const handleChangePassword = (current, next) => store.changePassword(current, next, lang);
+
   const handleLogout = () => {
     store.logout();
     setUser(null);
@@ -270,9 +279,16 @@ export default function App() {
               onOpenPlan={(plan) => { setActivePlanId(plan.id); setView('plan'); }}
               onOpenCompleted={(plan) => { setActivePlanId(plan.id); setView('completed-detail'); }}
               onNewPlan={() => { setWizardForm(null); setView('wizard'); }}
+              onOpenSettings={() => setView('settings')}
               onLogout={handleLogout}
               onDeletePlan={handleDeletePlan}
             />
+          </motion.div>
+        )}
+
+        {view === 'settings' && user && (
+          <motion.div key="settings" variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.4 }}>
+            <Settings user={user} onBack={() => setView('dashboard')} onSaveProfile={handleSaveProfile} onChangePassword={handleChangePassword} />
           </motion.div>
         )}
 

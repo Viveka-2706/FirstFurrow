@@ -7,7 +7,7 @@ import LangToggle from './LangToggle';
 import { useLang } from '../i18n/useLang';
 import './Dashboard.css';
 
-export default function Dashboard({ user, plans, onOpenPlan, onOpenCompleted, onNewPlan, onLogout, onDeletePlan }) {
+export default function Dashboard({ user, plans, onOpenPlan, onOpenCompleted, onNewPlan, onOpenSettings, onLogout, onDeletePlan }) {
   const { t, crop: loc, region, soilName } = useLang();
   const [tab, setTab] = useState('active');
   const [confirmId, setConfirmId] = useState(null);
@@ -60,6 +60,9 @@ export default function Dashboard({ user, plans, onOpenPlan, onOpenCompleted, on
         <div className="nav-actions">
           <LangToggle variant="dark" />
           <span className="dashboard-user">{t('dash.hi', { name: user.name.split(' ')[0] })}</span>
+          <motion.button className="btn btn-ghost-dark" onClick={onOpenSettings} whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+            {t('dash.settings')}
+          </motion.button>
           <motion.button className="btn btn-ghost-dark" onClick={onLogout} whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
             {t('dash.logout')}
           </motion.button>

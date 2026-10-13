@@ -1,0 +1,25 @@
+.set-page { min-height: 100vh; background: var(--mist); font-family: var(--font-body); }
+.set-top { background: rgba(246, 242, 231, 0.92); border-bottom: 1px solid rgba(26, 20, 16, 0.08); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px); }
+.set-top-inner { max-width: 760px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; gap: 14px; }
+.set-back {
+  width: 46px; height: 46px; border-radius: 50%; background: #fff; font-size: 1.3rem; font-weight: 800; color: var(--ink);
+  box-shadow: 0 4px 10px -6px rgba(26,20,16,0.5); transition: transform 0.15s; flex-shrink: 0;
+}
+.set-back:hover { transform: translateX(-3px); }
+.set-heading { min-width: 0; flex: 1; }
+.set-heading .eyebrow { color: var(--sprout-deep); margin-bottom: 2px; display: block; }
+.set-heading h2 { font-size: 1.5rem; line-height: 1.2; }
+
+.set-main { max-width: 760px; margin: 0 auto; padding: 26px 20px 80px; display: flex; flex-direction: column; gap: 22px; }
+.set-card { background: #fff; border-radius: var(--radius-l); padding: 32px 34px; box-shadow: var(--shadow-card); }
+.set-card h3 { font-size: 1.25rem; margin-bottom: 18px; }
+.set-lead { color: rgba(26, 20, 16, 0.7); font-size: 0.92rem; line-height: 1.6; margin: -8px 0 20px; }
+.set-ok { font-size: 0.88rem; font-weight: 700; padding: 10px 14px; border-radius: var(--radius-s); background: rgba(111, 163, 71, 0.18); color: #35581d; }
+.set-card .auth-submit { align-self: flex-start; min-width: 190px; }
+.set-card .auth-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+
+@media (max-width: 520px) {
+  .set-card { padding: 24px 20px; }
+  .set-card .auth-submit { align-self: stretch; }
+  .set-top-inner { padding: 10px 14px; }
+}

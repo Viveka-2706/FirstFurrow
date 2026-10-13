@@ -28,6 +28,19 @@ export function validateSignup(body = {}) {
   return { name, email, password: validatePassword(body.password) };
 }
 
+// Settings page: any of name / email may be sent; whatever is sent is checked like at sign-up.
+export function validateProfile(body = {}) {
+  const out = {};
+  if (body.name !== undefined) {
+    if (!isStr(body.name) || !body.name.trim()) throw badRequest('Please enter your name.', 'validation');
+    out.name = body.name.trim();
+    if (out.name.length > 80) throw badRequest('That name is too long.', 'validation');
+  }
+  if (body.email !== undefined) out.email = validateEmail(body.email);
+  if (!('name' in out) && !('email' in out)) throw badRequest('Nothing to update.', 'validation');
+  return out;
+}
+
 export function validateLogin(body = {}) {
   const email = validateEmail(body.email);
   // type check only — wrong passwords must look identical to unknown emails

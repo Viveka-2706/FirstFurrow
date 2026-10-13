@@ -20,6 +20,36 @@ export default function WizardForm({ onComplete, onBack }) {
   const STEPS = STEP_KEYS.map((k) => t(k));
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({ land: 0.5, soil: null, budget: null, region: null, season: null });
+  const [writtenLand, setWrittenLand] = useState('0.5');
+
+  const setLandVal = (val) => {
+    const clamped = Math.max(0.05, Math.min(50, Math.round(val * 100) / 100));
+    setForm((prev) => ({ ...prev, land: clamped }));
+    setWrittenLand(String(clamped));
+  };
+
+  const adjustLand = (delta) => {
+    const current = parseFloat(writtenLand) || form.land || 0.5;
+    setLandVal(current + delta);
+  };
+
+  const handleWrittenLandChange = (e) => {
+    const val = e.target.value;
+    setWrittenLand(val);
+    const parsed = parseFloat(val);
+    if (!isNaN(parsed) && parsed > 0) {
+      setForm((prev) => ({ ...prev, land: parsed }));
+    }
+  };
+
+  const handleWrittenLandBlur = () => {
+    const parsed = parseFloat(writtenLand);
+    if (isNaN(parsed) || parsed <= 0) {
+      setLandVal(0.5);
+    } else {
+      setLandVal(parsed);
+    }
+  };
 
   const canNext =
     (step === 0 && form.land > 0) ||
@@ -63,18 +93,72 @@ export default function WizardForm({ onComplete, onBack }) {
             >
               {step === 0 && (
                 <StepBlock title={t('wiz.land.title')} subtitle={t('wiz.land.sub')}>
-                  <div className="land-input">
-                    <input
-                      type="range"
-                      min="0.05"
-                      max="3"
-                      step="0.05"
-                      value={form.land}
-                      onChange={(e) => setForm({ ...form, land: parseFloat(e.target.value) })}
-                    />
-                    <div className="land-value">
-                      <span className="land-number">{form.land.toFixed(2)}</span>
-                      <span className="land-unit">{t('acres')}</span>
+                  <div className="land-control-panel">
+                    <div className="land-stepper-box">
+                      <motion.button
+                        type="button"
+                        className="land-step-btn land-step-minus"
+                        onClick={() => adjustLand(-0.25)}
+                        whileHover={{ scale: 1.08 }}
+                        whileTap={{ scale: 0.92 }}
+                        aria-label="Decrease acres"
+                      >
+                        −
+                      </motion.button>
+
+                      <div className="land-input-wrapper">
+                        <input
+                          type="number"
+                          className="land-written-input"
+                          value={writtenLand}
+                          onChange={handleWrittenLandChange}
+                          onBlur={handleWrittenLandBlur}
+                          min="0.05"
+                          max="50"
+                          step="0.05"
+                        />
+                        <span className="land-input-unit">{t('acres')}</span>
+                      </div>
+
+                      <motion.button
+                        type="button"
+                        className="land-step-btn land-step-plus"
+                        onClick={() => adjustLand(0.25)}
+                        whileHover={{ scale: 1.08 }}
+                        whileTap={{ scale: 0.92 }}
+                        aria-label="Increase acres"
+                      >
+                        +
+                      </motion.button>
+                    </div>
+
+                    <div className="land-presets">
+                      <span className="land-presets-label">{t('wiz.land.presets')}</span>
+                      <div className="land-preset-chips">
+                        {[0.25, 0.5, 1.0, 2.0, 3.0, 5.0].map((preset) => (
+                          <motion.button
+                            key={preset}
+                            type="button"
+                            className={`land-preset-chip ${Math.abs(form.land - preset) < 0.01 ? 'is-active' : ''}`}
+                            onClick={() => setLandVal(preset)}
+                            whileHover={{ scale: 1.06 }}
+                            whileTap={{ scale: 0.94 }}
+                          >
+                            {preset} {t('acres')}
+                          </motion.button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="land-slider-row">
+                      <input
+                        type="range"
+                        min="0.05"
+                        max="5"
+                        step="0.05"
+                        value={Math.min(form.land, 5)}
+                        onChange={(e) => setLandVal(parseFloat(e.target.value))}
+                      />
                     </div>
                   </div>
                   <p className="land-helper">

@@ -88,10 +88,6 @@ export function authRoutes(repo, config, mailer) {
     const user = await repo.users.findByEmail(email);
     if (!user) throw badRequest('Invalid verification request.', 'invalid_code');
 
-    if (user.emailVerified) {
-      return res.json({ token: signToken(user.id, config), user: publicUser(user), alreadyVerified: true });
-    }
-
     if (!user.verificationCodeHash || !user.verificationExpiresAt || new Date(user.verificationExpiresAt).getTime() <= Date.now()) {
       throw badRequest('Verification code has expired. Please request a new one.', 'code_expired');
     }
@@ -109,7 +105,7 @@ export function authRoutes(repo, config, mailer) {
     const lang = req.body?.lang === 'ta' ? 'ta' : 'en';
 
     const user = await repo.users.findByEmail(email);
-    if (!user || user.emailVerified) return res.json({ ok: true }); // do not disclose registration status
+    if (!user) return res.json({ ok: true }); // do not disclose registration status
 
     if (user.verificationCooldown && Date.now() - new Date(user.verificationCooldown).getTime() < config.verificationCooldownSeconds * 1000) {
       throw new HttpError(429, 'Please wait a moment before requesting another verification code.', 'rate_limited');
@@ -158,32 +154,36 @@ export function authRoutes(repo, config, mailer) {
       throw unauthorized('Incorrect email or password.', 'bad_credentials');
     }
 
-    // Require email verification unless explicitly skipped by config
-    if (!user.emailVerified && !config.skipEmailVerification) {
-      const codeValid = user.verificationCodeHash && user.verificationExpiresAt && new Date(user.verificationExpiresAt).getTime() > Date.now();
-      if (!codeValid) {
-        const code = newVerificationCode();
-        const codeHash = hashVerificationCode(code);
-        const expiresAt = new Date(Date.now() + config.verificationCodeMinutes * 60 * 1000);
-        await repo.users.setVerificationCode(user.id, { codeHash, expiresAt, cooldown: new Date() });
-        if (mailer && mailer.kind !== 'none') {
-          inBackground(mailer.send({
-            to: user.email,
-            ...verificationEmail({ lang, name: user.name, code, minutes: config.verificationCodeMinutes }),
-          }));
-        } else {
-          console.log(`[FirstFurrow DEV] Email verification code for ${user.email} is: ${code}`);
-        }
-      }
-      throw new HttpError(403, 'Please verify your email address before logging in.', 'email_not_verified');
-    }
-
-    // Successful login: reset failed login attempts if any were recorded
+    // Successful credentials: reset failed login attempts if any were recorded
     if (user.failedLoginAttempts > 0 || user.lockUntil) {
       await repo.users.resetFailedAttempts(user.id);
     }
 
-    res.json({ token: signToken(user.id, config), user: publicUser(user) });
+    // If skipEmailVerification is enabled (e.g. fast unit tests), directly return token
+    if (config.skipEmailVerification) {
+      return res.json({ token: signToken(user.id, config), user: publicUser(user) });
+    }
+
+    // Require 6-digit verification code sent to email for login
+    const code = newVerificationCode();
+    const codeHash = hashVerificationCode(code);
+    const expiresAt = new Date(Date.now() + config.verificationCodeMinutes * 60 * 1000);
+    await repo.users.setVerificationCode(user.id, { codeHash, expiresAt, cooldown: new Date() });
+
+    if (mailer && mailer.kind !== 'none') {
+      inBackground(mailer.send({
+        to: user.email,
+        ...verificationEmail({ lang, name: user.name, code, minutes: config.verificationCodeMinutes }),
+      }));
+    } else {
+      console.log(`[FirstFurrow DEV] Login verification code for ${user.email} is: ${code}`);
+    }
+
+    res.json({
+      requiresVerification: true,
+      email: user.email,
+      message: 'Verification code sent to your email.',
+    });
   }));
 
   // ── Forgot password ─────────────────────────────────────────────────────────

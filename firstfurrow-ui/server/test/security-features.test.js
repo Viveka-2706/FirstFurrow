@@ -102,11 +102,6 @@ test('Email verification: signup sends code, unverified login blocked, verificat
   assert.ok(match, 'contains 6 digit code');
   const code = match[0];
 
-  // Try to log in before verifying -> blocked!
-  const prematureLogin = await app.request('POST', '/api/auth/login', { body: { email, password } });
-  assert.equal(prematureLogin.status, 403);
-  assert.equal(prematureLogin.body.code, 'email_not_verified');
-
   // Verify with invalid code -> rejected
   const badCode = await app.request('POST', '/api/auth/verify-email', { body: { email, code: '000000' } });
   assert.equal(badCode.status, 400);
@@ -118,8 +113,19 @@ test('Email verification: signup sends code, unverified login blocked, verificat
   assert.ok(verifyRes.body.token);
   assert.equal(verifyRes.body.user.emailVerified, true);
 
-  // Now login succeeds normally
-  const loginOk = await app.request('POST', '/api/auth/login', { body: { email, password } });
-  assert.equal(loginOk.status, 200);
-  assert.ok(loginOk.body.token);
+  // Subsequent login ALSO requires entering the 6-digit verification code
+  const loginRes = await app.request('POST', '/api/auth/login', { body: { email, password } });
+  assert.equal(loginRes.status, 200);
+  assert.equal(loginRes.body.requiresVerification, true);
+  assert.equal(loginRes.body.email, email);
+
+  await app.idle();
+  assert.equal(app.outbox.length, 2);
+  const loginMatch = app.outbox[1].text.match(/\b\d{6}\b/);
+  assert.ok(loginMatch, 'contains login verification code');
+  const loginCode = loginMatch[0];
+
+  const verifyLoginRes = await app.request('POST', '/api/auth/verify-email', { body: { email, code: loginCode } });
+  assert.equal(verifyLoginRes.status, 200);
+  assert.ok(verifyLoginRes.body.token);
 }));

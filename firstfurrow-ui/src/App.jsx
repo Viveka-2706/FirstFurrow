@@ -144,11 +144,15 @@ export default function App() {
         setWelcomeName(res.user.name.split(' ')[0]);
         setView('dashboard');
       } else {
-        const account = await store.login(payload);
+        const res = await store.login({ ...payload, lang });
+        if (res.requiresVerification) {
+          setVerifyEmailAddress(res.email || payload.email);
+          return;
+        }
         const list = await store.getPlans();
-        setUser(account);
+        setUser(res.user);
         setPlans(list);
-        setWelcomeName(account.name.split(' ')[0]);
+        setWelcomeName(res.user.name.split(' ')[0]);
         setView('dashboard');
       }
     } catch (err) {

@@ -23,10 +23,12 @@ export async function resendVerification({ email, lang }) {
   return api('/auth/resend-verification', { method: 'POST', body: { email, lang }, auth: false });
 }
 
-export async function login({ email, password }) {
-  const { token, user } = await api('/auth/login', { method: 'POST', body: { email, password }, auth: false });
-  setToken(token);
-  return user;
+export async function login({ email, password, lang }) {
+  const res = await api('/auth/login', { method: 'POST', body: { email, password, lang }, auth: false });
+  if (res.token) {
+    setToken(res.token);
+  }
+  return res;
 }
 
 export const logout = () => clearToken(); // tokens are stateless: forgetting it is logging out

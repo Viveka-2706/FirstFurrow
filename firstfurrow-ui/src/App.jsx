@@ -360,6 +360,7 @@ export default function App() {
           <motion.div key="settings" variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.4 }}>
             <Settings
               user={user}
+              plans={plans}
               onBack={() => setView('dashboard')}
               onSaveProfile={handleSaveProfile}
               onChangePassword={handleChangePassword}
